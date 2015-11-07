@@ -49,7 +49,7 @@ and open the template in the editor.
 							</div>
 							<div class="collapse navbar-collapse" id="myNavbar">
 								<ul class="nav navbar-nav">
-									<li class="active"><a href="#">Home</a></li>
+                                                                    <li class="active"><a href="Layout.html">Home</a></li>
 									<li class="dropdown">
 									<a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
 									<ul class="dropdown-menu">
@@ -58,7 +58,7 @@ and open the template in the editor.
 										<li><a href="#">Page 1-3</a></li>
 									</ul>
 									</li>
-									<li><a href="#">Kurse</a></li>
+                                                                        <li><a href="course.php">Kurse</a></li>
 									<li><a href="#">FH</a></li>
                                                                         <li><a href="#">User-page</a></li>
                                                                         <li><a href="#">Impressum</a></li>
