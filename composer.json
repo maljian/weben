@@ -1,0 +1,7 @@
+{
+    
+   "require": {
+        "swiss-payment-slip/swiss-payment-slip-fpdf": "*"
+    }
+    
+}
