@@ -87,8 +87,48 @@ and open the template in the editor.
 				<div class = "col-md-1"></div>
 				<!-- Main content -->
 				<div class = "col-md-7">
-					<h2>Kurs 100: Web-Engineering</h2>
-					<p>Inhalt</p>
+					<h2>CAS Business Intelligence</h2>
+                                        <h4>FHNW Hochschule für Wirtschaft</h4>
+                                        <p>
+                                            <b>Wann: </b>26.02.2016 09:00 - 16.09.2016 17:00<br>
+                                            <b>Wo: </b>Fachhochschule Nordwestschweiz FHNW<br>
+                                            Hochschule für Wirtschaft<br>
+                                            Riggenbachstrasse 16, 4600 Olten 
+                                        </p>
+                                        <p>
+                                            In Unternehmen fallen tagt&auml;glich unz&auml;hlige Daten an – 
+                                            &uuml;ber Lagerbest&auml;nde, verkaufte Waren, Kunden oder die 
+                                            Klickdaten von Webshops. Dahinter verbirgt sich eine F&uuml;lle 
+                                            von gesch&auml;ftsrelevanten Informationen, welche es zu nutzen gilt – 
+                                            für bessere Entscheidungen, zur Messung des Erfolgs strategischer 
+                                            Massnahmen oder zur Optimierung von Marketingstrategien und somit 
+                                            letztlich für entscheidende Wettbewerbsvorteile!
+                                        </p>
+                                        <p>
+                                            Dieser CAS führt die grundlegenden Begriffe und analytischen 
+                                            Technologien von Business Intelligence (BI) anhand von zwei 
+                                            prototypischen Anwendungsfällen ein – der strategischen Planung und 
+                                            &Uuml;berwachung von Unternehmenszielen mittels Kennzahlen einerseits, 
+                                            sowie der Analyse von Markt- und Kundendaten zur Optimierung von 
+                                            Marketingstrategien andererseits. Dabei wird jeweils von einer 
+                                            betrieblichen Fragestellung ausgegangen und anhand derer die ben&ouml;tigte 
+                                            Modellierung, Erfassung, Abfrage und Aufbereitung der Daten abgeleitet. 
+                                            Die praktische Arbeit mit BI-Werkzeugen hilft bei der Anwendung und 
+                                            Vertiefung der erworbenen Kenntnisse.
+                                        </p>
+                                        <p>
+                                            Im letzten Teil des Lehrgangs lernen die Teilnehmenden, Strategien für die 
+                                            Einf&uuml;hrung von Business Intelligence zu entwickeln, BI-Technologien 
+                                            auszuw&auml;hlen, sowie BI-Systeme aufzubauen und zu pflegen. Sie 
+                                            profitieren hierbei von der Erfahrung der Dozierenden, welche aus 
+                                            langj&auml;hriger BI-Praxis berichten k&ouml;nnen.
+                                        </p>
+                                        <p>
+                                            <b>Zielpublikum</b><br>
+                                            Der Lehrgang richtet sich an IT-Projektleitende oder –Fachkr&auml;fte bzw. Consultants, 
+                                            welche f&uuml;r die Einf&uuml;hrung von BI-Technologien verantwortlich sind, sowie an Anwendende 
+                                            dieser Technologien (F&uuml;hrungskr&auml;fte, Business-Analysten oder Marketing-Mitarbeitende).
+                                        </p>
 				</div>
 				<!-- Sidebar -->
 				<div class = "col-md-3">

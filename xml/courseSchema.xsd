@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<xs:schema version="1.0"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified">
+    <xs:element name="course">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="titel" type="xs:string"/>
+                <xs:element name="fh" type="xs:string"/>
+                <xs:element name="timeframe">
+                    <xs:attribute name="startdate" type ="xs:date" />
+                    <xs:attribute name="enddate" type ="xs:date" />
+                </xs:element>
+                <xs:element name="info" type="xs:string"/>
+                <xs:element name="place" type="xs:string"/>
+                <xs:element name="lecturer" type="xs:string"/>
+                <xs:element name="costs" type="xs:string"/>
+                <xs:element name="contact" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>
