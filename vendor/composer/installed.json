@@ -1,0 +1,231 @@
+[
+    {
+        "name": "swiss-payment-slip/swiss-payment-slip",
+        "version": "0.11.1",
+        "version_normalized": "0.11.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/ravage84/SwissPaymentSlip.git",
+            "reference": "a30d5b62db1a8f7048e63302bf639f64a4e9790a"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/ravage84/SwissPaymentSlip/zipball/a30d5b62db1a8f7048e63302bf639f64a4e9790a",
+            "reference": "a30d5b62db1a8f7048e63302bf639f64a4e9790a",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "3.7.38",
+            "squizlabs/php_codesniffer": "2.1.*"
+        },
+        "time": "2015-02-18 19:51:56",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "SwissPaymentSlip\\SwissPaymentSlip\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Peter Siska",
+                "email": "pesche@gridonic.ch",
+                "homepage": "http://www.gridonic.ch",
+                "role": "Contributor"
+            },
+            {
+                "name": "Manuel Reinhard",
+                "email": "manu@sprain.ch",
+                "homepage": "http://www.sprain.ch",
+                "role": "Developer of the original class"
+            },
+            {
+                "name": "Marc Würth",
+                "email": "ravage@bluewin.ch",
+                "role": "Lead developer"
+            }
+        ],
+        "description": "A library for creating Swiss payment slips",
+        "homepage": "https://github.com/ravage84/SwissPaymentSlip",
+        "keywords": [
+            "ESR",
+            "Einzahlungsschein",
+            "Inpayment slip",
+            "Payment slip",
+            "es"
+        ]
+    },
+    {
+        "name": "swiss-payment-slip/swiss-payment-slip-pdf",
+        "version": "0.13.1",
+        "version_normalized": "0.13.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/ravage84/SwissPaymentSlipPdf.git",
+            "reference": "4355743b2406875e9fed2117d8df445ba6848be4"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/ravage84/SwissPaymentSlipPdf/zipball/4355743b2406875e9fed2117d8df445ba6848be4",
+            "reference": "4355743b2406875e9fed2117d8df445ba6848be4",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0",
+            "swiss-payment-slip/swiss-payment-slip": "0.11.1"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "3.7.38",
+            "squizlabs/php_codesniffer": "2.1.*"
+        },
+        "time": "2015-02-18 20:04:44",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "SwissPaymentSlip\\SwissPaymentSlipPdf\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Peter Siska",
+                "email": "pesche@gridonic.ch",
+                "homepage": "http://www.gridonic.ch",
+                "role": "Contributor"
+            },
+            {
+                "name": "Manuel Reinhard",
+                "email": "manu@sprain.ch",
+                "homepage": "http://www.sprain.ch",
+                "role": "Developer of the original class"
+            },
+            {
+                "name": "Marc Würth",
+                "email": "ravage@bluewin.ch",
+                "role": "Lead developer"
+            }
+        ],
+        "description": "An abstract base class for creating Swiss payment slips with reference number (ESR) or without (ES) using a pdf engine",
+        "homepage": "https://github.com/ravage84/SwissPaymentSlipPdf",
+        "keywords": [
+            "ESR",
+            "Einzahlungsschein",
+            "Inpayment slip",
+            "Payment slip",
+            "es",
+            "pdf"
+        ]
+    },
+    {
+        "name": "itbz/fpdf",
+        "version": "1.7.2",
+        "version_normalized": "1.7.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/hanneskod/fpdf.git",
+            "reference": "06d02a7bf227a62d37691a4e7e9c3a35efcb41c3"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/hanneskod/fpdf/zipball/06d02a7bf227a62d37691a4e7e9c3a35efcb41c3",
+            "reference": "06d02a7bf227a62d37691a4e7e9c3a35efcb41c3",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "time": "2013-12-27 14:18:15",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "fpdf": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "no usage restriction"
+        ],
+        "description": "Unofficial PSR-0 compliant version of the FPDF library",
+        "homepage": "http://www.fpdf.org/"
+    },
+    {
+        "name": "swiss-payment-slip/swiss-payment-slip-fpdf",
+        "version": "0.6.0",
+        "version_normalized": "0.6.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/ravage84/SwissPaymentSlipFpdf.git",
+            "reference": "72f722188d89b2651d4751ab812146cb1f165061"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/ravage84/SwissPaymentSlipFpdf/zipball/72f722188d89b2651d4751ab812146cb1f165061",
+            "reference": "72f722188d89b2651d4751ab812146cb1f165061",
+            "shasum": ""
+        },
+        "require": {
+            "itbz/fpdf": "1.7.*",
+            "php": ">=5.3.0",
+            "swiss-payment-slip/swiss-payment-slip-pdf": "0.13.*"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "3.7.38",
+            "squizlabs/php_codesniffer": "2.1.*"
+        },
+        "time": "2015-04-01 14:55:48",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "SwissPaymentSlip\\SwissPaymentSlipFpdf\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Peter Siska",
+                "email": "pesche@gridonic.ch",
+                "homepage": "http://www.gridonic.ch",
+                "role": "Contributor"
+            },
+            {
+                "name": "Manuel Reinhard",
+                "email": "manu@sprain.ch",
+                "homepage": "http://www.sprain.ch",
+                "role": "Developer of the original class"
+            },
+            {
+                "name": "Marc Würth",
+                "email": "ravage@bluewin.ch",
+                "homepage": "https://github.com/ravage84",
+                "role": "Lead developer"
+            }
+        ],
+        "description": "Create Swiss payment slips with reference number (ESR) or without (ES) as PDFs with FPDF",
+        "homepage": "https://github.com/ravage84/SwissPaymentSlipFpdf",
+        "keywords": [
+            "ESR",
+            "Einzahlungsschein",
+            "Inpayment slip",
+            "Payment slip",
+            "es",
+            "fpdf",
+            "pdf"
+        ]
+    }
+]
