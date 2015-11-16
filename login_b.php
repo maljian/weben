@@ -6,7 +6,7 @@
 <?PHP
 session_start();
 include 'login_pruefen.inc.php';
-
+// Anpassen: Persönliche Daten des Users anzeigen, Möglichkeit zur Änderung
 echo "Herzlich willkommen<br/>Sehr geehrter Kunde mit E-Mail: ".$_SESSION['email'];
 echo "<br/> Hier alle aktuellen Gesundheitsdaten von....<br/>";
 
