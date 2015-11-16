@@ -5,7 +5,9 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <html>
-    <?php include ("Layout/header.html");?>
+    <?php 
+        session_start();
+        include ("Layout/header.html");?>
         <!-- Main content -->
         <div class = "col-md-7" id="mainBody">
             <h1>Suchen und Finden Sie jetzt den passenden Bachelor- , Master- oder Weiterbildungskurs</h1>
