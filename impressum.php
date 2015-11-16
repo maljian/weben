@@ -19,6 +19,19 @@ and open the template in the editor.
                 4600 Olten <br/>
             </p>
         </div>
-    <?php include ("Layout/sidebar.html");?>
-    <?php include ("Layout/footer.html");?>
+     <?php 
+        include "db.inc.php";
+        if (isset($_SESSION['eingeloggt'])){
+         if($_SESSION['eingeloggt']==true){
+              include ("Layout/loginbereich.html"); 
+            }
+         else{
+             include ("Layout/login.html");  
+            }
+        }
+        else{
+            include ("Layout/login.html");
+        }include ("Layout/ads.html");
+        include ("Layout/footer.html");
+    ?>
 </html>
