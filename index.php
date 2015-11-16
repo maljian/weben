@@ -8,7 +8,8 @@ and open the template in the editor.
     <?php include ("Layout/header.html");?>
         <!-- Main content -->
         <div class = "col-md-7" id="mainBody">
-            <h1>Startseite</h1>
+            <h1>Suchen und Finden Sie jetzt den passenden Bachelor- , Master- oder Weiterbildungskurs</h1>
+            
         </div>
     <?php include ("Layout/sidebar.html");?>
     <?php include ("Layout/footer.html");?>
