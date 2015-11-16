@@ -6,7 +6,7 @@
 	</head>
 	<body>
 <?php
-// Session starten oder �bernehmen
+// Session starten oder uebernehmen
 session_start();
 
 if (isset($_POST['email']) AND ($_POST['email']!=''))
