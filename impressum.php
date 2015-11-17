@@ -16,7 +16,7 @@ and open the template in the editor.
                 Web-Engineering Projekt<br/>
                 S.K&auml;sermann, N.Racine und J.Ruppen <br/>
                 BSc Wirtschaftsinformatik (WIVZ 3.51) HS15 <br/>
-                FHNW SHochschule f&uuml;r Wirtschaft<br/>
+                FHNW Hochschule f&uuml;r Wirtschaft<br/>
                 Riggenbachstrasse 16<br/>
                 4600 Olten <br/>
             </p>

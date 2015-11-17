@@ -41,6 +41,7 @@ if (isset($_POST['erfassen']) OR isset($_POST['anpassen']))
   $vonwo = $_POST["vonwo"];
   $email = $_POST["email"];
   $benutzername = $_POST["benutzername"];
+  $type =$_POST["type"];
   $passwort1 = $_POST["passwort1"];
   $passwort2 = $_POST["passwort2"];
   $pass = md5($passwort1);
@@ -58,7 +59,7 @@ if (isset($_POST['erfassen']) OR isset($_POST['anpassen']))
 	// falls vom Formular anpassen 
     if ($vonwo == "anpassen")      
     { 
-      $anpassung = "UPDATE users SET `password`='$pass', `user_name`='$benutzername' WHERE `email`='$email'";
+      $anpassung = "UPDATE user SET `Passwort`='$pass', `Name`='$benutzername' WHERE `Email`='$email'";
       $angepasst = mysqli_query($link,$anpassung);
       if ($angepasst == TRUE)
 	  {
@@ -75,7 +76,7 @@ if (isset($_POST['erfassen']) OR isset($_POST['anpassen']))
     if ($vonwo == "erfassung")
     {
     // prüfen ob email bereits vorhanden
-    $abfrage="SELECT email FROM `users` WHERE email='$email'";
+    $abfrage="SELECT Email FROM `user` WHERE Email='$email'";
 	$ergebnis=mysqli_query($link,$abfrage) or die("Abfrage hat nicht geklappt!");
 	$count=mysqli_num_rows($ergebnis);
 	
@@ -84,7 +85,7 @@ if (isset($_POST['erfassen']) OR isset($_POST['anpassen']))
 	else
 	  {
 	// Benutzer erfassen, weil noch nicht in DB vorhanden
-            $insert= "INSERT into users(`user_id`,`user_name`,`password`,`email`) VALUES('','$benutzername','$pass','$email')";
+            $insert= "INSERT into user(`Name`,`Email`,`Passwort`,`Type`) VALUES('$benutzername','$email','$pass','$type')";
             mysqli_query($link, $insert) or die("DB-Eintrag hat nicht geklappt!");
             echo "<font>Daten wurden erfasst!!</font><br/>";
 	// Ihr Code DB-Insert
@@ -104,7 +105,9 @@ if (isset($_POST['erfassen']) OR isset($_POST['anpassen']))
             <input type="text" name="email" value="" size="40" /> E-Mail-Adresse<br/>
             <input type="password" name="passwort1" value="" size="40" /> Passwort <br/>
 			<input type="password" name="passwort2" value="" size="40" /> Passwort (Kontrolle)<br/>
-            <input type="submit" name="erfassen" value="erfassen" />
+                        <input type="radio" name="type" value="admin"> Admin
+                        <input type="radio" naem="type" value="fh" checked> Fachhochschule            
+                        <input type="submit" name="erfassen" value="erfassen" />
 			<input type="reset" value="nochmals" />
         </form><br/>
 		

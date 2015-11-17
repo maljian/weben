@@ -22,7 +22,7 @@ if (isset($_POST['email']) AND ($_POST['email']!=''))
   $passwort = $newpwd;
   $betreff = "Neues Passwort von fh-weiterbildung.ch!";
   $inhalt = "Sehr geehrte Kundin\nSehr geehrter Kunde\n\nHier Ihr neues Passwort: '$passwort'\n
-Freundliche Gr�sse\nIhr FH-Weiterbildungs-Team\nwww.fh-weiterbildung.ch";
+Freundliche Gr&uuml;sse\nIhr FH-Weiterbildungs-Team\nwww.fh-weiterbildung.ch";
   $header = "From: huesler@fh-weiterbildung.ch";
   @mail($email,$betreff,$inhalt,$header);
   
@@ -33,7 +33,7 @@ Freundliche Gr�sse\nIhr FH-Weiterbildungs-Team\nwww.fh-weiterbildung.ch";
   
   $pass = md5($newpwd);
   echo "Ihr md5-Passwort: ".$pass."<br/>"; // nur zu Testzwecken
-  $neupasswort = "UPDATE users SET `password`='$pass' WHERE `email`='$email'";
+  $neupasswort = "UPDATE user SET `Passwort`='$pass' WHERE `Email`='$email'";
   $angepasst = mysqli_query($link,$neupasswort);
 
   if ($angepasst == TRUE)

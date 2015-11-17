@@ -23,7 +23,7 @@ if (isset($_POST['email']) AND isset($_POST['passwort']))
     mysqli_select_db($link, $dbname) or die("Datenbank nicht gefunden!");
 	
 	// Prüfen ob es User und Passwort gibt
-        $abfrage = "SELECT * FROM `users` WHERE `email`='$email' and `password`='$pass'";
+        $abfrage = "SELECT * FROM `user` WHERE `Email`='$email' and `Passwort`='$pass'";
         $ergebnis = mysqli_query($link, $abfrage) or die("Emailadresse oder Passwort stimmen nicht!");
         
         $count= mysqli_num_rows($ergebnis);
