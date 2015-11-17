@@ -24,7 +24,7 @@ $count = @mysql_num_rows($result);
         {    
             while (list($key, $value)=each($zeile))
             {
-                if ($key=='Name'){$name=$value;}    
+                if ($key=='user_name'){$name=$value;}    
             } 
         } 
 
