@@ -108,7 +108,6 @@ and open the template in the editor.
                         </select>
                     </div>
                 </div>
-                
             </form>
         </div>
         <?php 
