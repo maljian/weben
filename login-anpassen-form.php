@@ -16,7 +16,7 @@ include "db.inc.php";
 $link=mysqli_connect("localhost", $benutzer, $passwort) or die("Keine Verbindung zur Datenbank!");
 mysqli_select_db($link, $dbname) or die("Datenbank nicht gefunden!");
  
-$abfrage="SELECT * from `users` where `email`='$email'";
+$abfrage="SELECT * from `user` where `Email`='$email'";
 $result = mysqli_query($link,$abfrage) or die("Abfrage falsch");  
 $count = @mysql_num_rows($result);
 
@@ -24,7 +24,7 @@ $count = @mysql_num_rows($result);
         {    
             while (list($key, $value)=each($zeile))
             {
-                if ($key=='user_name'){$name=$value;}    
+                if ($key=='Name'){$name=$value;}    
             } 
         } 
 
