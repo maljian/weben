@@ -59,7 +59,7 @@ if (isset($_POST['erfassen']) OR isset($_POST['anpassen']))
 	// falls vom Formular anpassen 
     if ($vonwo == "anpassen")      
     { 
-      $anpassung = "UPDATE user SET `Passwort`='$pass', `Name`='$benutzername' WHERE `Email`='$email'";
+      $anpassung = "UPDATE `user` SET `Name`='$benutzername', `Passwort`='$pass' WHERE `Email`='$email'";
       $angepasst = mysqli_query($link,$anpassung);
       if ($angepasst == TRUE)
 	  {
@@ -85,7 +85,7 @@ if (isset($_POST['erfassen']) OR isset($_POST['anpassen']))
 	else
 	  {
 	// Benutzer erfassen, weil noch nicht in DB vorhanden
-            $insert= "INSERT into user(`Name`,`Email`,`Passwort`,`Type`) VALUES('$benutzername','$email','$pass','$type')";
+            $insert= "INSERT into `user`(`Name`,`Email`,`Passwort`,`Type`) VALUES('$benutzername','$email','$pass','$type')";
             mysqli_query($link, $insert) or die("DB-Eintrag hat nicht geklappt!");
             echo "<font>Daten wurden erfasst!!</font><br/>";
 	// Ihr Code DB-Insert
