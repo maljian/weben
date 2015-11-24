@@ -7,7 +7,8 @@ and open the template in the editor.
 <html>
     <?php 
         session_start();
-        include ("Layout/header.html");?>
+        include ("Layout/header.html");
+        ?>
         <!-- Main content -->
         <div class = "col-md-7" id="mainBody">
             <h1>FHNW</h1>
