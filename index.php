@@ -29,8 +29,6 @@
                         <option>Raum Bern</option>
                     </select>
                 </div>
-            </div>
-            <div class="form-group">
                 <div class="col-md-4">
                     <label for="fachbereich">Fachbereich:</label>
                     <select class="form-control text-center" id="fachbereich">
