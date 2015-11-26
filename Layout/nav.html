@@ -44,7 +44,7 @@
                             </form>
                         </li>
                         <!-- login in navbar -->
-                        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                        <li><a href="#credits" class="toggle btn btn-primary"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                     </ul> 
                 </div>
             </div>
@@ -57,3 +57,14 @@
     <!-- for the left free space -->
     <div class = "col-md-1"></div>
 
+<script>
+$(function () {
+
+    $('.toggle').click(function (event) {
+        event.preventDefault();
+        var target = $(this).attr('href');
+        $(target).toggleClass('hidden show');
+    });
+
+});
+</script>   
