@@ -10,6 +10,7 @@
         else{
             include ("Layout/nav.html");
         }
+        // Codeteile von Rainer Telesko aus dem Web-Engineering Modul.
         if (!empty($_POST)) {
             // keep track validation errors
             $titleError = null;
@@ -21,12 +22,13 @@
             $resultError = null;
             $studigangError = null;
             $fachbereichError = null;
+            $next = "course_create.php";
 
             // keep track post values
             $title = $_POST['title'];
             $location = $_POST['location'];
-            $start = $_POST['start']; //
-            $end = $_POST['end']; //
+            //$start = $_POST['start'];
+            //$end = $_POST['end']; 
             $cost = $_POST['cost'];
             $text = $_POST['txt'];
             $result = $_POST['result'];
@@ -45,10 +47,10 @@
                 $locationError = 'Bitte den Durchführungsort eingeben';
                 $valid = false;
             }
-            if ((empty($start) && empty($end)) && (empty($start) || empty($end))){
+            /**if ((empty($start) && empty($end)) && (empty($start) || empty($end))){
                $dateError = "Bitte Start und End Datum eingeben";
                $valid = false;
-            }
+            }*/
             if (empty($cost)){
                 $costError = "Bitte Kurskosten eingeben";
                 $valid = false;
@@ -77,28 +79,26 @@
                 $valid = false;
             }
 
-            
-            
-            
-
             // insert data
-            /**if ($valid) {
-                // Alternative Schreibweise eines Prepared Statments
-                $q = $pdo->prepare("INSERT INTO studiengang (name, fh, location, start, end, cost, text, result, contact-email, type, studiengang, fachbereich)"
-                        . " values (:name, :fh, :location, :start, :end, :cost, :text, :result, :contact-email, :type, :studiengang, :fachbereich)");
-                $q->bindParam(':name', $title);
-                $q->bindParam(':email', $email);
-                $q->bindParam(':mobile', $mobile);
-                $q->execute();
-                Database::disconnect();
-                header("Location: myCourse.php");
-            }*/
+            if ($valid) {
+                include "db.inc.php";
+                $link = mysqli_connect("localhost", $benutzer, $passwort) or die("Keine Verbindung zur Datenbank!");
+                mysqli_select_db($link, $dbname) or die("Datenbank nicht gefunden!". mysql_error());
+                
+                $abfrage = "INSERT INTO `studiengang`(`id`, `name`, `fh`, `location`, `start`, `end`, `cost`, `text`, `result`, `contact_email`, `type`, `studiengang`, `fachbereich`) VALUES 
+                    ('','$title','test','$location','','','$cost','$text','$result','$contactemail','$type','$studigang','$fachbereich')";
+                $ergebnis = mysqli_query($link, $abfrage);
+                if (!$ergebnis){
+                    die('Could not connect: ' . mysql_error());
+                }
+                mysqli_close($link);
+            }
         }
     ?>
         <!-- Main content -->
         <div class = "col-md-7" id="mainBody">
-            <h2>neuer Kurs erfassen</h2>
-            <form class="form-horizontal" role="form" action="course_create.php" method="post">
+            <h2>Neuen Kurs erfassen</h2>
+            <form class="form-horizontal" role="form" action="" method="post">
                 <div class="form-group <?php echo!empty($titleError) ? 'error' : ''; ?>">
                     <div class="col-sm-1"></div>
                     <div class="col-sm-4">
@@ -158,7 +158,7 @@
                         <?php endif; ?>
                     </div>
                 </div>
-                <div class="form-group <?php echo!empty($dateError) ? 'error' : ''; ?>">
+                <!--<div class="form-group <?php echo!empty($dateError) ? 'error' : ''; ?>">
                     <div class="col-sm-1"></div>
                     <div class ="col-sm-6">
                         <label for="start">Von:
@@ -195,7 +195,7 @@
                     <?php if (!empty($dateError)): ?>
                         <span class="help-inline"><?php echo $dateError; ?></span>
                     <?php endif; ?>
-                </div>
+                </div>-->
                 <div class="form-group <?php echo!empty($costError) ? 'error' : ''; ?>">
                     <div class="col-sm-1"></div>
                     <div class="col-sm-3">
