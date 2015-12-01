@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 17. Nov 2015 um 11:38
+-- Erstellungszeit: 01. Dez 2015 um 09:59
 -- Server Version: 5.6.21
 -- PHP-Version: 5.6.3
 
@@ -38,8 +38,8 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`Name`, `Email`, `Passwort`, `Type`) VALUES
-('FHNW', 'sahra.kaesermann@students.fhnw.ch', '23456789', 'fh'),
-('Admin', 'sahra@kaesermann.ch', '12345678', 'admin');
+('FHNW', 'sahra.kaesermann@students.fhnw.ch', '4428c6c474502e61151877825bb41961', 'fh'),
+('Admin', 'sahra@kaesermann.ch', '25d55ad283aa400af464c76d713c07ad', 'admin');
 
 --
 -- Indizes der exportierten Tabellen
