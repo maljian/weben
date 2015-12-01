@@ -39,12 +39,11 @@ if (isset($_POST['email']) AND isset($_POST['passwort']))
 	  }
 	else
 	  {
-	  $_SESSION['eingeloggt']=false;
-          //echo "<scirpt> $('#wrongLogin').show()</script>";
-	  header("Location:index.php");
+            $_SESSION['eingeloggt']=false;
+            //Fehlermeldung ausgeben
+            header("Location:index.php");  
 	  }
 }
-?>
-    
+?>  
 </body>
 </html>
