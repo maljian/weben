@@ -31,21 +31,20 @@ if (isset($_POST['email']) AND isset($_POST['passwort']))
       
 	// Ihr Code mysqli_query --> Ihre Abfrage!
 	
-	
  	if ($count == 1) 
 	  { 
 	  $_SESSION['eingeloggt']=true;
 	  $_SESSION['email']=$email;
-          header("Location:course.php");
+          header("Location:index.php");
 	  }
 	else
 	  {
 	  $_SESSION['eingeloggt']=false;
-	  header("Location:course.php");
-	  echo "Login nicht geklappt";
+          //echo "<scirpt> $('#wrongLogin').show()</script>";
+	  header("Location:index.php");
 	  }
 }
 ?>
-
+    
 </body>
 </html>

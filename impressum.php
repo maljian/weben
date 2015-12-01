@@ -36,55 +36,58 @@ and open the template in the editor.
         <!-- Kontaktformular für die Webseite -->
         <form class="form-horizontal" role="form">
             <div class="form-group">
-                <label class="control-label col-sm-2" for="anrede">Anrede:</label>
-                <select name="contact_sex">
+                <label class="control-label col-sm-2" for="gender">Anrede:*</label>
+                <div class="col-sm-2"> 
+                    <select class="form-control text-center" id="gender">
                     <option>Frau</option>
                     <option>Herr</option>
                 </select>
+                </div>      
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-2" for="lastname">Nachname:</label>
-                <div class="col-sm-9">
-                    <input type="text" class="form-control" id="lastname" name="lastname">
+                <label class="control-label col-sm-2" for="lastname">Nachname:*</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="lastname" name="lastname" required>
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-2" for="firstname">Vorname:</label>
-                <div class="col-sm-9">
-                    <input type="text" class="form-control" id="firstname" name="firstname">
+                <label class="control-label col-sm-2" for="firstname">Vorname:*</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="firstname" name="firstname" required>
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-2" for="email">Emailadresse:</label>
-                <div class="col-sm-9">
-                    <input type="email" class="form-control" id="email" name="email">
+                <label class="control-label col-sm-2" for="email">Emailadresse:*</label>
+                <div class="col-sm-4">
+                    <input type="email" class="form-control" id="email" name="email" required>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="phonenumber">Telefonnummer:</label>
-                <div class="col-sm-9">
+                <div class="col-sm-4">
                     <input type="tel" class="form-control" id="phonenumber" name="phonenumber">
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-2" for="message">Anfrage:</label>
-                <div class="col-sm-9">
-                    <textarea class="form-control" rows="5" id="message" name="message"></textarea>
+                <label class="control-label col-sm-2" for="message">Anfrage:*</label>
+                <div class="col-sm-6">
+                    <textarea class="form-control" rows="10" id="message" name="message" required></textarea>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-2"></label>
                 <div class="col-sm-9">
                     <button type="submit" class="btn btn-default" value="send">Senden</button>
+                    <button type="reset" class="btn btn-default" value="reset">Abbrechen</button>
                 </div>      
             </div>
         </form>
 
     </div>
 
-<?php
-include ("Layout/sidebar.html");
-include ("Layout/ads.html");
-include ("Layout/footer.html");
-?>
+    <?php
+    include ("Layout/sidebar.html");
+    include ("Layout/ads.html");
+    include ("Layout/footer.html");
+    ?>
 </html>

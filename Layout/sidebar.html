@@ -1,17 +1,24 @@
 <!-- Sidebar -->
 <div class = "col-md-3">
+    <!-- Alert that wrong Email or Password was entered-->
+    <div class="panel-group">
+                <div id="wrongLogin" class="alert alert-danger alert hide">
+                    <a href="#wrongLogin" aria-label="close">&times;</a>
+                    <strong>Emailadresse oder Passwort ist falsch!</strong>
+                </div>
+            </div>
 <div id="sidebar" class ="panel-group hidden">
 						<div class ="panel panel-default">
 							<div class="panel-heading">Login</div>
 							<div class="panel-body">
-								<form role="form">
+								<form role="form" action="login.php" method="POST">
 									<div class="form-group">
 										<label for="email">Emailaddresse:</label>
-										<input type="email" class="form-control" id="email">
+										<input type="email" name="email" class="form-control" id="email">
 									</div>
 									<div class="form-group">
 										<label for="pwd">Passwort:</label>
-										<input type="password" class="form-control" id="pwd">
+										<input type="password" name="passwort" class="form-control" id="pwd">
 									</div>
 									<button type="submit" class="btn btn-default">Login</button>
 								</form>
