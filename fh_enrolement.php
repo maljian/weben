@@ -6,9 +6,6 @@
          if($_SESSION['eingeloggt']==true){
               include ("Layout/nav-loggedin.html");
             }
-         else{
-             include ("Layout/nav.html");  
-            }
         }
         else{
             include ("Layout/nav.html");
@@ -17,7 +14,7 @@
 <!-- Main content -->
 <div class = "col-md-7" id="mainBody">
     <h1>FH-Anmeldung</h1>
-    <form class="form-horizontal" role="form">
+    <form class="form-horizontal" role="form" action="fh_enrolement_save.php" method="POST">
         <div class="form-group">
             <label class="control-label col-sm-3" for="institution">Institution:</label>
             <div class="col-sm-9">
