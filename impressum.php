@@ -6,6 +6,9 @@ if (isset($_SESSION['eingeloggt'])) {
     if ($_SESSION['eingeloggt'] == true) {
         include ("Layout/nav-loggedin.html");
     }
+    else{
+            include ("Layout/nav.html");
+    }
 } else {
     include ("Layout/nav.html");
 }
