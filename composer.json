@@ -1,7 +1,8 @@
 {
     
    "require": {
-        "swiss-payment-slip/swiss-payment-slip-fpdf": "*"
+        "swiss-payment-slip/swiss-payment-slip-fpdf": "*",
+      "swiftmailer/swiftmailer": "^5.4"
     },
    "require-dev": {
       "phpunit/phpunit": "^4.8"
