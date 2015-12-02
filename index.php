@@ -1,5 +1,6 @@
     <?php
         session_start();
+        
         include ("Layout/header.html");
         include "db.inc.php";
         if (isset($_SESSION['eingeloggt'])){
@@ -13,6 +14,7 @@
         else{
             include ("Layout/nav.html");
         }
+       
     ?>
     <!-- Main content -->
     <div class = "col-md-7" id="mainBody">
@@ -95,6 +97,7 @@
         </form>
     </div>
     <?php
+        include ("login_error.php");
         include ("Layout/sidebar.html");
         include ("Layout/ads.html");
         include ("Layout/footer.html");

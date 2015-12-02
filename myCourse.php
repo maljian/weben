@@ -20,6 +20,7 @@
             <a href="course_create.php" class="btn btn-default" role="button">neuer Kurs erfassen</a>
         </div>
     <?php
+        include ("login_error.php");
         include ("Layout/sidebar.html");
         include ("Layout/ads.html");
         include ("Layout/footer.html");
