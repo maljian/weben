@@ -34,7 +34,7 @@ if (!empty($_POST)) {
     $subject02 = "Kontaktanfrage FH Portal"; // Betreff der Bestätigungsmail
     $header = "From: $email";
 
-    //validate input
+//validate input
     $valid = true;
     if (empty($firstname)) {
         $firstnameError = 'Bitte geben Sie Ihren Vornamen ein!';
