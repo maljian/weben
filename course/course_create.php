@@ -1,14 +1,14 @@
     <?php
         session_start();
-        include ("Layout/header.html");
-        include "db.inc.php";
+        include ("../Layout/header.html");
+        include "../db.inc.php";
         if (isset($_SESSION['eingeloggt'])){
          if($_SESSION['eingeloggt']==true){
-                include ("Layout/nav-loggedin.html");
+                include ("../Layout/nav-loggedin.html");
             }
         }
         else{
-            include ("Layout/nav.html");
+            include ("../Layout/nav.html");
         }
         // Codeteile von Rainer Telesko aus dem Web-Engineering Modul.
         if (!empty($_POST)) {
@@ -81,7 +81,7 @@
 
             // insert data
             if ($valid) {
-                include "db.inc.php";
+                include "../db.inc.php";
                 $link = mysqli_connect("localhost", $benutzer, $passwort) or die("Keine Verbindung zur Datenbank!");
                 mysqli_select_db($link, $dbname) or die("Datenbank nicht gefunden!". mysql_error());
                 
@@ -246,9 +246,9 @@
             </form>
         </div>
     <?php
-        include ("login_error.php");
-        include ("Layout/sidebar.html");
-        include ("Layout/ads.html");
-        include ("Layout/footer.html");
+        include ("../login_error.php");
+        include ("../Layout/sidebar.html");
+        include ("../Layout/ads.html");
+        include ("../Layout/footer.html");
     ?>
 </html>
