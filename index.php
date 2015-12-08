@@ -5,7 +5,7 @@
         include "db.inc.php";
         if (isset($_SESSION['eingeloggt'])){
          if($_SESSION['eingeloggt']==true){
-              include ("Layout/nav-loggedin.html");
+              include ("Layout/nav-loggedin_fh.html");
             }
          else{
              include ("Layout/nav.html");  
