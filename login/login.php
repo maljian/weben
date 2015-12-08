@@ -17,7 +17,7 @@ if (isset($_POST['email']) AND isset($_POST['passwort']))
         $pass=md5($pass);
 
     // Datenbankverbindung
-    include "db.inc.php";
+    include "../db.inc.php";
 	
     $link=mysqli_connect("localhost", $benutzer, $passwort) or die("Keine Verbindung zur Datenbank!");
     mysqli_select_db($link, $dbname) or die("Datenbank nicht gefunden!");
@@ -35,14 +35,14 @@ if (isset($_POST['email']) AND isset($_POST['passwort']))
 	  { 
 	  $_SESSION['eingeloggt']=true;
 	  $_SESSION['email']=$email;
-          header("Location:index.php");
+          header("Location:../index.php");
 	  }
 	else
 	  {
             $_SESSION['eingeloggt']=false;
             //Fehlermeldung ausgeben
             $_SESSION['message'] = 'Falsche Emailadresse oder Passwort!';
-            header("Location:index.php");  
+            header("Location:../index.php");  
 	  }
 }
 ?>  
