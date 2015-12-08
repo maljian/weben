@@ -136,16 +136,16 @@
                     <div class="radio">
                         <div class="col-sm-1"></div>
                         <div class="col-sm-2">
-                            <label class="radio-inline"><input type="radio" name="studiform" value="presVoll" checked="checked"> Pr&auml;senzstudium Vollzeit</label>
+                            <label class="radio-inline"><input type="radio" name="studiform" value="Pr&auml;senzstudium Vollzeit" checked="checked"> Pr&auml;senzstudium Vollzeit</label>
                         </div>
                         <div class="col-sm-2">
-                            <label class="radio-inline"><input type="radio" name="studiform" value="presTeil"> Pr&auml;senzstudium Teilzeit</label>
+                            <label class="radio-inline"><input type="radio" name="studiform" value="Pr&auml;senzstudium Teilzeit"> Pr&auml;senzstudium Teilzeit</label>
                         </div>
                         <div class="col-sm-2">
-                            <label class="radio-inline"><input type="radio" name="studiform" value="fernVoll"> Fernstudium Vollzeit</label>
+                            <label class="radio-inline"><input type="radio" name="studiform" value="Fernstudium Vollzeit"> Fernstudium Vollzeit</label>
                         </div>
                         <div class="col-sm-2">
-                            <label class="radio-inline"><input type="radio" name="studiform" value="fernTeil"> Fernstudium Teilzeit</label>
+                            <label class="radio-inline"><input type="radio" name="studiform" value="Fernstudium Teilzeit"> Fernstudium Teilzeit</label>
                         </div>
                     </div>
                 </div>
