@@ -1,8 +1,10 @@
 <?php
-            $benutzer = 'root';
-            $passwort = '';
-            $dbname = 'fhweb';
+
+$benutzer = 'root';
+$passwort = '';
+$dbname = 'fhweb';
+
 //datenbank: fhweb tabellen: user, studiengang
-            // user: Name, Email, Passwort, Type
+// user: Name, Email, Passwort, Type
 ?>
 

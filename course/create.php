@@ -1,15 +1,4 @@
     <?php
-        session_start();
-        include ("../Layout/header.html");
-        include "../db.inc.php";
-        if (isset($_SESSION['eingeloggt'])){
-         if($_SESSION['eingeloggt']==true){
-                include ("../Layout/nav-loggedin.html");
-            }
-        }
-        else{
-            include ("../Layout/nav.html");
-        }
         // Codeteile von Rainer Telesko aus dem Web-Engineering Modul.
         if (!empty($_POST)) {
             // keep track validation errors
@@ -92,13 +81,25 @@
                     die('Could not connect: ' . mysql_error());
                 }
                 mysqli_close($link);
+                header("Location: ../myCourse.php");
             }
+        }
+        session_start();
+        include ("../Layout/header.html");
+        include "../db.inc.php";
+        if (isset($_SESSION['eingeloggt'])){
+         if($_SESSION['eingeloggt']==true){
+                include ("../Layout/nav-loggedin.html");
+            }
+        }
+        else{
+            include ("../Layout/nav.html");
         }
     ?>
         <!-- Main content -->
         <div class = "col-md-7" id="mainBody">
             <h2>Neuen Kurs erfassen</h2>
-            <form class="form-horizontal" role="form" action="" method="post">
+            <form class="form-horizontal" role="form" action="#" method="post">
                 <div class="form-group <?php echo!empty($titleError) ? 'error' : ''; ?>">
                     <div class="col-sm-1"></div>
                     <div class="col-sm-4">
@@ -239,8 +240,8 @@
                 <div class="form-group">
                     <div class="col-sm-1"></div>
                     <div class="col-sm-4">
-                        <button type="submit" class="btn btn-default">Erfassen</button>
-                        <a class="btn" href="myCourse.php">Abbrechen</a>
+                        <button type="submit" class="btn btn-default" >Erfassen</button>
+                        <a class="btn" href="../myCourse.php">Abbrechen</a>
                     </div>
                 </div>
             </form>
