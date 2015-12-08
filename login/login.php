@@ -41,7 +41,7 @@ if (isset($_POST['email']) AND isset($_POST['passwort']))
 	  {
             $_SESSION['eingeloggt']=false;
             //Fehlermeldung ausgeben
-            $_SESSION['message'] = 'Falsche Emailadresse oder Passwort!';
+            $_SESSION['message'] = 'Falsche Emailadresse oder Passwort';
             header("Location:../index.php");  
 	  }
 }
