@@ -17,10 +17,10 @@
         <!-- Main content -->
         <div class = "col-md-7" id="mainBody">
             <h1>Meine Kursliste</h1>
-            <a href="course_create.php" class="btn btn-default" role="button">neuer Kurs erfassen</a>
+            <a href="course/course_create.php" class="btn btn-default" role="button">neuer Kurs erfassen</a>
         </div>
     <?php
-        include ("login_error.php");
+        include ("login/login_error.php");
         include ("Layout/sidebar.html");
         include ("Layout/ads.html");
         include ("Layout/footer.html");
