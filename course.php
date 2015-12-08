@@ -19,7 +19,7 @@
             <h1>Kurs</h1>
         </div>
     <?php
-        include("login_error.php");
+        include("login/login_error.php");
         include ("Layout/sidebar.html");
         include ("Layout/ads.html");
         include ("Layout/footer.html");
