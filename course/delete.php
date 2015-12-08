@@ -39,7 +39,7 @@
             <p class="alert alert-error">Möchten Sie wirklich den Kurs löschen ?</p>
             <div class="form-actions">
                 <button type="submit" class="btn btn-danger">Yes</button>
-                <a class="btn" href="../myCourse.php">No</a>
+                <a class="btn btn-default" href="../myCourse.php">No</a>
             </div>
         </form>
     </div>

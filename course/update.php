@@ -266,8 +266,8 @@
             <div class="form-group">
                 <div class="col-sm-1"></div>
                 <div class="col-sm-4">
-                    <button type="submit" class="btn btn-default" >&Auml;ndern</button>
-                    <a class="btn" href="../myCourse.php">Abbrechen</a>
+                    <button type="submit" class="btn btn-success" >&Auml;ndern</button>
+                    <a class="btn btn-default" href="../myCourse.php">Abbrechen</a>
                 </div>
             </div>
         </form>

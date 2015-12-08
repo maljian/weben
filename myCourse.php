@@ -18,7 +18,7 @@
     <div class = "col-md-7" id="mainBody">
         <h1>Meine Kursliste</h1>
         <p>
-            <a href="course/create.php" class="btn btn-default" role="button">neuer Kurs erfassen</a>
+            <a href="course/create.php" class="btn btn-success" role="button">neuer Kurs erfassen</a>
         </p>
         <table class="table table-striped table-bordered">
                 <thead>
@@ -48,7 +48,7 @@
                         echo '<td>' . $row['studiengang'] . '</td>';
                         echo '<td>' . $row['fachbereich'] . '</td>';
                         echo '<td width=250>';
-                        echo '<a class="btn" href="course/read.php?id=' . $row['id'] . '">Read</a>';
+                        echo '<a class="btn btn-default" href="course/read.php?id=' . $row['id'] . '">Read</a>';
                         echo '&nbsp;';
                         echo '<a class="btn btn-success" href="course/update.php?id=' . $row['id'] . '">Update</a>';
                         echo '&nbsp;';

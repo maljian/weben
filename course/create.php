@@ -242,8 +242,8 @@
             <div class="form-group">
                 <div class="col-sm-1"></div>
                 <div class="col-sm-4">
-                    <button type="submit" class="btn btn-default" >Erfassen</button>
-                    <a class="btn" href="../myCourse.php">Abbrechen</a>
+                    <button type="submit" class="btn btn-success" >Erfassen</button>
+                    <a class="btn btn-default" href="../myCourse.php">Abbrechen</a>
                 </div>
             </div>
         </form>
