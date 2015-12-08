@@ -2,7 +2,7 @@
 //Start of the Sidebar
 echo "<div class = \"col-md-3\">";
 //Alert that wrong Email or Password was entered
-if (isset($_SESSION['message']))
+if (isset($_SESSION['message']) and $_SESSION['message']== "Falsche Emailadresse oder Passwort")
         {
         echo "<div class=\"panel-group\">
                 <div id=\"loginError\" class=\"alert alert-danger\">

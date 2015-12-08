@@ -1,6 +1,5 @@
     <?php
         session_start();
-        
         include ("Layout/header.html");
         include "db.inc.php";
         if (isset($_SESSION['eingeloggt'])){
