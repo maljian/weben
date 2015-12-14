@@ -4,7 +4,7 @@ $firstname = $_POST['firstname'];
 $lastname = $_POST['lastname'];
 $phonenumber = $_POST['phonenumber'];
 $email = $_POST['email'];
-$question = $_POST['question'];
+$image = $_POST['image'];
 
 // eigene Mailadresse
 $zieladresse = 'dine@bronxx.org';
@@ -16,7 +16,7 @@ $absenderadresse = $_POST['email'];
 $absendername = $firstname." ".$lastname;
 
 //Betreff Empfänger und Absender
-$betreff = 'Kontaktanfrage FH Portal';
+$betreff = 'Werbefläche mieten FH Portal';
 
 //Weiterleitung nach Absenden
 $urlDankeSeite = '';
@@ -45,9 +45,8 @@ if ($_SERVER['REQUEST_METHOD']==="POST"){
     Nachname: $lastname
     E-Mailadresse: $email
     Telefonnummer: $phonenumber
-    
-    Anfrage: 
-    $question");
+    Bilddatei:
+    $image");
     
     foreach ($_POST as $name => $wert){
         if(is_array($wert)){
@@ -58,6 +57,21 @@ if ($_SERVER['REQUEST_METHOD']==="POST"){
             $mailtext .= $name.$trenner.$wert."\n";
         }
     }
+    
+    if($type != "image/jpeg") {
+    $err[] = "Es dürfen nur jpeg Dateien hochgeladen werden.";
+}
+if($size > "52000") {
+    $err[] = "Die Datei welche sie hochladen wollen, ist zu groß!<br>Maximale Dateigröße beträgt 52 KB!";
+}
+if(empty($err)) {
+    copy("$tempname","<-- Hier den Absoluten Pfad angeben -->");
+    echo "Die Datei $name wurde erfolgreich hochgeladen!";
+}
+else {
+    foreach($err as $error)
+    echo "$error<br>";
+} 
     
     // Code Ergänzungen: try und catch, logger
  // gemäss: [http://swiftmailer.org/pdf/Swiftmailer.pdf Swiftmailer.pdf]
@@ -100,8 +114,8 @@ if ($_SERVER['REQUEST_METHOD']==="POST"){
     if ($result == 0){
         die("Mail konnte nicht versandt werden.");
     }
-  //  header("Location: $urlDankeSeite");
-    //exit;
+    header("Location: $urlDankeSeite");
+    exit;
 }
 echo $message->toString();
 
