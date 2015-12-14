@@ -1,0 +1,35 @@
+<!-- Sidebar starts in login_error.php -->
+<!-- Login Box -->
+    <div id="loginBox" class ="panel-group hidden">
+						<div class ="panel panel-default">
+							<div class="panel-heading">Login</div>
+							<div class="panel-body">
+								<form role="form" action="login/login.php" method="POST">
+									<div class="form-group">
+										<label for="email">Emailaddresse:</label>
+										<input type="email" name="email" class="form-control" id="email">
+									</div>
+									<div class="form-group">
+										<label for="pwd">Passwort:</label>
+										<input type="password" name="passwort" class="form-control" id="pwd">
+									</div>
+                                                                    <p><button type="submit" class="btn btn-default">Login</button></p>
+								</form>
+                                                            <div><a href="#resetPasswordBox">Passwort vergessen?</a></div>
+							</div>
+						</div>
+					</div>
+<div id="resetPasswordBox" class ="panel-group hidden">
+						<div class ="panel panel-default">
+							<div class="panel-heading">Passwort zurücksetzen</div>
+							<div class="panel-body">
+								<form role="form" action="login/login_reset.php" method="POST">
+									<div class="form-group">
+										<label for="resetEmail">Emailaddresse:</label>
+										<input type="email" name="resetEmail" class="form-control" id="resetEmail">
+									</div>
+                                                                    <p><button type="submit" class="btn btn-default">Passwort zurücksetzen</button></p>
+                                                                </form>
+							</div>
+						</div>
+					</div>

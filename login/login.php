@@ -29,17 +29,16 @@ if (isset($_POST['email']) AND isset($_POST['passwort']))
         $count= mysqli_num_rows($ergebnis);
         
       
-	// Ihr Code mysqli_query --> Ihre Abfrage!
-	
+	// Falls passendes Ergebnis in der Datenbank vorhanden, Session loggedin auf true setzen.
  	if ($count == 1) 
 	  { 
-	  $_SESSION['eingeloggt']=true;
+	  $_SESSION['loggedin']=true;
 	  $_SESSION['email']=$email;
           header("Location:../index.php");
 	  }
 	else
 	  {
-            $_SESSION['eingeloggt']=false;
+            $_SESSION['loggedin']=false;
             //Fehlermeldung ausgeben
             $_SESSION['message'] = 'Falsche Emailadresse oder Passwort';
             header("Location:../index.php");  

@@ -1,18 +1,5 @@
 <?php
-    session_start();
-    include ("Layout/header.html");
-        include "db.inc.php";
-        if (isset($_SESSION['eingeloggt'])){
-         if($_SESSION['eingeloggt']==true){
-              include ("Layout/nav-loggedin_fh.html");
-            }
-         else{
-            include ("Layout/nav.html");
-            }
-        }
-        else{
-            include ("Layout/nav.html");
-        }
+    include("login/header.php");
 ?>
 <!-- Main content -->
 <div class = "col-md-7" id="mainBody">
@@ -82,7 +69,7 @@
 
 <?php
     include ("login/login_error.php");
-    include ("Layout/sidebar.html");
+    include ("Layout/login.html");
     include ("Layout/ads.html");
     include ("Layout/footer.html");
 ?>

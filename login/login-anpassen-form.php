@@ -7,7 +7,7 @@
 <?php
 // Session starten oder übernehmen
 session_start();
-if ($_SESSION['eingeloggt']== true)
+if ($_SESSION['loggedin']== true)
 {
 $email = $_SESSION['email'];
 
