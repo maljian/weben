@@ -40,7 +40,7 @@
                             </form>
                         </li>
                         <!-- login in navbar -->
-                        <li><a href="#loginBox" class="toggle btn" role ="button"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                        <li><a href="#loginBox" class="toggle1 btn" role ="button"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                     </ul> 
                 </div>
             </div>
@@ -56,10 +56,24 @@
 <script>
 $(function () {
 
-    $('.toggle').click(function (event) {
+    $('.toggle1').click(function (event) {
         event.preventDefault();
         var target = $(this).attr('href');
         $(target).toggleClass('hidden show');
+    });
+    $('.toggle2').click(function (event) {
+        event.preventDefault();
+        $('#loginBox').toggleClass('hidden show');
+        var target = $(this).attr('href');
+        $(target).toggleClass('hidden show');
+        
+    });
+     $('.toggle3').click(function (event) {
+        event.preventDefault();
+        $('#resetPasswordBox').toggleClass('hidden show');
+        var target = $(this).attr('href');
+        $(target).toggleClass('hidden show');
+        
     });
 
 });

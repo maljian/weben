@@ -6,7 +6,7 @@
 							<div class="panel-body">
 								<form role="form" action="login/login.php" method="POST">
 									<div class="form-group">
-										<label for="email">Emailaddresse:</label>
+										<label for="email">Email-Adresse:</label>
 										<input type="email" name="email" class="form-control" id="email">
 									</div>
 									<div class="form-group">
@@ -15,7 +15,7 @@
 									</div>
                                                                     <p><button type="submit" class="btn btn-default">Login</button></p>
 								</form>
-                                                            <div><a href="#resetPasswordBox">Passwort vergessen?</a></div>
+                                                            <div><a href="#resetPasswordBox" class="toggle2">Passwort vergessen?</a></div>
 							</div>
 						</div>
 					</div>
@@ -25,11 +25,13 @@
 							<div class="panel-body">
 								<form role="form" action="login/login_reset.php" method="POST">
 									<div class="form-group">
-										<label for="resetEmail">Emailaddresse:</label>
+                                                                                <p>Um das Passwort zurück zu setzen, geben Sie Ihre Email-Adresse ein und klicken Sie auf "senden".</p>
+										<label for="resetEmail">Email-Adresse:</label>
 										<input type="email" name="resetEmail" class="form-control" id="resetEmail">
 									</div>
-                                                                    <p><button type="submit" class="btn btn-default">Passwort zurücksetzen</button></p>
+                                                                    <p><button type="submit" class="btn btn-default">senden</button></p>
                                                                 </form>
+                                                            <a href="#loginBox" class="toggle3">Zum Login</a>
 							</div>
 						</div>
 					</div>
