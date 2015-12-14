@@ -50,6 +50,8 @@ if ($_SERVER['REQUEST_METHOD']==="POST"){
     Anfrage: 
     $question");
     
+    $mailtext = "";
+    
     foreach ($_POST as $name => $wert){
         if(is_array($wert)){
             foreach ($wert as $einzelwert){
