@@ -68,7 +68,7 @@
 </div>
 
 <?php
-    include ("login/login_error.php");
+    include ("login/login_alert.php");
     include ("Layout/login.html");
     include ("Layout/ads.html");
     include ("Layout/footer.html");

@@ -6,7 +6,7 @@
         <h1>Hallo FHNW</h1>
     </div>
     <?php
-        include ("login_error.php");
+        include ("login_alert.php");
         include ("Layout/login.html");
         include ("Layout/ads.html");
         include ("Layout/footer.html");
