@@ -12,6 +12,16 @@ if (isset($_SESSION['message']) and $_SESSION['message']== "wrong email or pw")
             </div>";
         unset($_SESSION['message']);
         }
+if (isset($_SESSION['message']) and $_SESSION['message']== "login successful")
+        {
+        echo "<div class=\"panel-group\">
+                <div id=\"loginSuccess\" class=\"alert alert-success\">
+                    <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>
+                    <strong>Sie wurden erfolgreich eingeloggt!</strong>
+                </div>
+            </div>";
+        unset($_SESSION['message']);
+        }        
 if (isset($_SESSION['pwReset']) and $_SESSION['pwReset']== "successful")
         {
         echo "<div class=\"panel-group\">

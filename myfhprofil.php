@@ -1,5 +1,6 @@
 <?php
-    
+    session_start();
+    include("login_pruefen_fh.inc.php");
     include("login/header.php");
     $email = $_SESSION['email'];
             

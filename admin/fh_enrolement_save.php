@@ -31,14 +31,19 @@ if (isset($_POST['institution']) AND isset($_POST['partner']) AND isset($_POST['
             date_default_timezone_set("Europe/Berlin");
             $timestamp = time();
             $date = date("Y.m.d",$timestamp);
-            //Daten in die Überprüfungsdatenbank fh_enrolement speichern, da FH noch nicht vorhanden.
+            
+        //Daten in die Überprüfungsdatenbank fh_enrolement speichern, da FH noch nicht vorhanden.
             $insert= "INSERT into `fh_enrolement`(`institution`,`partner`,`street`,`postalcode`,`city`,`website`,`email`,`phonenumber`,`date`) VALUES('$institution','$partner','$street','$postalcode','$city','$website','$email','$phonenumber','$date')";
-            mysqli_query($link, $insert) or die("DB-Eintrag hat nicht geklappt!");
-            $_SESSION['message'] = 'Anmeldung erfolgreich';
+            mysqli_query($link, $insert) or die("DB entry failed!");
+            $_SESSION['enrolementMessage'] = 'successful';
         }
         
     // Datenbankverbindung beenden
         mysqli_close($link);      
         header("Location: ../fh_enrolement.php");
+}
+else{
+    $_SESSION['enrolementMessage'] = 'failed';
+    header("Location: ../fh_enrolement.php");
 }
 ?>

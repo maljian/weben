@@ -1,5 +1,6 @@
 <?php
-include("login/header.php");
+    session_start();
+    include("login/header.php");
 ?>
 
 <!-- Main content -->

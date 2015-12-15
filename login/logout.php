@@ -1,8 +1,15 @@
 <?php 
     session_start();
-    //Session wird beendet (Quelle: http://untame.net/2013/06/how-to-build-a-functional-login-form-with-php-twitter-bootstrap/)
-    include "../db.inc.php";
-    unset($_SESSION['loggedin']);
+    //delete session array
+    session_unset();
+    unset($_SESSION);
+    // delete session-cookie
+    if (ini_get("session.use_cookies")) {
+    $params = session_get_cookie_params();
+    setcookie(session_name(), '', time() - 42000, $params["path"],
+        $params["domain"], $params["secure"], $params["httponly"]
+    );
+    }
     header("Location: ../index.php"); 
     die("Redirecting to: ../index.php");
 ?>

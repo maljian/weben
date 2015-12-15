@@ -1,5 +1,8 @@
 <?php
+    session_start();
+    include("login/login_pruefen_fh.inc.php");
     include("login/header.php");
+    
 ?>
     <!-- Main content -->
     <div class = "col-md-7" id="mainBody">
