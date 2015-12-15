@@ -38,18 +38,18 @@ if ($_SERVER['REQUEST_METHOD']==="POST"){
     $message
             ->setFrom(array($absenderadresse))
             ->setTo(array($zieladresse))
-            ->setCc(array($absenderadresse))
+            ->setBcc(array($absenderadresse))
             ->setSubject($betreff)
             ->setBody(
     
-    "Anfrage FH Portal erhalten:
-    Vorname : $firstname
-    Nachname: $lastname
-    E-Mailadresse: $email
-    Telefonnummer: $phonenumber
+"Anfrage FH Portal erhalten:
+Vorname : $firstname
+Nachname: $lastname
+E-Mailadresse: $email
+Telefonnummer: $phonenumber
     
-    Anfrage: 
-    $question");
+Anfrage: 
+$question");
     
     $mailtext = "";
     
@@ -98,16 +98,13 @@ if ($_SERVER['REQUEST_METHOD']==="POST"){
        $error_log = $logger->dump();
     }
     
-    $mailer = Swift_Mailer::newInstance(Swift_MailTransport::newInstance());
-    $result = $mailer->send($message);
-    
     if ($result == 0){
         die("Mail konnte nicht versandt werden.");
     }
-  //  header("Location: $urlDankeSeite");
-    //exit;
+    header("Location: $urlDankeSeite");
+    exit;
 }
-echo $message->toString();
+//echo $message->toString();
 
 header("Content-type: text/html; charset=utf-8");
 }
