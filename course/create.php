@@ -138,7 +138,7 @@
                 <div class="radio">
                     <div class="col-sm-1"></div>
                     <div class="col-sm-2">
-                        <label class="radio-inline"><input type="radio" name="studiform" value="Pr&auml;senzstudium Vollzeit" checked="checked"> Pr&auml;senzstudium Vollzeit</label>
+                        <label class="radio-inline"><input type="radio" name="studiform" value="Pr&auml;senzstudium Vollzeit"> Pr&auml;senzstudium Vollzeit</label>
                     </div>
                     <div class="col-sm-2">
                         <label class="radio-inline"><input type="radio" name="studiform" value="Pr&auml;senzstudium Teilzeit"> Pr&auml;senzstudium Teilzeit</label>
@@ -164,17 +164,17 @@
             <div class="form-group <?php echo!empty($dateError) ? 'error' : ''; ?>">
                 <div class="col-sm-1"></div>
                 <div class ="col-sm-6">
-                    <label for="start">Von:
-                        <div class='input-group' name='start'>
-                            <input type='date' class="form-control" value="<?php echo!empty($start) ? $start : ''; ?>"/>
+                    <label for="start">Von [jjjj-mm-tt]:
+                        <div class='input-group'>
+                            <input type='text' name='start' class="form-control" value="<?php echo!empty($start) ? $start : ''; ?>"/>
                             <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-calendar"></span>
                             </span>
                         </div>
                     </label>
-                    <label for="end">bis:
-                        <div class='input-group date' name='end'>
-                            <input type='date' class="form-control" value="<?php echo!empty($end) ? $end : ''; ?>"/>
+                    <label for="end">bis [jjjj-mm-tt]:
+                        <div class='input-group date'>
+                            <input type='text' name='end' class="form-control" value="<?php echo!empty($end) ? $end : ''; ?>"/>
                             <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-calendar"></span>
                             </span>
