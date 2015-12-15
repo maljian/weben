@@ -16,13 +16,13 @@
     if (!empty($_POST)) {
         // keep track validation errors
         $nameError = null;
-        $standortError = null;
+        $locationError = null;
         $linkError = null;
-        $kontaktError = null;
+        $contactError = null;
 
         // keep track post values
         $name = $_POST['name'];
-        $standort = $_POST['standort'];
+        $location = $_POST['location'];
         $link = $_POST['link'];
         $email = $_POST['email'];
         $tel = $_POST['tel'];
@@ -31,15 +31,15 @@
         // validate input
         $valid = true;
         if (empty($name)) {
-            $titleError = 'Bitte Name der Fachhochschule eingeben.';
+            $nameError = 'Bitte Name der Fachhochschule eingeben.';
             $valid = false;
         }
-        if (empty($standort)) {
-            $standortError = 'Bitte Standort(e) der Fachhochschule eingeben.';
+        if (empty($location)) {
+            $locationError = 'Bitte Standort(e) der Fachhochschule eingeben.';
             $valid = false;
         }
         if ((empty($email)) || (empty($tel)) || (empty($person))) {
-            $kontaktError = 'Bitte Kontaktdaten der Fachhochschule eingeben.';
+            $contactError = 'Bitte Kontaktdaten der Fachhochschule eingeben.';
             $valid = false;
         }
 
@@ -47,11 +47,11 @@
         if ($valid) {
                 $pdo = Database::connect();
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $sql = "UPDATE WHERE id = ?";
+                $sql = "UPDATE fh set institution = ?, site = ?, website = ?, partner = ?, phonenumber = ?, email = ? WHERE id = ?";
                 $q = $pdo->prepare($sql);
-                $q->execute(array($name, $standort, $person, $tel, $email, $id));
+                $q->execute(array($name, $location, $person, $tel, $email, $id));
                 Database::disconnect();
-                header("Location: ");
+                header("Location: myfhprofil.php");
         }
     } else {
             $pdo = Database::connect();
@@ -60,11 +60,12 @@
             $q = $pdo->prepare($sql);
             $q->execute(array($id));
             $data = $q->fetch(PDO::FETCH_ASSOC);
-            $name = $data[''];
-            $standort = $data[''];
-            $person = $data[''];
-            $tel = $data[''];
-            $email = $data[''];
+            $name = $data['institution'];
+            $location = $data['site'];
+            $link = $data['website'];
+            $person = $data['partner'];
+            $tel = $data['phonenumber'];
+            $email = $data['email'];
             
             Database::disconnect();
     }
@@ -95,13 +96,13 @@
                     </div>
                 </div>
             </div>
-            <div class="form-group <?php echo!empty($standortError) ? 'error' : ''; ?>" >
+            <div class="form-group <?php echo!empty($locationError) ? 'error' : ''; ?>" >
                 <div class="col-sm-1"></div>
                 <div class="col-sm-4">
-                    <label for="standort">Standort(e):</label>
-                    <input type="text" class="form-control" name="standort" value="<?php echo!empty($standort) ? $standort : ''; ?>">
-                    <?php if (!empty($standortError)): ?>
-                        <span class="help-inline"><?php echo $standortError; ?></span>
+                    <label for="location">Standort(e):</label>
+                    <input type="text" class="form-control" name="location" value="<?php echo!empty($location) ? $location : ''; ?>">
+                    <?php if (!empty($locationError)): ?>
+                        <span class="help-inline"><?php echo $locationError; ?></span>
                     <?php endif; ?>
                 </div>
             </div>
@@ -115,7 +116,7 @@
                     <?php endif; ?>
                 </div>
             </div>
-            <div class="form-group <?php echo!empty($kontaktError) ? 'error' : ''; ?>">
+            <div class="form-group <?php echo!empty($contactError) ? 'error' : ''; ?>">
                 <div class="col-sm-1"></div>
                 <p>Kontaktdaten</p>
                 <div class="col-sm-3">
@@ -131,14 +132,14 @@
                     <input type="email" class="form-control" name="email" value="<?php echo!empty($email) ? $email : ''; ?>">
                 </div>
                 <?php if (!empty($kontaktError)): ?>
-                    <span class="help-inline"><?php echo $kontaktError; ?></span>
+                    <span class="help-inline"><?php echo $contactError; ?></span>
                 <?php endif; ?>
             </div>
             <div class="form-group">
                 <div class="col-sm-1"></div>
                 <div class="col-sm-4">
                     <button type="submit" class="btn btn-success" >&Auml;ndern</button>
-                    <a class="btn btn-default" href="#">Abbrechen</a>
+                    <a class="btn btn-default" href="myfhprofil.php">Abbrechen</a>
                 </div>
             </div>
         </form>

@@ -23,16 +23,7 @@ session_start();
         $data = $q->fetch(PDO::FETCH_ASSOC);
         Database::disconnect();
     }
-    include ("../Layout/header.html");
-    include "../db.inc.php";
-    if (isset($_SESSION['eingeloggt'])){
-     if($_SESSION['eingeloggt']==true){
-            include ("../Layout/nav-loggedin.html");
-        }
-    }
-    else{
-        include ("../Layout/nav.html");
-    }
+    include("login/header.php");
 ?>
     <!-- Main content -->
     <div class = "col-md-7" id="mainBody">
