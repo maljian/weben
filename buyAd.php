@@ -1,13 +1,19 @@
 <?php
 if(!empty($_POST)){
+$gender = $_POST['gender'];
 $firstname = $_POST['firstname'];
 $lastname = $_POST['lastname'];
+$street = $_POST['street'];
+$plz = $_POST['plz'];
+$city = $_POST['city'];
 $phonenumber = $_POST['phonenumber'];
 $email = $_POST['email'];
 $image = $_POST['image'];
+$myAttachement = chunk_split(base64_encode(file_get_contents($image)));
 
+//Quelle: http://wiki.selfhtml.org/wiki/PHP/Anwendung_und_Praxis/Formmailer-Advanced
 // eigene Mailadresse
-$zieladresse = 'dine@bronxx.org';
+$zieladresse = 'fhnw.weben@gmail.com';
 
 //Absenderadresse
 $absenderadresse = $_POST['email'];
@@ -16,7 +22,7 @@ $absenderadresse = $_POST['email'];
 $absendername = $firstname." ".$lastname;
 
 //Betreff Empfänger und Absender
-$betreff = 'Werbefläche mieten FH Portal';
+$betreff = 'Werbefläche FH Portal mieten';
 
 //Weiterleitung nach Absenden
 $urlDankeSeite = '';
@@ -37,16 +43,23 @@ if ($_SERVER['REQUEST_METHOD']==="POST"){
     $message
             ->setFrom(array($absenderadresse => $absendername))
             ->setTo(array($zieladresse))
+            ->setBcc(array($absenderadresse))
             ->setSubject($betreff)
             ->setBody(
     
-    "Anfrage FH Portal erhalten:
-    Vorname : $firstname
-    Nachname: $lastname
-    E-Mailadresse: $email
-    Telefonnummer: $phonenumber
-    Bilddatei:
-    $image");
+"Anfrage FH Portal Werbung schalten:
+Vorname : $firstname
+Nachname: $lastname
+Strasse: $street
+PLZ: $plz
+Ort: $city
+E-Mailadresse: $email
+Telefonnummer: $phonenumber
+    
+Bild: 
+$image");
+    
+    $mailtext = "";
     
     foreach ($_POST as $name => $wert){
         if(is_array($wert)){
@@ -57,21 +70,6 @@ if ($_SERVER['REQUEST_METHOD']==="POST"){
             $mailtext .= $name.$trenner.$wert."\n";
         }
     }
-    
-    if($type != "image/jpeg") {
-    $err[] = "Es dürfen nur jpeg Dateien hochgeladen werden.";
-}
-if($size > "52000") {
-    $err[] = "Die Datei welche sie hochladen wollen, ist zu groß!<br>Maximale Dateigröße beträgt 52 KB!";
-}
-if(empty($err)) {
-    copy("$tempname","<-- Hier den Absoluten Pfad angeben -->");
-    echo "Die Datei $name wurde erfolgreich hochgeladen!";
-}
-else {
-    foreach($err as $error)
-    echo "$error<br>";
-} 
     
     // Code Ergänzungen: try und catch, logger
  // gemäss: [http://swiftmailer.org/pdf/Swiftmailer.pdf Swiftmailer.pdf]
@@ -87,11 +85,11 @@ else {
      $Transport0 = Swift_MailTransport::newInstance();        /* Beispiel geht über PHP-Mail, geht i.a. 
                                                                  aber keine Information von logger     */
  
-     $Transport = Swift_SmtpTransport::newInstance('smtp.dine.bronxx.ch',113,'tls' )     /* 'tls', Ports je nach Server */
-      ->setUsername("dine@bronxx.ch")
-      ->setPassword("!Je8Na7Sa3!");
+     $Transport = Swift_SmtpTransport::newInstance('smtp.gmail.com',587,'tls' )     /* 'tls', Ports je nach Server */
+      ->setUsername("fhnw.weben@gmail.com")
+      ->setPassword("!Je8Na8Sa9!");
      
-     $Transport2 = Swift_SmtpTransport::newInstance('mail.dine.bronxx.org',113,'tls' )  /* 'tls' */
+     $Transport2 = Swift_SmtpTransport::newInstance('mail.gmail.com',995,'tls' )  /* 'tls' */
       ->setUsername("...")
       ->setPassword("...");
  
@@ -99,7 +97,7 @@ else {
  
      // Echo Logger aktivieren (es gibt noch einen logger der auf File schreibt)
      $logger = new Swift_Plugins_Loggers_EchoLogger();
-     $mailer -> registerPlugin ( new Swift_Plugins_LoggerPlugin ( $logger));
+     $mailer -> registerPlugin ( new Swift_Plugins_LoggerPlugin ($logger));
  
      $result = $mailer->send($message);
  
@@ -108,19 +106,17 @@ else {
        $error_log = $logger->dump();
     }
     
-    $mailer = Swift_Mailer::newInstance(Swift_MailTransport::newInstance());
-    $result = $mailer->send($message);
-    
     if ($result == 0){
         die("Mail konnte nicht versandt werden.");
     }
     header("Location: $urlDankeSeite");
     exit;
 }
-echo $message->toString();
+//echo $message->toString();
 
 header("Content-type: text/html; charset=utf-8");
 }
+session_start();
 include("login/header.php");
 ?>
 
@@ -137,9 +133,9 @@ include("login/header.php");
         <div class="form-group">
             <label class="control-label col-sm-2" for="gender">Anrede:</label>
             <div class="col-sm-2"> 
-                <select class="form-control text-center" id="gender">
-                    <option>Frau</option>
-                    <option>Herr</option>
+                <select class="form-control text-center" id="gender" name="gender">
+                    <option value="female">Frau</option>
+                    <option value="male">Herr</option>
                 </select>
             </div>      
         </div>
@@ -156,6 +152,24 @@ include("login/header.php");
             </div>
         </div>
         <div class="form-group">
+            <label class="control-label col-sm-2" for="lastname">Strasse: *</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="street" name="street" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="lastname">PLZ: *</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="plz" name="plz" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="lastname">Ort: *</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="city" name="city" required>
+            </div>
+        </div>
+        <div class="form-group">
             <label class="control-label col-sm-2" for="email">Emailadresse: *</label>
             <div class="col-sm-4">
                 <input type="email" class="form-control" id="email" name="email" required>
@@ -168,7 +182,7 @@ include("login/header.php");
             </div>
         </div>
          <div class="form-group">
-            <label class="control-label col-sm-2" for="image">Bilddatei:</label>
+            <label class="control-label col-sm-2" for="image">Bilddatei: *</label>
             <div class="col-sm-4">
                 <input type="file" class="form-control" id="image" name="image" required>
             </div>
@@ -185,7 +199,7 @@ include("login/header.php");
 </div>
 
 <?php
-include ("login/login_error.php");
+include ("login/login_alert.php");
 include ("Layout/login.html");
 include ("Layout/ads.html");
 include ("Layout/footer.html");
