@@ -100,8 +100,8 @@
             $data = $q->fetch(PDO::FETCH_ASSOC);
             $title = $data['name'];
             $location = $data['location'];
-            //$start = $_POST['start'];
-            //$end = $_POST['end']; 
+            $start = $data['start'];
+            $end = $data['end']; 
             $cost = $data['cost'];
             $text = $data['text'];
             $result = $data['result'];
@@ -124,14 +124,14 @@
 ?>
 <!-- Main content -->
     <div class = "col-md-7" id="mainBody">
-        <h2>Neuen Kurs erfassen</h2>
+        <h2>Kurs bearbeiten</h2>
         <form class="form-horizontal" role="form" action="update.php?id=<?php echo $id?>" method="post">
             <div class="form-group <?php echo!empty($titleError) ? 'error' : ''; ?>">
                 <div class="col-sm-1"></div>
                 <div class="col-sm-4">
                     <label for="name">Kurstitel:</label>
                     <div class="controls">
-                        <input type="text" class="form-control" name="title" value="<?php echo!empty($title) ? $title : ''; ?>">
+                        <input type="text" class="form-control" name="name" value="<?php echo!empty($title) ? $title : ''; ?>">
                         <?php if (!empty($titleError)): ?>
                             <span class="help-inline"><?php echo $titleError; ?></span>
                         <?php endif; ?>
@@ -162,7 +162,7 @@
                 <div class="radio">
                     <div class="col-sm-1"></div>
                     <div class="col-sm-2">
-                        <label class="radio-inline"><input type="radio" name="studiform" value="Pr&auml;senzstudium Vollzeit" checked="checked"> Pr&auml;senzstudium Vollzeit</label>
+                        <label class="radio-inline"><input type="radio" name="studiform" value="Pr&auml;senzstudium Vollzeit" > Pr&auml;senzstudium Vollzeit</label>
                     </div>
                     <div class="col-sm-2">
                         <label class="radio-inline"><input type="radio" name="studiform" value="Pr&auml;senzstudium Teilzeit"> Pr&auml;senzstudium Teilzeit</label>
