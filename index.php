@@ -1,6 +1,6 @@
-    <?php
-        include("login/header.php");
-    ?>
+<?php
+    include("login/header.php");
+?>
     <!-- Main content -->
     <div class = "col-md-7" id="mainBody">
         <h2>Suchen und Finden Sie jetzt den passenden Bachelor- , Master- oder Weiterbildungskurs</h2>

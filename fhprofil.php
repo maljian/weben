@@ -1,6 +1,6 @@
-    <?php
-        include("login/header.php");
-    ?>
+<?php
+    include("login/header.php");
+?>
     <!-- Main content -->
     <div class = "col-md-7" id="mainBody">
         <h1>FHNW</h1>
