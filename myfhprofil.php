@@ -1,6 +1,7 @@
 <?php
+    
     include("login/header.php");
-    $email = ''; //get from logged in Fh
+    $email = $_SESSION['email'];
             
     include 'database.php';
     $pdo = Database::connect();
