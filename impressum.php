@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD']==="POST"){
     $message = Swift_Message::newInstance(); // Ein Objekt für die Mailnachricht
     
     $message
-            ->setFrom(array($absenderadresse))
+            ->setFrom(array($absenderadresse => $absendername))
             ->setTo(array($zieladresse))
             ->setBcc(array($absenderadresse))
             ->setSubject($betreff)
