@@ -1,5 +1,5 @@
-<!-- Abspreicherung in Datenbank angelehnt an login_erf.php aus der Vorlesung mit Herr Hüsler
 <?php
+//Abspeicherung in Datenbank angelehnt an login_erf.php aus der Vorlesung mit Herr Hüsler
 session_start();
 
 if (isset($_POST['institution']) AND isset($_POST['partner']) AND isset($_POST['street']) AND isset($_POST['postalcode']) AND isset($_POST['city']) AND isset($_POST['website']) AND isset($_POST['email']) AND isset($_POST['phonenumber']))
@@ -19,7 +19,7 @@ if (isset($_POST['institution']) AND isset($_POST['partner']) AND isset($_POST['
         mysqli_select_db($link, $dbname) or die("Datenbank nicht gefunden!");
     
     // damit ä,ö,ü und é richtig dargestellt werden! --> auf utf8 stellen
-        mysql_set_charset('utf8');
+        mysqli_set_charset($link,'utf8');
 	
     // Prüfen ob die FH bereits registriert ist, anhand der Emailadresse.
         $abfrage = "SELECT * FROM `fh` WHERE `email`='$email'";
