@@ -1,4 +1,5 @@
 <?php
+        include ("login/login_error.php");
         include ("Layout/header.html");
         include "db.inc.php";
         if (isset($_SESSION['loggedin'])){

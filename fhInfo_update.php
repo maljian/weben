@@ -1,6 +1,6 @@
 <?php
     session_start();
-    include("login_pruefen_fh.inc.php");
+    include("login/login_pruefen_fh.inc.php");
     
     require 'database.php';
 
