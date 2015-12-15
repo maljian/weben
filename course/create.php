@@ -18,8 +18,8 @@
         // keep track post values
         $title = $_POST['title'];
         $location = $_POST['location'];
-        //$start = $_POST['start'];
-        //$end = $_POST['end']; 
+        $start = $_POST['start'];
+        $end = $_POST['end']; 
         $cost = $_POST['cost'];
         $text = $_POST['txt'];
         $result = $_POST['result'];
@@ -38,10 +38,10 @@
             $locationError = 'Bitte den Durchführungsort eingeben';
             $valid = false;
         }
-        /**if ((empty($start) && empty($end)) && (empty($start) || empty($end))){
+        if ((empty($start) && empty($end)) && (empty($start) || empty($end))){
            $dateError = "Bitte Start und End Datum eingeben";
            $valid = false;
-        }*/
+        }
         if (empty($cost)){
             $costError = "Bitte Kurskosten eingeben";
             $valid = false;
@@ -77,7 +77,7 @@
             mysqli_select_db($link, $dbname) or die("Datenbank nicht gefunden!". mysql_error());
 
             $abfrage = "INSERT INTO `studiengang`(`id`, `name`, `fh`, `location`, `start`, `end`, `cost`, `text`, `result`, `contact_email`, `type`, `studiengang`, `fachbereich`) VALUES 
-                ('','$title','test','$location','','','$cost','$text','$result','$contactemail','$type','$studigang','$fachbereich')";
+                ('','$title','test','$location','$start','$end','$cost','$text','$result','$contactemail','$type','$studigang','$fachbereich')";
             $ergebnis = mysqli_query($link, $abfrage);
             if (!$ergebnis){
                 die('Could not connect: ' . mysql_error());
@@ -161,12 +161,12 @@
                     <?php endif; ?>
                 </div>
             </div>
-            <!--<div class="form-group <?php echo!empty($dateError) ? 'error' : ''; ?>">
+            <div class="form-group <?php echo!empty($dateError) ? 'error' : ''; ?>">
                 <div class="col-sm-1"></div>
                 <div class ="col-sm-6">
                     <label for="start">Von:
                         <div class='input-group' name='start'>
-                            <input type='text' class="form-control" value="<?php echo!empty($start) ? $start : ''; ?>"/>
+                            <input type='date' class="form-control" value="<?php echo!empty($start) ? $start : ''; ?>"/>
                             <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-calendar"></span>
                             </span>
@@ -174,31 +174,17 @@
                     </label>
                     <label for="end">bis:
                         <div class='input-group date' name='end'>
-                            <input type='text' class="form-control" value="<?php echo!empty($end) ? $end : ''; ?>"/>
+                            <input type='date' class="form-control" value="<?php echo!empty($end) ? $end : ''; ?>"/>
                             <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-calendar"></span>
                             </span>
                         </div>
                     </label>
-                    <script type="text/javascript">
-                        $(function () {
-                            $('#start').datetimepicker();
-                            $('#end').datetimepicker({
-                                useCurrent: false //Important! See issue #1075
-                            });
-                            $("#start").on("dp.change", function (e) {
-                                $('#end').data("DateTimePicker").minDate(e.date);
-                            });
-                            $("#end").on("dp.change", function (e) {
-                                $('#start').data("DateTimePicker").maxDate(e.date);
-                            });
-                        });
-                    </script>
                 </div>
                 <?php if (!empty($dateError)): ?>
                     <span class="help-inline"><?php echo $dateError; ?></span>
                 <?php endif; ?>
-            </div>-->
+            </div>
             <div class="form-group <?php echo!empty($costError) ? 'error' : ''; ?>">
                 <div class="col-sm-1"></div>
                 <div class="col-sm-3">
