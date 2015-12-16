@@ -13,9 +13,6 @@ include("login/header.php");
                 <th>Anrede</th>
                 <th>Vorname</th>
                 <th>Name</th>
-                <th>Strasse</th>
-                <th>PLZ</th>
-                <th>Ort</th>
                 <th>Email</th>
                 <th>Startdatum</th>
                 <th>Dauer</th>
@@ -23,22 +20,15 @@ include("login/header.php");
         </thead>
         <tbody>
             <?php
-            include 'db.inc.php';
-            $link = mysqli_connect("localhost", $benutzer, $passwort) or die("Keine Verbindung zur Datenbank!");
-            mysqli_select_db($link, $dbname);
-
+            include 'database.php';
+                    $pdo = Database::connect();
+                    $sql = 'SELECT * FROM ads ORDER BY id DESC';
+                    
             // damit ä,ö,ü und é richtig dargestellt werden! --> auf utf8 stellen
             mysqli_set_charset($link, 'utf8');
             
-            // Quelle: http://www.php-kurs.com/mysql-datenbank-auslesen.htm
-            $sql = 'SELECT * FROM ads ORDER BY id DESC';
-            
-            $db_erg = mysqli_query($link, $sql);
-            if(!$db_erg){
-                die('Ungültige Abfrage: ' . mysqli_error());
-            }
-            
-            while ($row=  mysqli_fetch_array($db_erg, MYSQLI_ASSOC)) {
+           // PDO-Query (kein Prepared Statement)
+                    foreach ($pdo->query($sql) as $row) {
                 echo '<tr>';
                 echo '<td>' . $row['gender'] . '</td>';
                 echo '<td>' . $row['firstname'] . '</td>';
@@ -51,12 +41,11 @@ include("login/header.php");
                 echo '<td>' . $row['duration'] . '</td>';
                 echo '<td width=250>';
                 echo '<a class="btn btn-default btn-success" href="pdf/einzahlungsschein.php?id=' . $row['id'] . '">PDF Generieren</a> ';
-                echo '<a class="btn btn-default btn-danger" href="course/read.php?id=' . $row['id'] . '">Löschen</a>';
+                echo '<a class="btn btn-default btn-danger" href="advertisment/delete.php?id=' . $row['id'] . '">Löschen</a>';
                 echo '</td>';
                 echo '</tr>';
             }
-                    
-            mysqli_free_result($db_erg);
+            Database::disconnect();
             ?>
         </tbody>
     </table>

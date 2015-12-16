@@ -8,7 +8,7 @@ $ref="5000001195";
 //Create a new pdf to create your invoice, already using FPDF
 //(if you don't understand this part you should have a look at the FPDF documentation)
 $pdf = new FPDF('P','mm','A4');
-$pdf->AddPage('FH Portal Rechnung');
+$pdf->AddPage();
 $pdf->SetAutoPageBreak(0,0);
 $pdf->SetFont('Arial','',9);
 $pdf->Cell(50, 4, "Just some dummy text.");
