@@ -8,7 +8,7 @@ if (!empty($_POST)) {
     $city = $_POST['city'];
     $phonenumber = $_POST['phonenumber'];
     $email = $_POST['email'];
-    $image = chunk_split(base64_encode(file_get_contents($image)));
+    
 
     include "db.inc.php";
     $link = mysqli_connect("localhost", $benutzer, $passwort) or die("Keine Verbindung zur Datenbank!");
@@ -16,13 +16,24 @@ if (!empty($_POST)) {
 
     // damit ä,ö,ü und é richtig dargestellt werden! --> auf utf8 stellen
     mysqli_set_charset($link, 'utf8');
-
-    $abfrage = "INSERT INTO `ads`(`id`, `gender`, `firstname`, `lastname`, `street`, `plz`, `city`, `email`, `phonenumber`, `image`) VALUES 
-                ('','$gender','$firstname','$lastname','$street','$plz','$city','$email','$phonenumber','$image')";
-    $ergebnis = mysqli_query($link, $abfrage);
+    
+    if (array_key_exists('image', $_FILES)){
+        $tmpname = $_FILES['image']['tmp_name'];
+        $type = $_FILES['image']['type'];
+        $hndFile = fopen($tmpname, "r");
+        $image = addslashes(fread($hndFile, filesize($tmpname)));
+        
+         $abfrage = "INSERT INTO `ads`(`id`, `gender`, `firstname`, `lastname`, `street`, `plz`, `city`, `email`, `phonenumber`, `image`, `imagetype`) VALUES 
+                ('','$gender','$firstname','$lastname','$street','$plz','$city','$email','$phonenumber','$image', '$type')";
+   
+         $ergebnis = mysqli_query($link, $abfrage);
     if (!$ergebnis) {
         die('Could not connect: ' . mysql_error());
     }
+         
+    }
+       
+    
     mysqli_close($link);
 
 //Quelle: http://wiki.selfhtml.org/wiki/PHP/Anwendung_und_Praxis/Formmailer-Advanced
@@ -144,8 +155,8 @@ include("login/header.php");
             <label class="control-label col-sm-2" for="gender">Anrede:</label>
             <div class="col-sm-2"> 
                 <select class="form-control text-center" id="gender" name="gender">
-                    <option value="female">Frau</option>
-                    <option value="male">Herr</option>
+                    <option value="Frau">Frau</option>
+                    <option value="Herr">Herr</option>
                 </select>
             </div>      
         </div>
