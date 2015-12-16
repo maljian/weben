@@ -6,10 +6,7 @@ include("login/header.php");
 <!-- Main content -->
 <div class = "col-md-7" id="mainBody">
     <h1>Werbeanfragen</h1>
-    <!--
-    <p>
-        <a href="course/create.php" class="btn btn-success" role="button">neuer Kurs erfassen</a>
-    </p> -->
+    
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
@@ -30,6 +27,10 @@ include("login/header.php");
             $link = mysqli_connect("localhost", $benutzer, $passwort) or die("Keine Verbindung zur Datenbank!");
             mysqli_select_db($link, $dbname);
 
+            // damit ä,ö,ü und é richtig dargestellt werden! --> auf utf8 stellen
+            mysqli_set_charset($link, 'utf8');
+            
+            // Quelle: http://www.php-kurs.com/mysql-datenbank-auslesen.htm
             $sql = 'SELECT * FROM ads ORDER BY id DESC';
             
             $db_erg = mysqli_query($link, $sql);
@@ -37,7 +38,6 @@ include("login/header.php");
                 die('Ungültige Abfrage: ' . mysqli_error());
             }
             
-            echo '<table border ="1">';
             while ($row=  mysqli_fetch_array($db_erg, MYSQLI_ASSOC)) {
                 echo '<tr>';
                 echo '<td>' . $row['gender'] . '</td>';
@@ -47,13 +47,14 @@ include("login/header.php");
                 echo '<td>' . $row['plz'] . '</td>';
                 echo '<td>' . $row['city'] . '</td>';
                 echo '<td>' . $row['email'] . '</td>';
+                echo '<td>' . $row['start'] . '</td>';
+                echo '<td>' . $row['duration'] . '</td>';
                 echo '<td width=250>';
-                echo '<a class="btn btn-default" href="course/read.php?id=' . $row['id'] . '">PDF Generieren</a>';
+                echo '<a class="btn btn-default btn-success" href="course/read.php?id=' . $row['id'] . '">PDF Generieren</a>';
                 echo '</td>';
                 echo '</tr>';
             }
-            echo "</table>";
-            
+                    
             mysqli_free_result($db_erg);
             ?>
         </tbody>

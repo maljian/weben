@@ -8,6 +8,8 @@ if (!empty($_POST)) {
     $city = $_POST['city'];
     $phonenumber = $_POST['phonenumber'];
     $email = $_POST['email'];
+    $start = $_POST['start'];
+    $duration = $_POST['duration'];
     
 
     include "db.inc.php";
@@ -24,8 +26,8 @@ if (!empty($_POST)) {
         $hndFile = fopen($tmpname, "r");
         $image = addslashes(fread($hndFile, filesize($tmpname)));
         
-         $abfrage = "INSERT INTO `ads`(`id`, `gender`, `firstname`, `lastname`, `street`, `plz`, `city`, `email`, `phonenumber`, `image`, `imagetype`) VALUES 
-                ('','$gender','$firstname','$lastname','$street','$plz','$city','$email','$phonenumber','$image', '$type')";
+         $abfrage = "INSERT INTO `ads`(`id`, `gender`, `firstname`, `lastname`, `street`, `plz`, `city`, `email`, `phonenumber`, `start`, `duration`, `image`, `imagetype`) VALUES 
+                ('','$gender','$firstname','$lastname','$street','$plz','$city','$email','$phonenumber','$start','$duration','$image', '$type')";
    
          $ergebnis = mysqli_query($link, $abfrage);
     if (!$ergebnis) {
@@ -202,6 +204,23 @@ include("login/header.php");
             <div class="col-sm-4">
                 <input type="tel" class="form-control" id="phonenumber" name="phonenumber">
             </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="start">Startdatum: *</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="start" name="start" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="duration">Dauer:</label>
+            <div class="col-sm-2"> 
+                <select class="form-control text-center" id="duration" name="duration">
+                    <option value="1 Woche">1 Woche</option>
+                    <option value="2 Wochen">2 Wochen</option>
+                    <option value="3 Wochen">3 Wochen</option>
+                    <option value="1 Monat">1 Monat</option>
+                </select>
+            </div>      
         </div>
         <div class="form-group">
             <label class="control-label col-sm-2" for="image">Bilddatei: *</label>
