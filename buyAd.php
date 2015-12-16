@@ -17,6 +17,7 @@ if (!empty($_POST)) {
     // damit ä,ö,ü und é richtig dargestellt werden! --> auf utf8 stellen
     mysqli_set_charset($link, 'utf8');
     
+    // Quelle: http://www.strassenprogrammierer.de/php-mysql-bilder_tipp_580.html
     if (array_key_exists('image', $_FILES)){
         $tmpname = $_FILES['image']['tmp_name'];
         $type = $_FILES['image']['type'];
@@ -70,7 +71,8 @@ if (!empty($_POST)) {
                 ->setBcc(array($absenderadresse))
                 ->setSubject($betreff)
                 ->setBody(
-                        "Anfrage FH Portal Werbung schalten:
+"Anfrage FH Portal Werbung schalten:
+    
 Vorname : $firstname
 Nachname: $lastname
 Strasse: $street
@@ -79,8 +81,7 @@ Ort: $city
 E-Mailadresse: $email
 Telefonnummer: $phonenumber
     
-Bild: 
-$image");
+Das Bild wurde in der Datenbank gespeichert.");
 
         $mailtext = "";
 
