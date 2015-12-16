@@ -50,7 +50,7 @@ include("login/header.php");
                 echo '<td>' . $row['start'] . '</td>';
                 echo '<td>' . $row['duration'] . '</td>';
                 echo '<td width=250>';
-                echo '<a class="btn btn-default btn-success" href="course/read.php?id=' . $row['id'] . '">PDF Generieren</a> ';
+                echo '<a class="btn btn-default btn-success" href="pdf/einzahlungsschein.php?id=' . $row['id'] . '">PDF Generieren</a> ';
                 echo '<a class="btn btn-default btn-danger" href="course/read.php?id=' . $row['id'] . '">Löschen</a>';
                 echo '</td>';
                 echo '</tr>';
