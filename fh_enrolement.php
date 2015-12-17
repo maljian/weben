@@ -56,7 +56,7 @@
         <div class="form-group">
             <label class="col-sm-2"></label>
             <div class="col-sm-6">
-                <input type="checkbox"> Hiermit bestätige ich, dass ich die <a href="">AGB</a> gelesen habe und diese akzeptiere.
+                <input type="checkbox"> Hiermit bestätige ich, dass ich die <a href="agb.html" target="_blank" onclick="window.open('agb.html', 'newwindow', 'width=600, height=500'); return false;">AGB</a> gelesen habe und diese akzeptiere.
             </div>      
         </div>
         <div class="form-group">

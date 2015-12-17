@@ -7,17 +7,65 @@
 <!-- Main content -->
 <div class = "col-md-7" id="mainBody">
     <h1>FH Anmeldungen</h1>
-    <br/>
-    <p>
-        Hier sollte eine Liste mit allen FH-Anmeldungen entstehen...
-    </p>
+        <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Institution</th>
+                <th>Ansprechpartner</th>
+                <th>Strasse</th>
+                <th>PLZ</th>
+                <th>Ort</th>
+                <th>Webseite</th>
+                <th>Email</th>
+                <th>Telefonnummer</th>
+                <th>Anmeldedatum</th>
+                <th>Bearbeiten</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            include 'db.inc.php';
+            $link = mysqli_connect("localhost", $benutzer, $passwort) or die("Keine Verbindung zur Datenbank!");
+            mysqli_select_db($link, $dbname);
 
+            // damit ä,ö,ü und é richtig dargestellt werden! --> auf utf8 stellen
+            mysqli_set_charset($link, 'utf8');
+            
+            // Quelle: http://www.php-kurs.com/mysql-datenbank-auslesen.htm
+            $sql = 'SELECT * FROM fh_enrolement ORDER BY date ASC';
+            
+            $db_erg = mysqli_query($link, $sql);
+            if(!$db_erg){
+                die('Ungültige Abfrage: ' . mysqli_error());
+            }
+            
+            while ($row=  mysqli_fetch_array($db_erg, MYSQLI_ASSOC)) {
+                echo '<tr>';
+                echo '<td>' . $row['institution'] . '</td>';
+                echo '<td>' . $row['partner'] . '</td>';
+                echo '<td>' . $row['street'] . '</td>';
+                echo '<td>' . $row['postalcode'] . '</td>';
+                echo '<td>' . $row['city'] . '</td>';
+                echo '<td>' . $row['website'] . '</td>';
+                echo '<td>' . $row['email'] . '</td>';
+                echo '<td>' . $row['phonenumber'] . '</td>';
+                echo '<td>' . $row['date'] . '</td>';
+                echo '<td width=250>';
+                echo '<a class="btn btn-default btn-success col-md-12" href="">akzeptieren</a>';
+                echo '<a class="btn btn-default btn-danger col-md-12" href="">ablehnen</a>';
+                echo '</td>';
+                echo '</tr>';
+            }
+                    
+            mysqli_free_result($db_erg);
+            ?>
+        </tbody>
+    </table>
 </div>
 
 <?php
 include ("login/login_alert.php");
 include ("Layout/login.html");
-include ("Layout/ads.html");
 include ("Layout/footer.html");
 ?>
 </html>
