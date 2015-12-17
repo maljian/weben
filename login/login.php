@@ -6,7 +6,10 @@ if (isset($_POST['email']) AND isset($_POST['passwort']))
 {
  	$email=$_POST['email'];
 	$pass=$_POST['passwort']; 
+        stripslashes($email);
+        stripslashes($pass);
         $pass=md5($pass);
+        
 
     // Datenbankverbindung
     include "../db.inc.php";

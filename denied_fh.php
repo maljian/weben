@@ -6,8 +6,8 @@
 
 <!-- Main content -->
 <div class = "col-md-7" id="mainBody">
-    <h1>FH Anmeldungen</h1>
-    <p><a href="denied_fh.php">abgelehnte FHs</a></p>
+    <h1>Abgelehnte FHs</h1>
+    <p><a href="addFH.php">Anmeldungsanfragen</a></p>
         <table class="table table-striped table-bordered">
         <thead>
             <tr>
@@ -33,7 +33,7 @@
             mysqli_set_charset($link, 'utf8');
             
             // Quelle: http://www.php-kurs.com/mysql-datenbank-auslesen.htm
-            $sql = 'SELECT * FROM fh_enrolement WHERE `status`="open" ORDER BY date ASC';
+            $sql = 'SELECT * FROM fh_enrolement WHERE `status`="denied" ORDER BY date ASC';
             
             $db_erg = mysqli_query($link, $sql);
             if(!$db_erg){
@@ -52,8 +52,8 @@
                 echo '<td>' . $row['phonenumber'] . '</td>';
                 echo '<td>' . $row['date'] . '</td>';
                 echo '<td width=250>';
-                echo '<a class="btn btn-default btn-success col-md-12" href="accept_enrolement.php">akzeptieren</a>';
-                echo '<a class="btn btn-default btn-danger col-md-12" href="">ablehnen</a>';
+                echo '<a class="btn btn-default btn-success col-md-12" href="">akzeptieren</a>';
+                echo '<a class="btn btn-default btn-danger col-md-12" href="">löschen</a>';
                 echo '</td>';
                 echo '</tr>';
             }
