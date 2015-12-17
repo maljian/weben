@@ -147,7 +147,7 @@
                         email: {
                             validators: {
                                 notEmpty: {
-                                    message: 'Ein Ort muss zwingend angegeben werden!'
+                                    message: 'Eine Emailadresse muss zwingend angegeben werden!'
                                 },
                                 emailAddress: {
                                     message: 'Sie haben keine gültige Emailadresse eingegeben'
