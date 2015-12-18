@@ -1,5 +1,6 @@
 <?php
-session_start();
+    session_start();
+    include("../login/login_pruefen_fh.inc.php");
 
     require '../database.php';
     $id = null;
@@ -7,9 +8,7 @@ session_start();
         $id = $_REQUEST['id'];
     }
 
-    if (null == $id) {
-        header("Location: ../myCourse.php");
-    } else {
+    if (null != $id) {
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $sql = "SELECT * FROM studiengang where id = ?";
@@ -23,7 +22,6 @@ session_start();
         $data = $q->fetch(PDO::FETCH_ASSOC);
         Database::disconnect();
     }
-    include("login/header.php");
 ?>
     <!-- Main content -->
     <div class = "col-md-7" id="mainBody">
@@ -37,11 +35,11 @@ session_start();
                     </tr>
                     <tr>
                         <th>Fachbereich:</th>
-                        <td><?php echo $data['fachbereich']; ?></td>
+                        <td><?php echo $data['category']; ?></td>
                     </tr>
                     <tr>
                         <th>Studiengang:</th>
-                        <td><?php echo $data['studiengang']; ?></td>
+                        <td><?php echo $data['degreeprogram']; ?></td>
                     </tr>
                     <tr>
                         <th>Studientyp:</th>
@@ -84,10 +82,13 @@ session_start();
         </div>
     </div>
 <?php
-    include ("../login/login_error.php");
-    include ("../Layout/sidebar.html");
-    include ("../Layout/ads.html");
-    include ("../Layout/footer.html");
-?>
+        include ("../login/login_alert.php");
+        include ("../Layout/login.html");
+        include ("../Layout/ads.html");
+        include ("../Layout/footer.html");
+    ?>
 </html>
+<?php
+    header("Location: ../myCourse.php");
+?>  
 

@@ -1,15 +1,12 @@
-<?php 
+<?php
     session_start();
+    include("../login/login_pruefen_fh.inc.php");
     
     require '../database.php';
 
     $id = null;
     if ( !empty($_GET['id'])) {
             $id = $_REQUEST['id'];
-    }
-
-    if ( null==$id ) {
-            header("Location: ../myCourse.php");
     }
 
 // Codeteile von Rainer Telesko aus dem Web-Engineering Modul.
@@ -85,11 +82,10 @@
         if ($valid) {
                 $pdo = Database::connect();
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $sql = "UPDATE studiengang  set name = ?, location =?, start =?, end =?, cost =?, text =?, result =?, contact_email =?, type =?, studiengang =?, fachbereich =? WHERE id = ?";
+                $sql = "UPDATE studiengang  set name = ?, location =?, start =?, end =?, cost =?, text =?, result =?, contact_email =?, type =?, degreeprogram =?, category =? WHERE id = ?";
                 $q = $pdo->prepare($sql);
                 $q->execute(array($name,$location,$cost, $text, $contactemail, $type, $studigang, $fachbereich, $id));
                 Database::disconnect();
-                header("Location: ../myCourse.php");
         }
     } else {
             $pdo = Database::connect();
@@ -107,19 +103,9 @@
             $result = $data['result'];
             $contactemail = $data['contact_email'];
             $type = $data['type'];
-            $studigang = $data['studigang'];
-            $fachbereich = $data['fachbereich'];
+            $studigang = $data['degreeprogram'];
+            $fachbereich = $data['category'];
             Database::disconnect();
-    }
-    include ("../Layout/header.html");
-    include "../db.inc.php";
-    if (isset($_SESSION['eingeloggt'])){
-     if($_SESSION['eingeloggt']==true){
-            include ("../Layout/nav-loggedin.html");
-        }
-    }
-    else{
-        include ("../Layout/nav.html");
     }
 ?>
 <!-- Main content -->
@@ -259,9 +245,12 @@
         </form>
     </div>
 <?php
-    include ("../login/login_error.php");
-    include ("../Layout/sidebar.html");
-    include ("../Layout/ads.html");
-    include ("../Layout/footer.html");
-?>
+        include ("../login/login_alert.php");
+        include ("../Layout/login.html");
+        include ("../Layout/ads.html");
+        include ("../Layout/footer.html");
+    ?>
 </html>
+<?php
+    header("Location: ../myCourse.php");
+?>  

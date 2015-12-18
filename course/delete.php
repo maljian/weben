@@ -1,4 +1,7 @@
 <?php
+    session_start();
+    include("../login/login_pruefen_fh.inc.php");
+    
     require '../database.php';
     $id = 0;
 
@@ -17,19 +20,9 @@
         $q = $pdo->prepare($sql);
         $q->execute(array($id));
         Database::disconnect();
-        header("Location: ../myCourse.php");
+        
     }
-    session_start();
-    include ("../Layout/header.html");
-    include "../db.inc.php";
-    if (isset($_SESSION['eingeloggt'])){
-     if($_SESSION['eingeloggt']==true){
-            include ("../Layout/nav-loggedin.html");
-        }
-    }
-    else{
-        include ("../Layout/nav.html");
-    }
+    
 ?>
     <!-- Main content -->
     <div class = "col-md-7" id="mainBody">
@@ -44,9 +37,12 @@
         </form>
     </div>
     <?php
-        include ("../login/login_error.php");
-        include ("../Layout/sidebar.html");
+        include ("../login/login_alert.php");
+        include ("../Layout/login.html");
         include ("../Layout/ads.html");
         include ("../Layout/footer.html");
     ?>
 </html>
+<?php
+    header("Location: ../myCourse.php");
+?>

@@ -46,7 +46,6 @@
                 $q = $pdo->prepare($sql);
                 $q->execute(array($name, $location,$link, $person, $tel, $email));
                 Database::disconnect();
-                header("Location: myfhprofil.php");
         }
     } else {
             $pdo = Database::connect();
@@ -122,7 +121,7 @@
                     <input type="text" class="form-control" name="tel" value="<?php echo!empty($tel) ? $tel : ''; ?>">
                 </div>
                 <div class="col-sm-3">
-                    <label for="email">Emailadrese:</label>
+                    <label for="email">Emailadresse:</label>
                     <p><?php echo $email; ?></p>
                 </div>
                 <?php if (!empty($kontaktError)): ?>
@@ -145,3 +144,6 @@
     include ("Layout/footer.html");
 ?>
 </html>
+<?php
+    header("location: myfhprofil.php");
+?>

@@ -233,3 +233,6 @@
     include ("Layout/footer.html");
 ?>
 </html>
+<?php
+    header("location: myCourse.php");
+?>
