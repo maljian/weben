@@ -5,9 +5,14 @@
     $email = $_SESSION['email'];
             
     include 'database.php';
+    if ( !empty($_GET['email'])) {
+            $email = $_REQUEST['email'];
+    }
+    
     $pdo = Database::connect();
-    $sql = 'SELECT * FROM fh where email = '.$email;
+    $sql = 'SELECT * FROM fh where email = ';
     $q = $pdo->prepare($sql);
+    $q->execute(array($email));
     // PDO Fetch-Modi
     // PDO::FETCH_BOTH : holt ein assoziatives und ein numerisches Array (ist default)
     // PDO::FETCH_ASSOC : holt nur ein assoziatives Array, Indizes sind Spaltennamen
