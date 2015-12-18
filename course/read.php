@@ -90,5 +90,4 @@
 </html>
 <?php
     header("Location: ../myCourse.php");
-?>  
-
+?>
