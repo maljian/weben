@@ -1,7 +1,7 @@
 <?php
     session_start();
     include("../login/login_pruefen_fh.inc.php");
-    include("login/header.php");
+    include("../login/header.php");
     
     require '../database.php';
     $id = 0;
