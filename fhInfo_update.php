@@ -4,8 +4,6 @@
     $email = $_SESSION['email'];
     
     require 'database.php';
-
-    $email = null;
     if ( !empty($_GET['email'])) {
             $email = $_REQUEST['email'];
     }
@@ -110,7 +108,7 @@
                     <?php if (!empty($linkError)): ?>
                         <span class="help-inline"><?php echo $linkError; ?></span>
                     <?php endif; ?>
-                    <br/><p>Kontaktdaten</p>
+                        <br/><p><b>Kontaktdaten</b></p>
                 </div>
             </div>                    
             <div class="form-group <?php echo!empty($contactError) ? 'error' : ''; ?>">
@@ -125,7 +123,7 @@
                 </div>
                 <div class="col-sm-3">
                     <label for="email">Emailadrese:</label>
-                    <p><?php echo $email; ?>"</p>
+                    <p><?php echo $email; ?></p>
                 </div>
                 <?php if (!empty($kontaktError)): ?>
                     <span class="help-inline"><?php echo $contactError; ?></span>
