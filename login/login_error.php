@@ -8,6 +8,6 @@ if (isset($_SESSION['access']) and $_SESSION['access']== "denied")
                 </div>
             </div>";
         unset($_SESSION['access']);
-        }            
+        } 
 ?>
 

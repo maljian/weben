@@ -41,8 +41,8 @@ if (isset($_SESSION['pwReset']) and $_SESSION['pwReset']== "failed")
                 </div>
             </div>";
         unset($_SESSION['pwReset']);
-        }         
-            
+        } 
+                    
 ?>
 
 
