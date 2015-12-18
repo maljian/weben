@@ -38,7 +38,7 @@ include("login/header.php");
                 echo '<td>' . $row['start'] . '</td>';
                 echo '<td>' . $row['duration'] . '</td>';
                 echo '<td width=250>';
-                echo '<a class="btn btn-default btn-success" href="pdf/einzahlungsschein.php?id=' . $row['id'] . '">PDF Generieren</a> ';
+                echo '<a class="btn btn-default btn-success" href="pdf/einzahlungsschein.php?id=' . $row['id'] . '">Bestätigen</a> ';
                 echo '<a class="btn btn-default btn-danger" href="advertisment/delete.php?id=' . $row['id'] . '">Löschen</a>';
                 echo '</td>';
                 echo '</tr>';
@@ -51,7 +51,6 @@ include("login/header.php");
 <?php
 include ("login/login_alert.php");
 include ("Layout/login.html");
-include ("Layout/ads.html");
 include ("Layout/footer.html");
 ?>
 </html>

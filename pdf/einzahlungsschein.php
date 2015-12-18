@@ -33,7 +33,8 @@ $pdf = new FPDF('P', 'mm', 'A4');
 $pdf->AddPage();
 $pdf->SetAutoPageBreak(0, 0);
 $pdf->SetFont('Arial', '', 9);
-$pdf->Cell(50, 4, "Just some dummy text.");
+$pdf->Cell(50, 4, 
+        "Just some dummy text.");
 
 //now simply include your Einzahlungsschein, sending your pdf instance to the Einzahlungsschein class
 $ezs = new Einzahlungsschein(196, 0, $pdf);
@@ -43,4 +44,6 @@ $ezs->setPayerData($data['firstname'] . " " . $data['lastname'], $data['street']
 $ezs->setPaymentData($amount, $ref);
 $ezs->createEinzahlungsschein(false, true);
 
-$pdf->output();
+$pdf->Output('Einzahlungsschein_'.$ref.'.pdf', 'F');
+
+header("Location: http://www.dine.bronxx.org/addAd.php");
