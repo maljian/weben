@@ -1,16 +1,13 @@
 <?php
     session_start();
     include("login/login_pruefen_fh.inc.php");
+    $email = $_SESSION['email'];
     
     require 'database.php';
 
-    $id = null;
-    if ( !empty($_GET['id'])) {
-            $id = $_REQUEST['id'];
-    }
-
-    if ( null==$id ) {
-            //header("Location: #");
+    $email = null;
+    if ( !empty($_GET['email'])) {
+            $email = $_REQUEST['email'];
     }
 
 // Codeteile von Rainer Telesko aus dem Web-Engineering Modul.
@@ -25,7 +22,6 @@
         $name = $_POST['name'];
         $location = $_POST['location'];
         $link = $_POST['link'];
-        $email = $_POST['email'];
         $tel = $_POST['tel'];
         $person = $_POST['person'];
 
@@ -39,7 +35,7 @@
             $locationError = 'Bitte Standort(e) der Fachhochschule eingeben.';
             $valid = false;
         }
-        if ((empty($email)) || (empty($tel)) || (empty($person))) {
+        if ((empty($tel)) || (empty($person))) {
             $contactError = 'Bitte Kontaktdaten der Fachhochschule eingeben.';
             $valid = false;
         }
@@ -48,25 +44,24 @@
         if ($valid) {
                 $pdo = Database::connect();
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $sql = "UPDATE fh set institution = ?, site = ?, website = ?, partner = ?, phonenumber = ?, email = ? WHERE id = ?";
+                $sql = "UPDATE fh set institution = ?, site = ?, website = ?, partner = ?, phonenumber = ?, WHERE email = ?";
                 $q = $pdo->prepare($sql);
-                $q->execute(array($name, $location, $person, $tel, $email, $id));
+                $q->execute(array($name, $location, $person, $tel, $email));
                 Database::disconnect();
                 header("Location: myfhprofil.php");
         }
     } else {
             $pdo = Database::connect();
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $sql = "SELECT * FROM  where id = ?";
+            $sql = "SELECT * FROM fh where email = ?";
             $q = $pdo->prepare($sql);
-            $q->execute(array($id));
+            $q->execute(array($email));
             $data = $q->fetch(PDO::FETCH_ASSOC);
             $name = $data['institution'];
             $location = $data['site'];
             $link = $data['website'];
             $person = $data['partner'];
             $tel = $data['phonenumber'];
-            $email = $data['email'];
             
             Database::disconnect();
     }
@@ -115,11 +110,11 @@
                     <?php if (!empty($linkError)): ?>
                         <span class="help-inline"><?php echo $linkError; ?></span>
                     <?php endif; ?>
+                    <br/><p>Kontaktdaten</p>
                 </div>
-            </div>
+            </div>                    
             <div class="form-group <?php echo!empty($contactError) ? 'error' : ''; ?>">
                 <div class="col-sm-1"></div>
-                <p>Kontaktdaten</p>
                 <div class="col-sm-3">
                     <label for="person">Name:</label>
                     <input type="text" class="form-control" name="person" value="<?php echo!empty($person) ? $person : ''; ?>">
@@ -130,7 +125,7 @@
                 </div>
                 <div class="col-sm-3">
                     <label for="email">Emailadrese:</label>
-                    <input type="email" class="form-control" name="email" value="<?php echo!empty($email) ? $email : ''; ?>">
+                    <p><?php echo $email; ?>"</p>
                 </div>
                 <?php if (!empty($kontaktError)): ?>
                     <span class="help-inline"><?php echo $contactError; ?></span>
@@ -146,8 +141,8 @@
         </form>
     </div>
 <?php
-    include ("login/login_error.php");
-    include ("Layout/sidebar.html");
+    include ("login/login_alert.php");
+    include ("Layout/login.html");
     include ("Layout/ads.html");
     include ("Layout/footer.html");
 ?>
