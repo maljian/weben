@@ -86,7 +86,6 @@
                 die('Could not connect: ' . mysql_error());
             }
             mysqli_close($link);
-            header("Location: myCourse.php");
         }
     }
     
