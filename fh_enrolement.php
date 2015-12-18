@@ -38,7 +38,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-sm-2" for="website">Webseite:</label>
+            <label class="control-label col-sm-2" for="website" value='http://'>Webseite:</label>
             <div class="col-sm-6">
                 <input type="url" class="form-control" id="website" name="website">
             </div>

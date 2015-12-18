@@ -1,5 +1,7 @@
 <?php
     session_start();
+    include("login/login_pruefen_admin.inc.php");
+    include("login/header.php");
 
     // Codeteile von Rainer Telesko aus dem Web-Engineering Modul.
     if (!empty($_POST)) {
@@ -72,7 +74,7 @@
 
         // insert data
         if ($valid) {
-            include "../db.inc.php";
+            include "db.inc.php";
             $link = mysqli_connect("localhost", $benutzer, $passwort) or die("Keine Verbindung zur Datenbank!");
             mysqli_select_db($link, $dbname) or die("Datenbank nicht gefunden!". mysql_error());
 
@@ -83,20 +85,10 @@
                 die('Could not connect: ' . mysql_error());
             }
             mysqli_close($link);
-            header("Location: ../myCourse.php");
+            header("Location: myCourse.php");
         }
     }
-
-    include ("../Layout/header.html");
-    include "../db.inc.php";
-    if (isset($_SESSION['eingeloggt'])){
-     if($_SESSION['eingeloggt']==true){
-            include ("../Layout/nav-loggedin.html");
-        }
-    }
-    else{
-        include ("../Layout/nav.html");
-    }
+    
 ?>
     <!-- Main content -->
     <div class = "col-md-7" id="mainBody">
@@ -229,15 +221,15 @@
                 <div class="col-sm-1"></div>
                 <div class="col-sm-4">
                     <button type="submit" class="btn btn-success" >Erfassen</button>
-                    <a class="btn btn-default" href="../myCourse.php">Abbrechen</a>
+                    <a class="btn btn-default" href="myCourse.php">Abbrechen</a>
                 </div>
             </div>
         </form>
     </div>
 <?php
-    include ("../login/login_alert.php");
-    include ("../Layout/login.html");
-    include ("../Layout/ads.html");
-    include ("../Layout/footer.html");
+    include ("login/login_alert.php");
+    include ("Layout/login.html");
+    include ("Layout/ads.html");
+    include ("Layout/footer.html");
 ?>
 </html>
