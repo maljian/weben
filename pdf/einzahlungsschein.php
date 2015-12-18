@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 require_once('class.einzahlungsschein.php');
 require_once('../fpdf/fpdf.php');
@@ -7,21 +6,21 @@ require_once('../fpdf/fpdf.php');
 require '../database.php';
 $id = null;
 if (!empty($_GET['id'])) {
-    $id = $_REQUEST['id'];
+$id = $_REQUEST['id'];
 }
 
 if (null == $id) {
-    header("Location: ../addAd.php");
+header("Location: ../addAd.php");
 } else {
-    $pdo = Database::connect();
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    // damit ä,ö,ü und é richtig dargestellt werden! --> auf utf8 stellen
-    $pdo->exec('set names utf8');
-    $sql = "SELECT * FROM ads where id = ?";
-    $q = $pdo->prepare($sql);
-    $q->execute(array($id));
-    $data = $q->fetch(PDO::FETCH_ASSOC);
-    Database::disconnect();
+$pdo = Database::connect();
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+// damit ä,ö,ü und é richtig dargestellt werden! --> auf utf8 stellen
+$pdo->exec('set names utf8');
+$sql = "SELECT * FROM ads where id = ?";
+$q = $pdo->prepare($sql);
+$q->execute(array($id));
+$data = $q->fetch(PDO::FETCH_ASSOC);
+Database::disconnect();
 }
 
 $amount = "150.20";
@@ -33,8 +32,8 @@ $pdf = new FPDF('P', 'mm', 'A4');
 $pdf->AddPage();
 $pdf->SetAutoPageBreak(0, 0);
 $pdf->SetFont('Arial', '', 9);
-$pdf->Cell(50, 4, 
-        "Just some dummy text.");
+$pdf->Cell(50, 4,
+ "Just some dummy text.");
 
 //now simply include your Einzahlungsschein, sending your pdf instance to the Einzahlungsschein class
 $ezs = new Einzahlungsschein(196, 0, $pdf);
