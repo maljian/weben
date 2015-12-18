@@ -16,6 +16,7 @@ include("login/header.php");
                 <th>Email</th>
                 <th>Startdatum</th>
                 <th>Dauer</th>
+                <th>Bearbeiten</th>
             </tr>
         </thead>
         <tbody>
@@ -33,9 +34,6 @@ include("login/header.php");
                 echo '<td>' . $row['gender'] . '</td>';
                 echo '<td>' . $row['firstname'] . '</td>';
                 echo '<td>' . $row['lastname'] . '</td>';
-                echo '<td>' . $row['street'] . '</td>';
-                echo '<td>' . $row['plz'] . '</td>';
-                echo '<td>' . $row['city'] . '</td>';
                 echo '<td>' . $row['email'] . '</td>';
                 echo '<td>' . $row['start'] . '</td>';
                 echo '<td>' . $row['duration'] . '</td>';
