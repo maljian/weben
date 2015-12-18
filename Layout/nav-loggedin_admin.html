@@ -14,18 +14,21 @@
                     </button>
                     <!-- Logo-->
                 </div>
+                <?php
+                $base = 'http://www.dine.bronxx.org';
+                ?>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="index.php">Home</a></li>
-                        <li><a href="course.php">Kurse</a></li>
-                        <li><a href="fhprofil.php">FH</a></li>
+                        <li class="active"><a href="<?php echo $base; ?>/index.php">Home</a></li>
+                        <li><a href="<?php echo $base; ?>/course.php">Kurse</a></li>
+                        <li><a href="<?php echo $base; ?>/fhprofil.php">FH</a></li>
                         <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="userProfil.php">Profil <span class="caret"></span></a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="<?php echo $base; ?>/userProfil.php">Profil <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="addFH.php">FH hinzufügen</a></li>
+                                <li><a href="<?php echo $base; ?>/addFH.php">FH hinzufügen</a></li>
                             </ul>
                         </li>
-                        <li class="active"><a href="addAd.php">Werbeanfragen</a></li>
+                        <li class="active"><a href="<?php echo $base; ?>/addAd.php">Werbeanfragen</a></li>
                     </ul>
                     <!-- nacbar right side -->
                     <ul class="nav navbar-nav navbar-right">

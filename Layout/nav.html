@@ -14,22 +14,25 @@
                     </button>
                     <!-- Logo-->
                 </div>
+                <?php
+                $base = 'http://www.dine.bronxx.org';
+                ?>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="index.php">Home</a></li>
+                        <li class="active"><a href="<?php echo $base; ?>/index.php">Home</a></li>
                         <li><a href="course.php">Kurse</a></li>
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">FH <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="fhprofil.php">FH</a></li>
-                                <li><a href="fh_enrolement.php">FH anmelden</a></li>
+                                <li><a href="<?php echo $base; ?>/fhprofil.php">FH</a></li>
+                                <li><a href="<?php echo $base; ?>/fh_enrolement.php">FH anmelden</a></li>
                             </ul>
                         </li>
                         <li class="dropdown">
                              <a class="dropdown-toggle" data-toggle="dropdown" href="#">Kontakt<span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="impressum.php">Impressum</a></li>
-                                <li><a href="kontaktformular.php">Kontaktformular</a></li>
+                                <li><a href="<?php echo $base; ?>/impressum.php">Impressum</a></li>
+                                <li><a href="<?php echo $base; ?>/kontaktformular.php">Kontaktformular</a></li>
                             </ul>
                         </li>
                     </ul>
