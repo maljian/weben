@@ -246,12 +246,10 @@
         </form>
     </div>
 <?php
+        header("Location: ../myCourse.php");
         include ("../login/login_alert.php");
         include ("../Layout/login.html");
         include ("../Layout/ads.html");
         include ("../Layout/footer.html");
     ?>
 </html>
-<?php
-    header("Location: ../myCourse.php");
-?>
