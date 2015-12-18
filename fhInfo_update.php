@@ -44,7 +44,7 @@
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $sql = "UPDATE fh set institution = ?, site = ?, website = ?, partner = ?, phonenumber = ?, WHERE email = ?";
                 $q = $pdo->prepare($sql);
-                $q->execute(array($name, $location, $person, $tel, $email));
+                $q->execute(array($name, $location,$link, $person, $tel, $email));
                 Database::disconnect();
                 header("Location: myfhprofil.php");
         }
