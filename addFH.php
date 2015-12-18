@@ -42,7 +42,7 @@
                         echo '<td>' . $row['phonenumber'] . '</td>';
                         echo '<td>' . $row['date'] . '</td>';
                         echo '<td width=250>';
-                        echo '<a class="btn btn-default btn-success col-md-12" href="accept_enrolement.php">akzeptieren</a>';
+                        echo '<a class="btn btn-default btn-success col-md-12" href="admin/accept_enrolement.php?emailaddress='.$row['email'].'">akzeptieren</a>';
                         echo '<a class="btn btn-default btn-danger col-md-12" href="admin/deny_enrolement.php?emailaddress=' . $row['email'] . '">ablehnen</a>';
                         echo '</td>';
                         echo '</tr>';
