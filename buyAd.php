@@ -148,6 +148,36 @@ include("login/header.php");
 <div class = "col-md-7" id="mainBody">
     <h1>Werbefläche mieten</h1>
     <br/>
+    <h2>Preisliste</h2>
+    <br/>
+    <table class="table table-striped table-bordered" style="width: 50%">
+        <thead>
+            <tr>
+                <th style="width: 20%">Dauer</th>
+                <th style="width: 20%">Preis in CHF</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1 Woche</td>
+                <td>50.-</td>
+            </tr>
+            <tr>
+                <td>2 Wochen</td>
+                <td>100.-</td>
+            </tr>
+            <tr>
+                <td>3 Wochen</td>
+                <td>140.-</td>
+            </tr>
+            <tr>
+                <td>1 Monat</td>
+                <td>180.-</td>
+            </tr>
+        </tbody>
+    </table>
+    <h2>Formular</h2>
+    <br/>
     <p>
         Bitte w&auml;hlen Sie ein Bild aus und geben Sie den Zeitraum an, wann Ihre Werbung geschalten werden soll.
     </p>
