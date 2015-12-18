@@ -78,7 +78,7 @@
            include 'database.php';
                 $pdo = Database::connect();
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $sql = "INSERT INTO studiengang(`id`, `name`, `fh`, `location`, `start`, `end`, `cost`, `text`, `result`, `contact_email`, `type`, `studiengang`, `fachbereich`) VALUES 
+                $sql = "INSERT INTO studiengang(`id`, `name`, `fh`, `location`, `start`, `end`, `cost`, `text`, `result`, `contact_email`, `type`, `degreeprogram`, `category`) VALUES 
                 ('',':name',':fh',':location',':start',':end',':cost',':text',':result',':contactemail',':type',':studigang',':fachbereich')";
                 $q = $pdo->prepare($sql);
                 $q->bindParam(':name', $title);

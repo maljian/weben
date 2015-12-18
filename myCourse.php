@@ -35,8 +35,8 @@
                         echo '<td>' . $row['start'] . '</td>';
                         echo '<td>' . $row['end'] . '</td>';
                         echo '<td>' . $row['type'] . '</td>';
-                        echo '<td>' . $row['studiengang'] . '</td>';
-                        echo '<td>' . $row['fachbereich'] . '</td>';
+                        echo '<td>' . $row['degreeprogram'] . '</td>';
+                        echo '<td>' . $row['category'] . '</td>';
                         echo '<td width=250>';
                         echo '<a class="btn btn-default" href="course/read.php?id=' . $row['id'] . '">Read</a>';
                         echo '&nbsp;';
