@@ -25,7 +25,7 @@ include("login/header.php");
                     $sql = 'SELECT * FROM ads ORDER BY id DESC';
                     
             // damit ä,ö,ü und é richtig dargestellt werden! --> auf utf8 stellen
-            mysqli_set_charset($link, 'utf8');
+            $pdo->exec('set names utf8');
             
            // PDO-Query (kein Prepared Statement)
                     foreach ($pdo->query($sql) as $row) {
