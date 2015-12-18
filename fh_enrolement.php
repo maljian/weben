@@ -38,9 +38,9 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-sm-2" for="website" value='http://'>Webseite:</label>
+            <label class="control-label col-sm-2" for="website">Webseite:</label>
             <div class="col-sm-6">
-                <input type="url" class="form-control" id="website" name="website">
+                <input type="url" class="form-control" id="website" name="website" placeholder="http://">
             </div>
         </div>
         <div class="form-group">
@@ -92,7 +92,17 @@
         <script id="source" language="javascript" type="text/javascript">
             $(document).ready(function () {
                 $('#enrolementForm').bootstrapValidator({
-                    container: '#messages',
+                    // Source: http://formvalidation.io/examples/showing-message-custom-area/
+                    err: {
+                        container: function($field, validator) {
+                        // Look at the markup
+                        //  <div class="col-xs-4">
+                        //      <field>
+                        //  </div>
+                        //  <div class="col-xs-5 messageContainer"></div>
+                        return $field.parent().next('.messageContainer');
+                        }
+                    },
                     feedbackIcons: {
                         valid: 'glyphicon glyphicon-ok',
                         invalid: 'glyphicon glyphicon-remove',
@@ -139,9 +149,9 @@
                                 notEmpty: {
                                     message: 'Eine Webseite muss zwingend angegeben werden!'
                                 },
-                                website: {
+                                uri: {
                                     message: 'Sie haben keine gültige URL eingegeben'
-                                }
+                                },
                             }
                         },
                         email: {

@@ -28,8 +28,8 @@ if (isset($_POST['resetEmail']) AND ($_POST['resetEmail']!=''))
         $passwort = $newpwd;
         $betreff = "Neues Passwort vom FH-Portal!";
         $inhalt = "Sehr geehrte Kundin\nSehr geehrter Kunde\n\nHier Ihr neues Passwort: '$passwort'\n
-        Freundliche Grüsse\nIhr FH-Portal-Team\nwww.fh-portal.ch";
-        $header = "From: admin@fh-portal.ch";
+        Freundliche Grüsse\nIhr FH-Portal-Team\nwww.dine.bronxx.org";
+        $header = "From: fhnw.weben@gmail.com";
         @mail($email,$betreff,$inhalt,$header);
   
         // Datenbankupdate
