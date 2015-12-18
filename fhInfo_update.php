@@ -1,6 +1,7 @@
 <?php
     session_start();
     include("login/login_pruefen_fh.inc.php");
+    include("login/header.php");
     $email = $_SESSION['email'];
     
     require 'database.php';

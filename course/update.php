@@ -1,6 +1,7 @@
 <?php
     session_start();
     include("../login/login_pruefen_fh.inc.php");
+    include("login/header.php");
     
     require '../database.php';
 
@@ -111,7 +112,7 @@
 <!-- Main content -->
     <div class = "col-md-7" id="mainBody">
         <h2>Kurs bearbeiten</h2>
-        <form class="form-horizontal" role="form" action="update.php?id=<?php echo $id?>" method="post">
+        <form class="form-horizontal" role="form" action="#" method="post">
             <div class="form-group <?php echo!empty($titleError) ? 'error' : ''; ?>">
                 <div class="col-sm-1"></div>
                 <div class="col-sm-4">
