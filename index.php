@@ -1,6 +1,14 @@
 <?php
     session_start();
     include("login/header.php");
+    
+    include 'db.inc.php';
+    $link=mysqli_connect("localhost", $benutzer, $passwort) or die("Keine Verbindung zur Datenbank!");
+    mysqli_select_db($link, $dbname) or die("Datenbank nicht gefunden!");
+    $abfrage = "SELECT * FROM fh";
+    $ergebnis = mysqli_query($link, $abfrage) or die("Keine Verbindung!");
+    $abfrage2 = "SELECT * FROM fh";
+    $ergebnis2 = mysqli_query($link, $abfrage2) or die("Keine Verbindung!");
 ?>
     <!-- Main content -->
     <div class = "col-md-7" id="mainBody">
@@ -19,10 +27,12 @@
                     <label for="fh">Fachhochschule:</label>
                     <select class="form-control text-center" id="fh">
                         <option> --------- Auswahl --------- </option>
-                        <option>FHNW</option>
-                        <option>ETH</option>
-                        <option>HSLU</option>
-                        <option>BFH</option>
+                        <?php 
+                            while ($row = mysqli_fetch_array($ergebnis)) {
+                                echo $row['institution'];
+                            echo '<option value="'.$row['institution'].'">'.$row['institution'].'</option>';
+                         }
+                         ?>
                     </select>
                     <?php
                         /**<label for="bachelor">Bachelorstudiengang:</label>
