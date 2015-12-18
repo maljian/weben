@@ -95,7 +95,6 @@
                 $q->bindParam(':fachbereich', $fachbereich);
                 $q->execute();
                 Database::disconnect();
-                header("Location: myCourse.php");
             /*include "db.inc.php";
             $link = mysqli_connect("localhost", $benutzer, $passwort) or die("Keine Verbindung zur Datenbank!");
             mysqli_select_db($link, $dbname) or die("Datenbank nicht gefunden!". mysql_error());
