@@ -75,38 +75,18 @@
 
         // insert data
         if ($valid) {
-           include 'database.php';
-                $pdo = Database::connect();
-                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $sql = "INSERT INTO studiengang(`id`, `name`, `fh`, `location`, `start`, `end`, `cost`, `text`, `result`, `contact_email`, `type`, `degreeprogram`, `category`) VALUES 
-                ('',':name',':fh',':location',':start',':end',':cost',':text',':result',':contactemail',':type',':studigang',':fachbereich')";
-                $q = $pdo->prepare($sql);
-                $q->bindParam(':name', $title);
-                $q->bindParam(':fh', $fh);
-                $q->bindParam(':location', $location);
-                $q->bindParam(':start', $start);
-                $q->bindParam(':end', $end);
-                $q->bindParam(':cost', $cost);
-                $q->bindParam(':text', $text);
-                $q->bindParam(':result', $result);
-                $q->bindParam(':contactemail', $contactemail);
-                $q->bindParam(':type', $type);
-                $q->bindParam(':studigang', $studigang);
-                $q->bindParam(':fachbereich', $fachbereich);
-                $q->execute();
-                Database::disconnect();
-            /*include "db.inc.php";
+            include "db.inc.php";
             $link = mysqli_connect("localhost", $benutzer, $passwort) or die("Keine Verbindung zur Datenbank!");
             mysqli_select_db($link, $dbname) or die("Datenbank nicht gefunden!". mysql_error());
 
-            $abfrage = "INSERT INTO `studiengang`(`id`, `name`, `fh`, `location`, `start`, `end`, `cost`, `text`, `result`, `contact_email`, `type`, `studiengang`, `fachbereich`) VALUES 
+            $abfrage = "INSERT INTO `studiengang`(`id`, `name`, `fh`, `location`, `start`, `end`, `cost`, `text`, `result`, `contact_email`, `type`, `degreeprogram`, `category`) VALUES 
                 ('','$title','$name','$location','$start','$end','$cost','$text','$result','$contactemail','$type','$studigang','$fachbereich')";
             $ergebnis = mysqli_query($link, $abfrage);
             if (!$ergebnis){
                 die('Could not connect: ' . mysql_error());
             }
             mysqli_close($link);
-            header("Location: myCourse.php");*/
+            header("Location: myCourse.php");
         }
     }
     
