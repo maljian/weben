@@ -23,9 +23,12 @@
         $link = $_POST['link'];
         $tel = $_POST['tel'];
         $person = $_POST['person'];
-        $college;
-        $_POST['college'];
-        
+        $col = $_POST['college'];
+        foreach($col as $fach) {
+            $fach = implode(';', $fach);
+            echo $fach;
+        }
+        $college = $fach;
 
         // validate input
         $valid = true;
@@ -44,10 +47,6 @@
 
         // update data
         if ($valid) {    
-                foreach($_POST['college'] as $college) {
-                    $college = implode(';', $college);
-                    echo $college;
-                }
                 $pdo = Database::connect();
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $sql = "UPDATE fh set site = ?, website = ?, partner = ?, phonenumber = ?, college = ? WHERE email = ?";
@@ -161,7 +160,8 @@
                             </label>
                         </div>
                     </form>
-                    <?php if (!empty($collegeError)): ?>
+                    <?php 
+                        if (!empty($collegeError)): ?>
                         <span class="help-inline"><?php echo $collegeError; ?></span>
                     <?php endif; ?>
                 </div>
