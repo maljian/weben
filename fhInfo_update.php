@@ -6,12 +6,6 @@
     $email = $_SESSION['email'];
     
     require 'database.php';
-    if ( !empty($_GET['email'])) {
-            $email = $_REQUEST['email'];
-    }
-    if ( null==$email ) {
-		header("Location: index.php");
-	}
 
 // Codeteile von Rainer Telesko aus dem Web-Engineering Modul.
     if (!empty($_POST)) {
