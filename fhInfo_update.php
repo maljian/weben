@@ -7,11 +7,6 @@
     
     require 'database.php';
 
-    $email = null;
-    if ( !empty($_GET['email'])) {
-            $email = $_REQUEST['email'];
-    }
-
 // Codeteile von Rainer Telesko aus dem Web-Engineering Modul.
     if (!empty($_POST)) {
         // keep track validation errors
