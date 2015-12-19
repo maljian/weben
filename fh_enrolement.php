@@ -62,8 +62,11 @@
                         <option value=""></option>
                         <option value="Nordwestschweiz">Nordwestschweiz</option>
                         <option value="Zentralschweiz">Zentralschweiz</option>
+                        <option value="Ostschweiz">Ostschweiz</option>
+                        <option value="Westschweiz">Westschweiz</option>
                         <option value="Raum Zürich">Raum Z&uuml;rich</option>
                         <option value="Raum Bern">Raum Bern</option>
+                        <option value="Gesamtschweiz">Gesamtschweiz</option>
                 </select>
             </div>   
         </div>
