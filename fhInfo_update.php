@@ -1,7 +1,8 @@
 <?php
     session_start();
-    include("login/login_pruefen_fh.inc.php");
     include("login/header.php");
+    include("login/login_pruefen_fh.inc.php");
+   
     $email = $_SESSION['email'];
     
     require 'database.php';
@@ -18,18 +19,18 @@
         $contactError = null;
 
         // keep track post values
-        $name = $_POST['name'];
         $location = $_POST['location'];
         $link = $_POST['link'];
         $tel = $_POST['tel'];
         $person = $_POST['person'];
+        $college;
+        $_POST['college'];
+        foreach($_POST['college'] as $fach) {
+            $college = implode(';', $fach);
+        }
 
         // validate input
         $valid = true;
-        if (empty($name)) {
-            $nameError = 'Bitte Name der Fachhochschule eingeben.';
-            $valid = false;
-        }
         if (empty($location)) {
             $locationError = 'Bitte Standort(e) der Fachhochschule eingeben.';
             $valid = false;
@@ -38,14 +39,19 @@
             $contactError = 'Bitte Kontaktdaten der Fachhochschule eingeben.';
             $valid = false;
         }
+        if (empty($college)){
+            $collegeError = 'Bitte mindestens einen Fachbereich auswählen.';
+            $valid = false;
+        }
 
         // update data
         if ($valid) {
+                             
                 $pdo = Database::connect();
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $sql = "UPDATE fh set institution = ?, site = ?, website = ?, partner = ?, phonenumber = ?, WHERE email = ?";
+                $sql = "UPDATE fh set site = ?, website = ?, partner = ?, phonenumber = ?, college = ? WHERE email = ?";
                 $q = $pdo->prepare($sql);
-                $q->execute(array($name, $location,$link, $person, $tel, $email));
+                $q->execute(array($location,$link, $person, $tel, $college, $email));
                 Database::disconnect();
         }
     } else {
@@ -60,34 +66,20 @@
             $link = $data['website'];
             $person = $data['partner'];
             $tel = $data['phonenumber'];
+            $college = $data['college'];
             
             Database::disconnect();
-    }
-    include ("Layout/header.html");
-    include "db.inc.php";
-    if (isset($_SESSION['eingeloggt'])){
-     if($_SESSION['eingeloggt']==true){
-            include ("Layout/nav-loggedin.html");
-        }
-    }
-    else{
-        include ("Layout/nav.html");
     }
 ?>
 <!-- Main content -->
     <div class = "col-md-7" id="mainBody">
         <h2>FH Profil bearbeiten</h2>
-        <form class="form-horizontal" role="form" action="fhInfo_update.php?id=<?php echo $id?>" method="post">
-            <div class="form-group <?php echo!empty($nameError) ? 'error' : ''; ?>">
+        <form class="form-horizontal" role="form" action="fhInfo_update.php?email=<?php echo $email?>" method="post">
+            <div class="form-group">
                 <div class="col-sm-1"></div>
                 <div class="col-sm-4">
                     <label for="name">Name:</label>
-                    <div class="controls">
-                        <input type="text" class="form-control" name="name" value="<?php echo!empty($name) ? $name : ''; ?>">
-                        <?php if (!empty($nameError)): ?>
-                            <span class="help-inline"><?php echo $nameError; ?></span>
-                        <?php endif; ?>
-                    </div>
+                    <p><?php echo $name ?></p>
                 </div>
             </div>
             <div class="form-group <?php echo!empty($locationError) ? 'error' : ''; ?>" >
@@ -129,6 +121,50 @@
                     <span class="help-inline"><?php echo $contactError; ?></span>
                 <?php endif; ?>
             </div>
+            <div class="form-group <?php echo!empty($collegeError) ? 'error' : ''; ?>">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-6">
+                    <label for="link">Fachbereiche:</label>
+                    <form role="college" >
+                        <div class="checkbox">
+                            <label class="checkbox-inline" for="college">
+                              <input type="checkbox" name="college[]" id="box1" value="Wirtschaft" <?php if (stripos($college,'Wirtschaft') != false){ echo "checked='checked'";} ?>>Wirtschaft
+                            </label>
+                            <label class="checkbox-inline" for="college">
+                                <input type="checkbox" name="college[]" id="box2" value="Technik"  <?php if (stripos($college,'Technik') != false){ echo "checked='checked'";} ?>>Technik
+                            </label>
+                            <label class="checkbox-inline" for="college">
+                              <input type="checkbox" name="college[]" id="box3" value="Life Science" <?php if (stripos($college,'Life Science') != false){ echo "checked='checked'";} ?> >Life Science
+                            </label>
+                            <label class="checkbox-inline" for="college">
+                              <input type="checkbox" name="college[]" id="box4" value="Architektur, Bau und Geomatik" <?php if (stripos($college,'Architektur, Bau und Geomatik') != false){ echo "checked='checked'";} ?>>Architektur, Bau und Geomatik
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label class="checkbox-inline"for="college">
+                              <input type="checkbox" name="college[]" id="box5" value="Pädagogik" <?php if (stripos($college,'Pädagogik') != false){ echo "checked='checked'";} ?>>Pädagogik
+                            </label>
+                            <label class="checkbox-inline" for="college">
+                                <input type="checkbox" name="college[]" id="box6" value="Sozial Arbeit" <?php if (stripos($college,'Soziale Arbeit') != false){ echo "checked='checked'";} ?>>Soziale Arbeit
+                            </label>
+                            <label class="checkbox-inline" for="college">
+                              <input type="checkbox" name="college[]" id="box7" value="Angewandte Psychologie" <?php if (stripos($college,'Angewandte Psychologie') != false){ echo "checked='checked'";} ?> >Angewandte Psychologie
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label class="checkbox-inline" for="college">
+                              <input type="checkbox" name="college[]" id="box8" value="Gestaltung und Kunst" <?php if (stripos($college,'Gestaltung und Kunst') != false){ echo "checked='checked'";} ?>>Gestaltung und Kunst
+                            </label>
+                            <label class="checkbox-inline" for="college">
+                                <input type="checkbox" name="college[]" id="box9" value="Musik" <?php if (stripos($college,'Musik') != false){ echo "checked='checked'";} ?>>Musik
+                            </label>
+                        </div>
+                    </form>
+                    <?php if (!empty($collegeError)): ?>
+                        <span class="help-inline"><?php echo $collegeError; ?></span>
+                    <?php endif; ?>
+                </div>
+            </div> 
             <div class="form-group">
                 <div class="col-sm-1"></div>
                 <div class="col-sm-4">
@@ -145,6 +181,3 @@
     include ("Layout/footer.html");
 ?>
 </html>
-<?php
-    header("location: myfhprofil.php");
-?>
