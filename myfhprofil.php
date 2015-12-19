@@ -45,9 +45,9 @@
                     </tr>
                     <tr>
                         <th>Kontaktdaten:</th>
-                        <td><?php echo $data['partner']; ?>
-                        <br/><?php echo $data['tel']; ?></td>
-                        <br/><?php echo $data['email']; ?></td>
+                        <td><?php echo $data['partner']; ?> 
+                            <br/><?php echo $data['tel']; ?>
+                            <br/><?php echo $data['email']; ?></td>
                     </tr>
                     <tr>
                         <th>Fachbereiche:</th>
