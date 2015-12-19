@@ -26,7 +26,7 @@
             $fache = $fache." & ".$fach;
             echo $fach;
         }
-        $college = $fach;
+        $college = $fache;
 
         // validate input
         $valid = true;
