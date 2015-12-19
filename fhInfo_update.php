@@ -57,20 +57,21 @@
                 Database::disconnect();
         }
     } else {
-            $pdo = Database::connect();
-            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $sql = "SELECT * FROM fh where email = ?";
-            $q = $pdo->prepare($sql);
-            $q->execute(array($email));
-            $data = $q->fetch(PDO::FETCH_ASSOC);
-            $name = $data['institution'];
-            $location = $data['site'];
-            $link = $data['website'];
-            $person = $data['partner'];
-            $tel = $data['phonenumber'];
-            $college = $data['college'];
+        echo "bin draussen!";
+        $pdo = Database::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "SELECT * FROM fh where email = ?";
+        $q = $pdo->prepare($sql);
+        $q->execute(array($email));
+        $data = $q->fetch(PDO::FETCH_ASSOC);
+        $name = $data['institution'];
+        $location = $data['site'];
+        $link = $data['website'];
+        $person = $data['partner'];
+        $tel = $data['phonenumber'];
+        $college = $data['college'];
             
-            Database::disconnect();
+        Database::disconnect();
     }
 ?>
 <!-- Main content -->
