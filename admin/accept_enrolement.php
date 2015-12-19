@@ -28,10 +28,11 @@
                         $website = $row['website'];
                         $email = $row['email'];
                         $phonenumber = $row['phonenumber'];
+                        $region = $row['region'];
             }
-        $sql = "INSERT INTO fh(`institution`,`partner`,street,`postalcode`,`city`,`website`,`email`,`phonenumber`) VALUES (?,?,?,?,?,?,?,?)";    
+        $sql = "INSERT INTO fh(`institution`,`partner`,street,`postalcode`,`city`,`website`,`email`,`phonenumber`,`site`,`region`,`college`) VALUES (?,?,?,?,?,?,?,?,?,?)";    
         $q = $pdo->prepare($sql);
-        $q->execute(array("$institution","$partner","$street","$postalcode","$city","$website","$email","$phonenumber"));
+        $q->execute(array("$institution","$partner","$street","$postalcode","$city","$website","$email","$phonenumber","NULL","$region","NULL"));
         
         //generate password and add to db user
         $chars = ("abcdefghijklmnopqrstuvwxyz1234567890"); 
@@ -112,7 +113,7 @@
 
                      $Transport = Swift_SmtpTransport::newInstance('smtp.gmail.com',587,'tls' )     /* 'tls', Ports je nach Server */
                       ->setUsername("fhnw.weben@gmail.com")
-                      ->setPassword("!Je8Na8Sa9!");
+                      ->setPassword("066a85305f6f0123561cec141da5af27");
 
                      $Transport2 = Swift_SmtpTransport::newInstance('mail.gmail.com',995,'tls' )  /* 'tls' */
                       ->setUsername("...")
@@ -149,7 +150,7 @@
         }
         else{
             //error message that email already exists in user or fh db!!!!!
-            
+            $_SESSION['acceptError']='failed';
             header("Location: ../addFH.php");
         }
     }

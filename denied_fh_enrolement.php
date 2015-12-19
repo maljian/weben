@@ -52,8 +52,8 @@
                 echo '<td>' . $row['phonenumber'] . '</td>';
                 echo '<td>' . $row['date'] . '</td>';
                 echo '<td width=250>';
-                echo '<a class="btn btn-default btn-success col-md-12" href="">akzeptieren</a>';
-                echo '<a class="btn btn-default btn-danger col-md-12" href="">löschen</a>';
+                echo '<a class="btn btn-default btn-success col-md-12" href="admin/accept_enrolement.php?emailaddress='.$row['email'].'">akzeptieren</a>';
+                echo '<a class="btn btn-default btn-danger col-md-12" href="admin/delete_enrolement.php?emailaddress='.$row['email'].'">löschen</a>';
                 echo '</td>';
                 echo '</tr>';
             }

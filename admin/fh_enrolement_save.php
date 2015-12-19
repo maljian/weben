@@ -2,7 +2,7 @@
 //Abspeicherung in Datenbank angelehnt an login_erf.php aus der Vorlesung mit Herr Hüsler
 session_start();
 
-if (isset($_POST['institution']) AND isset($_POST['partner']) AND isset($_POST['street']) AND isset($_POST['postalcode']) AND isset($_POST['city']) AND isset($_POST['website']) AND isset($_POST['email']) AND isset($_POST['phonenumber']))
+if (isset($_POST))
 {
         $institution = $_POST['institution'];
         $partner = $_POST['partner'];
@@ -12,6 +12,8 @@ if (isset($_POST['institution']) AND isset($_POST['partner']) AND isset($_POST['
         $website = $_POST['website'];
  	$email=$_POST['email'];
         $phonenumber = $_POST['phonenumber'];
+        $region = $_POST['region'];
+        
 
     // Datenbankverbindung
         include "../db.inc.php";
@@ -28,18 +30,20 @@ if (isset($_POST['institution']) AND isset($_POST['partner']) AND isset($_POST['
         $count= mysqli_num_rows($ergebnis);
         
         if($count == 0){
-            date_default_timezone_set("Europe/Berlin");
+            $_SESSION['enrolementMessage']= 'already exists';
+            header("Location: ../fh_enrolement.php");
+        }
+        date_default_timezone_set("Europe/Berlin");
             $timestamp = time();
             $date = date("Y.m.d",$timestamp);
+            $status = 'open';
             
         //Daten in die Überprüfungsdatenbank fh_enrolement speichern, da FH noch nicht vorhanden.
-            $insert= "INSERT into `fh_enrolement`(`institution`,`partner`,`street`,`postalcode`,`city`,`website`,`email`,`phonenumber`,`date`) VALUES('$institution','$partner','$street','$postalcode','$city','$website','$email','$phonenumber','$date')";
+            $insert= "INSERT into `fh_enrolement`(`institution`,`partner`,`street`,`postalcode`,`city`,`website`,`email`,`phonenumber`,`region`,`date`,`status`) VALUES('$institution','$partner','$street','$postalcode','$city','$website','$email','$phonenumber','$region','$date','$status')";
             mysqli_query($link, $insert) or die("DB entry failed!");
             $_SESSION['enrolementMessage'] = 'successful';
-        }
-        
-    // Datenbankverbindung beenden
-        mysqli_close($link);      
+        // Datenbankverbindung beenden
+        mysqli_close($link);  
         header("Location: ../fh_enrolement.php");
 }
 else{
