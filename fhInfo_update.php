@@ -23,7 +23,7 @@
         $col = $_POST['college'];
         $fache = null;
         foreach($col as $fach) {
-            $fache = $fache." & ".$fach;
+            $fache = $fache." ";
             echo $fach;
         }
         $college = $fache;
@@ -50,7 +50,7 @@
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $sql = "UPDATE fh set site = ?, website = ?, partner = ?, phonenumber = ? college = ? WHERE email = ?";
             $q = $pdo->prepare($sql);
-            $q->execute(array($location,$link,$person,$tel,$college,$email));
+            $q->execute(array($location, $link, $person, $tel, $college, $email));
             Database::disconnect();
         }
     } else {

@@ -85,7 +85,7 @@
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $sql = "UPDATE studiengang  set name = ?, location =?, start =?, end =?, cost =?, text =?, result =?, contact_email =?, type =?, degreeprogram =?, category =? WHERE id = ?";
                 $q = $pdo->prepare($sql);
-                $q->execute(array($name,$location,$cost, $text, $contactemail, $type, $studigang, $fachbereich, $id));
+                $q->execute(array($name, $location, $cost, $text, $contactemail, $type, $studigang, $fachbereich, $id));
                 Database::disconnect();
         }
     } else {
