@@ -18,7 +18,7 @@
                         <th>Startdatum</th>
                         <th>Enddatum</th>
                         <th>Type</th>
-                        <th>Studiengang</th>
+                        <th>Studium und Weiterbildung</th>
                         <th>Fachbereich</th>
                     </tr>
                 </thead>

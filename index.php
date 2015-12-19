@@ -71,7 +71,7 @@
                         <option>P&auml;dagogik</option>
                         <option>Soziale Arbeit</option>
                     </select>
-                    <label for="studiengang">Studiengang:</label>
+                    <label for="studiengang">Studium und Weiterbildung:</label>
                     <select class="form-control text-center" id="studiengang">
                         <option> --------- Auswahl --------- </option>
                         <option>Bachelor</option>

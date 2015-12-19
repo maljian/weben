@@ -16,7 +16,7 @@
                         <option>Raum Z&uuml;rich</option>
                         <option>Raum Bern</option>
                     </select>
-                    <label for="studiengang">Studiengang:</label>
+                    <label for="studiengang">Studium und Weiterbildung:</label>
                     <select class="form-control text-center" id="studiengang">
                         <option> --------- Auswahl --------- </option>
                         <option>Bachelor</option>
