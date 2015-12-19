@@ -10,7 +10,7 @@
     }
     
     $pdo = Database::connect();
-    $sql = 'SELECT * FROM fh where email = ';
+    $sql = 'SELECT * FROM fh where email = ?';
     $q = $pdo->prepare($sql);
     $q->execute(array($email));
     // PDO Fetch-Modi
@@ -26,28 +26,38 @@
     <div class = "col-md-7" id="mainBody">
         <h1>Mein FH Profil</h1>
         <p>
-            <a href="fhInfo_update.php?id=$email" class="btn btn-success" role="button">Infos bearbeiten</a>
+            <a href="fhInfo_update.php?email=" class="btn btn-success" role="button">Infos bearbeiten</a>
         </p>
-        <div class="table-responsive">
+        <div class="col-sm-5 table-responsive">
             <table>
                 <tbody>
                     <tr>
-                        <th>Name:</th>
+                        <th valign=top>Name:</th>
                         <td><?php echo $data['institution']; ?></td>
                     </tr>
                     <tr>
-                        <th>Standort(e):</th>
+                        <th valign=top>Standort(e):</th>
                         <td><?php echo $data['site']; ?></td>
                     </tr>
                     <tr>
-                        <th>Link:</th>
+                        <th valign=top>Link:</th>
                         <td><?php echo $data['website']; ?></td>
                     </tr>
                     <tr>
-                        <th>Kontaktdaten:</th>
-                        <td><?php echo $data['partner']; ?>
-                        <br/><?php echo $data['tel']; ?></td>
-                        <br/><?php echo $data['email']; ?></td>
+                        <th valign=top>Kontaktdaten:</th>
+                        <td><?php echo $data['partner']; ?> </td>
+                    </tr>
+                    <tr>
+                        <th valign=top></th>
+                        <td><?php echo $data['phonenumber']; ?> </td>
+                    </tr>
+                    <tr>
+                        <th valign=top></th>
+                        <td><?php echo $data['email']; ?></td>
+                    </tr>
+                    <tr>
+                        <th valign=top>Fachbereiche:</th>
+                        <td><?php echo $data['college']; ?></td>
                     </tr>
                 </tbody>
             </table>
