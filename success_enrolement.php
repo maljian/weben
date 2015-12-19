@@ -20,6 +20,16 @@ if (isset($_SESSION['enrolementMessage']) AND $_SESSION['enrolementMessage']=="f
                 </div>
             </div>";
         unset($_SESSION['enrolementMessage']);
-        }            
+        }  
+if (isset($_SESSION['enrolementMessage']) AND $_SESSION['enrolementMessage']=="already exists")
+        {
+        echo "<div class=\"panel-group\">
+                <div id=\"enrolementFailed\" class=\"alert alert-danger\">
+                    <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>
+                    <strong>Emailadresse ist bereit vorhanden. Bitte kontaktieren Sie uns.</strong>
+                </div>
+            </div>";
+        unset($_SESSION['enrolementMessage']);
+        }
 ?>
 

@@ -56,6 +56,18 @@
             </div>
         </div>
         <div class="form-group">
+            <label class="control-label col-sm-2" for="region">Region:</label>
+            <div class="col-sm-6 selectContainer"> 
+                <select class="form-control text-center" id="region" name="region">
+                        <option value=""></option>
+                        <option value="Nordwestschweiz">Nordwestschweiz</option>
+                        <option value="Zentralschweiz">Zentralschweiz</option>
+                        <option value="Raum Zürich">Raum Z&uuml;rich</option>
+                        <option value="Raum Bern">Raum Bern</option>
+                </select>
+            </div>   
+        </div>
+        <div class="form-group">
             <label class="col-sm-2"></label>
             <div class="col-sm-6">
                 <input type="checkbox" name="agree" value="agree"> Hiermit bestätige ich, dass ich die <a href="agb.html" target="_blank" onclick="window.open('agb.html', 'newwindow', 'width=600, height=500'); return false;">AGB</a> gelesen habe und diese akzeptiere.
@@ -112,62 +124,62 @@
                         institution: {
                             validators: {
                                 notEmpty: {
-                                    message: 'Der Name der FH muss zwingend angegeben werden!'
+                                    message: 'Der Name der FH muss zwingend angegeben werden.'
                                 }
                             }
                         },
                         partner: {
                             validators: {
                                 notEmpty: {
-                                    message: 'Ein Ansprechpartner muss zwingend angegeben werden!'
+                                    message: 'Ein Ansprechpartner muss zwingend angegeben werden.'
                                 }
                             }
                         },
                         street: {
                             validators: {
                                 notEmpty: {
-                                    message: 'Eine Strasse muss zwingend angegeben werden!'
+                                    message: 'Eine Strasse muss zwingend angegeben werden.'
                                 }
                             }
                         },
                         postalcode: {
                             validators: {
                                 notEmpty: {
-                                    message: 'Eine Postleitzahl muss zwingend angegeben werden!'
+                                    message: 'Eine Postleitzahl muss zwingend angegeben werden.'
                                 }
                             }
                         },
                         city: {
                             validators: {
                                 notEmpty: {
-                                    message: 'Ein Ort muss zwingend angegeben werden!'
+                                    message: 'Ein Ort muss zwingend angegeben werden.'
                                 }  
                             }
                         },
                         website: {
                             validators: {
                                 notEmpty: {
-                                    message: 'Eine Webseite muss zwingend angegeben werden!'
+                                    message: 'Eine Webseite muss zwingend angegeben werden.'
                                 },
                                 uri: {
-                                    message: 'Sie haben keine gültige URL eingegeben'
+                                    message: 'Sie haben keine gültige URL eingegeben. Bitte stellen Sie zwingend http:// oder https:// vor das www!'
                                 },
                             }
                         },
                         email: {
                             validators: {
                                 notEmpty: {
-                                    message: 'Eine Emailadresse muss zwingend angegeben werden!'
+                                    message: 'Eine Emailadresse muss zwingend angegeben werden.'
                                 },
                                 emailAddress: {
-                                    message: 'Sie haben keine gültige Emailadresse eingegeben'
+                                    message: 'Sie haben keine gültige Emailadresse eingegeben.'
                                 }
                             }
                         },
                         phonenumber: {
                             validators: {
                                 notEmpty: {
-                                    message: 'Eine Telefonnummer muss zwingend angegeben werden!'
+                                    message: 'Eine Telefonnummer muss zwingend angegeben werden.'
                                 },
                                 regexp: {
                                     message: 'Die Telefonnummer darf nur Ziffern, Leerschläge, -, (, ), + und . enthalten.',
@@ -175,10 +187,22 @@
                                 }
                             }
                         },
+                        region: {
+                            validators: {
+                                callback: {
+                                    message: 'Bitte wählen Sie die Region in welcher sich Ihre Institution befindet.',
+                                    callback: function(value, validator, $field) {
+                                        // Get the selected options
+                                        var options = validator.getFieldElements('region').val();
+                                        return (options != null && options.length >= 2);
+                                    }
+                                }
+                            }
+                        },
                         agree: {
                             validators: {
                                 notEmpty: {
-                                    message: 'Bitte bestätigen Sie die Allgemeinen Geschaftsbedingungen!'
+                                    message: 'Bitte bestätigen Sie die Allgemeinen Geschaftsbedingungen.'
                                 }
                             }
                         }
