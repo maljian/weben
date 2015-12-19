@@ -40,21 +40,21 @@
             $contactError = 'Bitte Kontaktdaten der Fachhochschule eingeben.';
             $valid = false;
         }
-        if (empty($college)){
+        /*if (empty($college)){
             $collegeError = 'Bitte mindestens einen Fachbereich auswählen.';
             $valid = false;
-        }
+        }*/
 
         // update data
         if ($valid) {    
-                echo "bin drin!";
-                $pdo = Database::connect();
-                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $sql = "UPDATE fh set site = ?, website = ?, partner = ?, phonenumber = ? WHERE email = ?";
-                $q = $pdo->prepare($sql);
-                $q->execute(array($location,$link, $person, $tel, $email));
-                echo 'query wurde ausgeführt!';
-                Database::disconnect();
+            echo "bin drin!";
+            $pdo = Database::connect();
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $sql = "UPDATE fh set site = ?, website = ?, partner = ?, phonenumber = ? WHERE email = ?";
+            $q = $pdo->prepare($sql);
+            $q->execute(array($location,$link, $person, $tel, $email));
+            echo 'query wurde ausgeführt!';
+            Database::disconnect();
         }
     } else {
         echo "bin draussen!";
