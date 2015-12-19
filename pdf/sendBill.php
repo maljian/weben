@@ -25,6 +25,8 @@ $trenner = ":\t"; // Doppelpunkt und Tabulator
  * Ende Konfigurator
  */
 require_once "../swiftmailer/lib/swift_required.php"; // Swift initialisieren
+
+include('../credentials.php');
 // Create the attachment with your data
 $attachment = Swift_Attachment::fromPath("Rechnung_".$_SESSION['refn'].".pdf", "application/pdf");
 if ($_SERVER['REQUEST_METHOD'] === "GET") {
@@ -77,8 +79,8 @@ $Transport0 = Swift_MailTransport::newInstance();        /* Beispiel geht über 
   aber keine Information von logger */
 
 $Transport = Swift_SmtpTransport::newInstance('smtp.gmail.com', 587, 'tls') /* 'tls', Ports je nach Server */
-->setUsername("fhnw.weben@gmail.com")
-->setPassword("");
+->setUsername($USER)
+->setPassword($PWD);
 
 $Transport2 = Swift_SmtpTransport::newInstance('mail.gmail.com', 995, 'tls') /* 'tls' */
 ->setUsername("...")

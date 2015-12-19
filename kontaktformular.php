@@ -30,8 +30,11 @@ $trenner = ":\t"; // Doppelpunkt und Tabulator
  */
 
 require_once "swiftmailer/lib/swift_required.php"; // Swift initialisieren
+include ('credentials.php');
 
 if ($_SERVER['REQUEST_METHOD']==="POST"){
+    
+    
     
     $message = Swift_Message::newInstance(); // Ein Objekt für die Mailnachricht
     
@@ -78,8 +81,8 @@ $question");
                                                                  aber keine Information von logger     */
  
      $Transport = Swift_SmtpTransport::newInstance('smtp.fhnw.ch',465,'tls' )     /* 'tls', Ports je nach Server */
-      ->setUsername("dine@bronxx.org")
-      ->setPassword("");
+      ->setUsername ($USER)
+      ->setPassword ($PWD);
      
      $Transport2 = Swift_SmtpTransport::newInstance('mail.gmail.com',995,'tls' )  /* 'tls' */
       ->setUsername("...")
