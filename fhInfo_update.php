@@ -9,6 +9,9 @@
     if ( !empty($_GET['email'])) {
             $email = $_REQUEST['email'];
     }
+    if ( null==$email ) {
+		header("Location: index.php");
+	}
 
 // Codeteile von Rainer Telesko aus dem Web-Engineering Modul.
     if (!empty($_POST)) {
@@ -52,9 +55,10 @@
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $sql = "UPDATE fh set site = ?, website = ?, partner = ?, phonenumber = ? WHERE email = ?";
             $q = $pdo->prepare($sql);
-            $q->execute(array($location,$link, $person, $tel, $email));
+            $q->execute(array($location,$link,$person,$tel,$email));
             echo 'query wurde ausgeführt!';
             Database::disconnect();
+            header("Location: index.php");
         }
     } else {
         echo "bin draussen!";
