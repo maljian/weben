@@ -78,7 +78,7 @@ $Transport0 = Swift_MailTransport::newInstance();        /* Beispiel geht über 
 
 $Transport = Swift_SmtpTransport::newInstance('smtp.gmail.com', 587, 'tls') /* 'tls', Ports je nach Server */
 ->setUsername("fhnw.weben@gmail.com")
-->setPassword("066a85305f6f0123561cec141da5af27");
+->setPassword("");
 
 $Transport2 = Swift_SmtpTransport::newInstance('mail.gmail.com', 995, 'tls') /* 'tls' */
 ->setUsername("...")
