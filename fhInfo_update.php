@@ -50,9 +50,9 @@
                 echo "bin drin!";
                 $pdo = Database::connect();
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $sql = "UPDATE fh set site = ?, website = ?, partner = ?, phonenumber = ?, college = ? WHERE email = ?";
+                $sql = "UPDATE fh set site = ?, website = ?, partner = ?, phonenumber = ? WHERE email = ?";
                 $q = $pdo->prepare($sql);
-                $q->execute(array($location,$link, $person, $tel, $college, $email));
+                $q->execute(array($location,$link, $person, $tel, $email));
                 echo 'query wurde ausgeführt!';
                 Database::disconnect();
         }
