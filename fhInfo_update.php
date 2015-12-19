@@ -7,6 +7,11 @@
     
     require 'database.php';
 
+    $email = null;
+    if ( !empty($_GET['email'])) {
+            $email = $_REQUEST['email'];
+    }
+
 // Codeteile von Rainer Telesko aus dem Web-Engineering Modul.
     if (!empty($_POST)) {
         // keep track validation errors
@@ -48,7 +53,7 @@
         if ($valid) {    
             $pdo = Database::connect();
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $sql = "UPDATE fh set site = ?, website = ?, partner = ?, phonenumber = ? college = ? WHERE email = ?";
+            $sql = "UPDATE fh set `site` = ?, `website` = ?, `partner` = ?, `phonenumber` = ?, `college` = ? WHERE `email` = ?";
             $q = $pdo->prepare($sql);
             $q->execute(array($location, $link, $person, $tel, $college, $email));
             Database::disconnect();
