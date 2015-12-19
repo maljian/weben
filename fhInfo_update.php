@@ -21,10 +21,9 @@
         $tel = $_POST['tel'];
         $person = $_POST['person'];
         $col = $_POST['college'];
+        $fache = null;
         foreach($col as $fach) {
-            if (strpos($college, $fach)){
-                $fach = $fach." & ".$fach;
-            }
+            $fache = $fache." & ".$fach;
             echo $fach;
         }
         $college = $fach;
