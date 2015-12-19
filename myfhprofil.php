@@ -26,7 +26,7 @@
     <div class = "col-md-7" id="mainBody">
         <h1>Mein FH Profil</h1>
         <p>
-            <a href="fhInfo_update.php?id=$email" class="btn btn-success" role="button">Infos bearbeiten</a>
+            <a href="fhInfo_update.php?email=$email" class="btn btn-success" role="button">Infos bearbeiten</a>
         </p>
         <div class="table-responsive">
             <table>
