@@ -49,7 +49,7 @@
                     </tr>
                     <tr>
                         <th valign=top></th>
-                        <td><?php echo $data['tel']; ?> </td>
+                        <td><?php echo $data['phonenumber']; ?> </td>
                     </tr>
                     <tr>
                         <th valign=top></th>
