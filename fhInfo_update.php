@@ -41,6 +41,7 @@
             $collegeError = 'Bitte mindestens einen Fachbereich auswählen.';
             $valid = false;
         }*/
+        echo $valid;
 
         // update data
         if ($valid) {    
@@ -55,7 +56,6 @@
             header("Location: index.php");
         }
     } else {
-        echo "bin draussen!";
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $sql = "SELECT * FROM fh where email = ?";
@@ -126,7 +126,6 @@
                 <div class="col-sm-1"></div>
                 <div class="col-sm-6">
                     <label for="link">Fachbereiche:</label>
-                    <form role="college" >
                         <div class="checkbox">
                             <label class="checkbox-inline" for="college">
                               <input type="checkbox" name="college[]" value="Wirtschaft" <?php if (stripos($college,'Wirtschaft') !== false) echo "checked='checked'"; ?>>Wirtschaft
@@ -160,7 +159,6 @@
                                 <input type="checkbox" name="college[]" value="Musik" <?php if (stripos($college,'Musik') !== false) echo "checked='checked'"; ?>>Musik
                             </label>
                         </div>
-                    </form>
                     <?php 
                         if (!empty($collegeError)): ?>
                         <span class="help-inline"><?php echo $collegeError; ?></span>
