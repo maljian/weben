@@ -1,8 +1,50 @@
+<script type="text/javascript">
+        function fade(step) {
+            var imgs = document.getElementById("imageAd").getElementsByTagName("img");
+
+            step = step || 0;
+
+            imgs[counter].style.opacity = step/100;
+            imgs[counter].style.filter = "alpha(opacity=" + step + ")"; // 
+
+            step = step + 2;
+
+            if (step <= 100) {
+                window.setTimeout(function () { fade(step); }, 1);
+            } else {
+                window.setTimeout(next, 2000);
+            }
+        }
+
+        function next() {
+            var imgs = document.getElementById("imageAd").getElementsByTagName("img");
+
+            if (typeof(counter) != "number") {
+                counter = 0;
+            }
+
+            counter++;
+
+            if (counter < imgs.length) {
+                fade();
+            }
+        };
+        window.onload = next;
+    </script>
+    <style type="text/css">
+        .next { position: absolute; top: 0; left: 0; opacity: 0; filter:alpha(opacity=0); }
+        #imageAd { position: relative; }
+    </style>
+
 <!-- Werbeflaeche panel -->
 <div class ="panel-group">
     <div class ="panel panel-default">
         <div class="panel-heading">Werbung</div>
-        <p> <img src="pictures/werbung_fhnw.jpg" class="img-responsive img-rounded center-block" alt="FHNW"> </p>
+        <p id="imageAd">
+            <a href="http://www.fhnw.ch"><img src="pictures/werbung_fhnw.jpg" class="img-responsive img-rounded center-block" alt=""></a>
+            <a href="http://www.fhnw.ch"><img src="pictures/werbung_fhnw2.jpg" class="img-responsive img-rounded center-block next" alt=""></a>
+            <a href="http://www.fhnw.ch"><img src="pictures/werbung_fhnw3.jpg" class="img-responsive img-rounded center-block next" alt=""></a>
+        </p>
         <div>
             <a href="buyAd.php">Werbefläche mieten</a>            
         </div>

@@ -188,6 +188,7 @@ include("login/header.php");
             <label class="control-label col-sm-2" for="gender">Anrede:</label>
             <div class="col-sm-2"> 
                 <select class="form-control text-center" id="gender" name="gender">
+                    <option selected disabled>Anrede</option>
                     <option value="Frau">Frau</option>
                     <option value="Herr">Herr</option>
                 </select>
@@ -245,6 +246,7 @@ include("login/header.php");
             <label class="control-label col-sm-2" for="duration">Dauer:</label>
             <div class="col-sm-2"> 
                 <select class="form-control text-center" id="duration" name="duration">
+                    <option selected disabled>Bitte wählen</option>
                     <option value="1 Woche">1 Woche</option>
                     <option value="2 Wochen">2 Wochen</option>
                     <option value="3 Wochen">3 Wochen</option>
