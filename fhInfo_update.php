@@ -25,9 +25,7 @@
         $person = $_POST['person'];
         $college;
         $_POST['college'];
-        foreach($_POST['college'] as $fach) {
-            $college = implode(';', $fach);
-        }
+        
 
         // validate input
         $valid = true;
@@ -45,7 +43,10 @@
         }
 
         // update data
-        if ($valid) {      
+        if ($valid) {    
+                foreach($_POST['college'] as $fach) {
+                    $college = implode(';', $fach);
+                }
                 $pdo = Database::connect();
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $sql = "UPDATE fh set site = ?, website = ?, partner = ?, phonenumber = ?, college = ? WHERE email = ?";
@@ -133,26 +134,26 @@
                                 <input type="checkbox" name="college[]" value="Technik"  <?php if (stripos($college,'Technik') !== false) echo "checked='checked'"; ?>>Technik
                             </label>
                             <label class="checkbox-inline" for="college">
-                              <input type="checkbox" name="college[]" value="Life Science" <?php if (stripos($college,'Life Science') !== false){ echo "checked='checked'";} ?> >Life Science
+                              <input type="checkbox" name="college[]" value="Life Science" <?php if (stripos($college,'Life Science') !== false) echo "checked='checked'"; ?> >Life Science
                             </label>
                             <label class="checkbox-inline" for="college">
-                              <input type="checkbox" name="college[]" value="Architektur, Bau und Geomatik" <?php if (stripos($college,'Architektur, Bau und Geomatik') !== false){ echo "checked='checked'";} ?>>Architektur, Bau und Geomatik
+                              <input type="checkbox" name="college[]" value="Architektur, Bau und Geomatik" <?php if (stripos($college,'Architektur, Bau und Geomatik') !== false) echo "checked='checked'"; ?>>Architektur, Bau und Geomatik
                             </label>
-                        </div
+                        </div>
                         <div class="checkbox">
                             <label class="checkbox-inline"for="college">
-                              <input type="checkbox" name="college[]" value="Pädagogik" <?php if (stripos($college,'Pädagogik') !== false){ echo "checked='checked'";} ?>>Pädagogik
+                              <input type="checkbox" name="college[]" value="Pädagogik" <?php if (stripos($college,'Pädagogik') !== false) echo "checked='checked'"; ?>>Pädagogik
                             </label>
                             <label class="checkbox-inline" for="college">
-                                <input type="checkbox" name="college[]" value="Sozial Arbeit" <?php if (stripos($college,'Soziale Arbeit') !== false){ echo "checked='checked'";} ?>>Soziale Arbeit
+                                <input type="checkbox" name="college[]" value="Sozial Arbeit" <?php if (stripos($college,'Soziale Arbeit') !== false) echo "checked='checked'"; ?>>Soziale Arbeit
                             </label>
                             <label class="checkbox-inline" for="college">
-                              <input type="checkbox" name="college[]" value="Angewandte Psychologie" <?php if (stripos($college,'Angewandte Psychologie') !== false){ echo "checked='checked'";} ?> >Angewandte Psychologie
+                              <input type="checkbox" name="college[]" value="Angewandte Psychologie" <?php if (stripos($college,'Angewandte Psychologie') !== false) echo "checked='checked'"; ?> >Angewandte Psychologie
                             </label>
                         </div>
                         <div class="checkbox">
                             <label class="checkbox-inline" for="college">
-                              <input type="checkbox" name="college[]" value="Gestaltung und Kunst" <?php if (stripos($college,'Gestaltung und Kunst') !== false){ echo "checked='checked'";} ?>>Gestaltung und Kunst
+                              <input type="checkbox" name="college[]" value="Gestaltung und Kunst" <?php if (stripos($college,'Gestaltung und Kunst') !== false) echo "checked='checked'"; ?>>Gestaltung und Kunst
                             </label>
                             <label class="checkbox-inline" for="college">
                                 <input type="checkbox" name="college[]" value="Musik" <?php if (stripos($college,'Musik') !== false) echo "checked='checked'"; ?>>Musik
