@@ -44,8 +44,9 @@
 
         // update data
         if ($valid) {    
-                foreach($_POST['college'] as $fach) {
-                    $college = implode(';', $fach);
+                foreach($_POST['college'] as $college) {
+                    $college = implode(';', $college);
+                    echo $college;
                 }
                 $pdo = Database::connect();
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
