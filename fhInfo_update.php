@@ -3,9 +3,16 @@
     include("login/header.php");
     include("login/login_pruefen_fh.inc.php");
    
-    $email = $_SESSION['email'];
+    //$email = $_SESSION['email'];
     
     require 'database.php';
+    $email = null;
+    if ( !empty($_GET['email'])) {
+            $email = $_REQUEST['email'];
+    }
+    if ( null==$email ) {
+		header("Location: myfhprofil.php");
+	}
 
 // Codeteile von Rainer Telesko aus dem Web-Engineering Modul.
     if (!empty($_POST)) {
