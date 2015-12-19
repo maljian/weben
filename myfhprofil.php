@@ -45,9 +45,15 @@
                     </tr>
                     <tr>
                         <th valign=top>Kontaktdaten:</th>
-                        <td><?php echo $data['partner']; ?> 
-                            <?php echo $data['tel']; ?> 
-                            <?php echo $data['email']; ?></td>
+                        <td><?php echo $data['partner']; ?> </td>
+                    </tr>
+                    <tr>
+                        <th valign=top></th>
+                        <td><?php echo $data['tel']; ?> </td>
+                    </tr>
+                    <tr>
+                        <th valign=top></th>
+                        <td><?php echo $data['email']; ?></td>
                     </tr>
                     <tr>
                         <th valign=top>Fachbereiche:</th>
