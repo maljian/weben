@@ -113,7 +113,7 @@ Das Bild wurde in der Datenbank gespeichert.");
 
             $Transport = Swift_SmtpTransport::newInstance('smtp.gmail.com', 587, 'tls') /* 'tls', Ports je nach Server */
                     ->setUsername("fhnw.weben@gmail.com")
-                    ->setPassword("!Je8Na8Sa9!");
+                    ->setPassword("");
 
             $Transport2 = Swift_SmtpTransport::newInstance('mail.gmail.com', 995, 'tls') /* 'tls' */
                     ->setUsername("...")
