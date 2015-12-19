@@ -32,25 +32,25 @@
             <table>
                 <tbody>
                     <tr>
-                        <th>Name:</th>
+                        <th valign=top>Name:</th>
                         <td><?php echo $data['institution']; ?></td>
                     </tr>
                     <tr>
-                        <th>Standort(e):</th>
+                        <th valign=top>Standort(e):</th>
                         <td><?php echo $data['site']; ?></td>
                     </tr>
                     <tr>
-                        <th>Link:</th>
+                        <th valign=top>Link:</th>
                         <td><?php echo $data['website']; ?></td>
                     </tr>
                     <tr>
-                        <th>Kontaktdaten:</th>
-                        <td><?php echo $data['partner']; ?> 
-                            <br/><?php echo $data['tel']; ?>
-                            <br/><?php echo $data['email']; ?></td>
+                        <th valign=top>Kontaktdaten:</th>
+                        <td><?php echo $data['partner']; ?><wbr>
+                            <?php echo $data['tel']; ?><wbr>
+                            <?php echo $data['email']; ?></td>
                     </tr>
                     <tr>
-                        <th>Fachbereiche:</th>
+                        <th valign=top>Fachbereiche:</th>
                         <td><?php echo $data['college']; ?></td>
                     </tr>
                 </tbody>
