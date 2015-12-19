@@ -59,6 +59,8 @@
                             <option>Business Information Systems</option>
                         </select>*/
                     ?>
+                    <br/>
+                    <button type="submit" class="btn btn-default">Suchen</button> 
                 </div>
                 <div class="col-md-4">
                     <label for="fachbereich">Fachbereich:</label>
@@ -92,12 +94,6 @@
                         <option>Fernstudium Teilzeit</option>
                     </select>
                 </div>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-1"></label>
-                <div class="col-sm-4">
-                    <button type="submit" class="btn btn-default">Suchen</button>
-                </div>      
             </div>
         </form>
     </div>

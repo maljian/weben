@@ -47,11 +47,11 @@
                 </div>
             </div>
             <div class="form-group">
-            <label class="col-sm-1"></label>
-            <div class="col-sm-4">
-                <button type="submit" class="btn btn-default">Filtern</button>
-            </div>      
-        </div>
+                <div class="col-sm-2">
+                    <br/>
+                    <button type="submit" class="btn btn-default">Filtern</button>
+                </div>
+            </div>
         </form>
     </div>
     <?php
