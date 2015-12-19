@@ -13,8 +13,11 @@
                         <option> --------- Auswahl --------- </option>
                         <option>Nordwestschweiz</option>
                         <option>Zentralschweiz</option>
+                        <option>Ostschweiz</option>
+                        <option>Westschweiz</option>
                         <option>Raum Z&uuml;rich</option>
                         <option>Raum Bern</option>
+                        <option>Gesamtschweiz</option>
                     </select>
                 </div>
                 <div class="col-md-4">
@@ -43,6 +46,12 @@
                     </select>
                 </div>
             </div>
+            <div class="form-group">
+            <label class="col-sm-1"></label>
+            <div class="col-sm-4">
+                <button type="submit" class="btn btn-default">Filtern</button>
+            </div>      
+        </div>
         </form>
     </div>
     <?php
