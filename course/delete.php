@@ -1,7 +1,7 @@
 <?php
     session_start();
+    include '../login/header1.php';
     include("../login/login_pruefen_fh1.inc.php");
-    include("../login/header1.html");
     
     require '../database.php';
     $id = 0;
@@ -44,6 +44,3 @@
         include ("../Layout/footer.html");
     ?>
 </html>
-<?php
-    header("Location: ../myCourse.php");
-?>

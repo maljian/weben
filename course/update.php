@@ -1,7 +1,7 @@
 <?php
     session_start();
-    include("../login/login_pruefen_fh1.inc.php");
     include("../login/header1.php");
+    include("../login/login_pruefen_fh1.inc.php");
     
     require '../database.php';
 
@@ -246,10 +246,9 @@
         </form>
     </div>
 <?php
-        header("Location: ../myCourse.php");
-        include ("../login/login_alert.php");
-        include ("../Layout/login.html");
-        include ("../Layout/ads.html");
-        include ("../Layout/footer.html");
-    ?>
+    include ("../login/login_alert.php");
+    include ("../Layout/login.html");
+    include ("../Layout/ads.html");
+    include ("../Layout/footer.html");
+?>
 </html>
