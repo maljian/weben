@@ -45,8 +45,7 @@
         }
 
         // update data
-        if ($valid) {
-                             
+        if ($valid) {      
                 $pdo = Database::connect();
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $sql = "UPDATE fh set site = ?, website = ?, partner = ?, phonenumber = ?, college = ? WHERE email = ?";
@@ -128,10 +127,10 @@
                     <form role="college" >
                         <div class="checkbox">
                             <label class="checkbox-inline" for="college">
-                              <input type="checkbox" name="college[]" id="box1" value="Wirtschaft" <?php if (stripos($college,'Wirtschaft') != false){ echo "checked='checked'";} ?>>Wirtschaft
+                              <input type="checkbox" name="college[]" id="box1" value="Wirtschaft" <?php if (stripos($college,'Wirtschaft') != false) echo "checked='checked'"; ?>>Wirtschaft
                             </label>
                             <label class="checkbox-inline" for="college">
-                                <input type="checkbox" name="college[]" id="box2" value="Technik"  <?php if (stripos($college,'Technik') != false){ echo "checked='checked'";} ?>>Technik
+                                <input type="checkbox" name="college[]" id="box2" value="Technik"  <?php if (stripos($college,'Technik') != false) echo "checked='checked'"; ?>>Technik
                             </label>
                             <label class="checkbox-inline" for="college">
                               <input type="checkbox" name="college[]" id="box3" value="Life Science" <?php if (stripos($college,'Life Science') != false){ echo "checked='checked'";} ?> >Life Science
@@ -156,7 +155,7 @@
                               <input type="checkbox" name="college[]" id="box8" value="Gestaltung und Kunst" <?php if (stripos($college,'Gestaltung und Kunst') != false){ echo "checked='checked'";} ?>>Gestaltung und Kunst
                             </label>
                             <label class="checkbox-inline" for="college">
-                                <input type="checkbox" name="college[]" id="box9" value="Musik" <?php if (stripos($college,'Musik') != false){ echo "checked='checked'";} ?>>Musik
+                                <input type="checkbox" name="college[]" id="box9" value="Musik" <?php if (stripos($college,'Musik') != false) echo "checked='checked'"; ?>>Musik
                             </label>
                         </div>
                     </form>
