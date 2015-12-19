@@ -8,7 +8,7 @@ $question = $_POST['question'];
 
 //Quelle: http://wiki.selfhtml.org/wiki/PHP/Anwendung_und_Praxis/Formmailer-Advanced
 // eigene Mailadresse
-$zieladresse = 'fhnw.weben@gmail.com';
+$zieladresse = 'dine@bronxx.org';
 
 //Absenderadresse
 $absenderadresse = $_POST['email'];
@@ -77,9 +77,9 @@ $question");
      $Transport0 = Swift_MailTransport::newInstance();        /* Beispiel geht über PHP-Mail, geht i.a. 
                                                                  aber keine Information von logger     */
  
-     $Transport = Swift_SmtpTransport::newInstance('smtp.gmail.com',587,'tls' )     /* 'tls', Ports je nach Server */
-      ->setUsername("fhnw.weben@gmail.com")
-      ->setPassword("!Je8Na8Sa9!");
+     $Transport = Swift_SmtpTransport::newInstance('smtp.fhnw.ch',465,'tls' )     /* 'tls', Ports je nach Server */
+      ->setUsername("dine@bronxx.org")
+      ->setPassword("!Je8Na7Sa3!");
      
      $Transport2 = Swift_SmtpTransport::newInstance('mail.gmail.com',995,'tls' )  /* 'tls' */
       ->setUsername("...")
@@ -90,7 +90,7 @@ $question");
      // Echo Logger aktivieren (es gibt noch einen logger der auf File schreibt)
      $logger = new Swift_Plugins_Loggers_EchoLogger();
      $mailer -> registerPlugin ( new Swift_Plugins_LoggerPlugin ($logger));
- 
+      
      $result = $mailer->send($message);
  
     }
@@ -104,7 +104,7 @@ $question");
     header("Location: $urlDankeSeite");
     exit;
 }
-//echo $message->toString();
+echo $message->toString();
 
 header("Content-type: text/html; charset=utf-8");
 }

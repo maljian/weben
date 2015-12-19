@@ -23,8 +23,18 @@ $data = $q->fetch(PDO::FETCH_ASSOC);
 Database::disconnect();
 }
 
-$amount = "150.20";
-$ref = "5000001195";
+if(strcmp($data['duration'],"1 Woche")== 0){
+    $return = floatval(50.00);
+}if(strcmp($data['duration'],"2 Wochen")== 0){
+    $return = floatval(100.00);
+}if(strcmp($data['duration'],"3 Wochen")== 0){
+    $return = floatval(140.00);
+}if(strcmp($data['duration'],"1 Monat")== 0){
+    $return = floatval(180.00);
+}
+      
+$amount = $return;
+$ref = "5000000000"+$data["id"];
 
 //Create a new pdf to create your invoice, already using FPDF
 //(if you don't understand this part you should have a look at the FPDF documentation)
@@ -43,6 +53,12 @@ $ezs->setPayerData($data['firstname'] . " " . $data['lastname'], $data['street']
 $ezs->setPaymentData($amount, $ref);
 $ezs->createEinzahlungsschein(false, true);
 
-$pdf->Output('Einzahlungsschein_'.$ref.'.pdf', 'F');
+$pdf->Output("Rechnung_".$ref.".pdf", 'F');
 
-header("Location: http://www.dine.bronxx.org/addAd.php");
+$_SESSION['refn']=$ref;
+$_SESSION['gender']=$data['gender'];
+$_SESSION['lastname']=$data['lastname'];
+$_SESSION['email']=$data['email'];
+$_SESSION['amount']=$amount;
+
+include("sendBill.php");
