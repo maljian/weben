@@ -3,16 +3,9 @@
     include("login/header.php");
     include("login/login_pruefen_fh.inc.php");
    
-    //$email = $_SESSION['email'];
+    $email = $_SESSION['email'];
     
     require 'database.php';
-    $email = null;
-    if ( !empty($_GET['email'])) {
-            $email = $_REQUEST['email'];
-    }
-    if ( null==$email ) {
-		header("Location: myfhprofil.php");
-	}
 
 // Codeteile von Rainer Telesko aus dem Web-Engineering Modul.
     if (!empty($_POST)) {
@@ -82,7 +75,7 @@
 <!-- Main content -->
     <div class = "col-md-7" id="mainBody">
         <h2>FH Profil bearbeiten</h2>
-        <form class="form-horizontal" role="form" action="fhInfo_update.php?email=<?php echo $email?>" method="post">
+        <form class="form-horizontal" role="form" action="#" method="post">
             <div class="form-group">
                 <div class="col-sm-1"></div>
                 <div class="col-sm-4">
