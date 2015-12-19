@@ -10,7 +10,7 @@
     }
     
     $pdo = Database::connect();
-    $sql = 'SELECT * FROM fh where email = ';
+    $sql = 'SELECT * FROM fh where email = ?';
     $q = $pdo->prepare($sql);
     $q->execute(array($email));
     // PDO Fetch-Modi
@@ -48,6 +48,10 @@
                         <td><?php echo $data['partner']; ?>
                         <br/><?php echo $data['tel']; ?></td>
                         <br/><?php echo $data['email']; ?></td>
+                    </tr>
+                    <tr>
+                        <th>Fachbereiche:</th>
+                        <td><?php echo $data['college']; ?></td>
                     </tr>
                 </tbody>
             </table>
