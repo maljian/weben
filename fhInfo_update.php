@@ -22,7 +22,7 @@
         $person = $_POST['person'];
         $col = $_POST['college'];
         foreach($col as $fach) {
-            $fach = implode(';', $fach);
+            $fach = $fach.";".$fach;
             echo $fach;
         }
         $college = $fach;
