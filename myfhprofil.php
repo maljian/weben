@@ -28,7 +28,7 @@
         <p>
             <a href="fhInfo_update.php?email=$email" class="btn btn-success" role="button">Infos bearbeiten</a>
         </p>
-        <div class="table-responsive">
+        <div class="col-sm-5 table-responsive">
             <table>
                 <tbody>
                     <tr>
@@ -45,8 +45,8 @@
                     </tr>
                     <tr>
                         <th valign=top>Kontaktdaten:</th>
-                        <td><?php echo $data['partner']; ?><wbr>
-                            <?php echo $data['tel']; ?><wbr>
+                        <td><?php echo $data['partner']; ?> 
+                            <?php echo $data['tel']; ?> 
                             <?php echo $data['email']; ?></td>
                     </tr>
                     <tr>
