@@ -183,7 +183,7 @@ include("login/header.php");
     </p>
 
     <!-- Kontaktformular für die Webseite -->
-    <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+    <form class="form-horizontal" id="adForm" role="form" action="" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label class="control-label col-sm-2" for="gender">Anrede:</label>
             <div class="col-sm-2"> 
@@ -207,19 +207,19 @@ include("login/header.php");
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-sm-2" for="lastname">Strasse: *</label>
+            <label class="control-label col-sm-2" for="street">Strasse: *</label>
             <div class="col-sm-4">
                 <input type="text" class="form-control" id="street" name="street" required>
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-sm-2" for="lastname">PLZ: *</label>
+            <label class="control-label col-sm-2" for="plz">PLZ: *</label>
             <div class="col-sm-4">
                 <input type="text" class="form-control" id="plz" name="plz" required>
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-sm-2" for="lastname">Ort: *</label>
+            <label class="control-label col-sm-2" for="city">Ort: *</label>
             <div class="col-sm-4">
                 <input type="text" class="form-control" id="city" name="city" required>
             </div>
@@ -239,11 +239,11 @@ include("login/header.php");
         <div class="form-group">
             <label class="control-label col-sm-2" for="start">Startdatum: *</label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" id="start" name="start" required>
+                <input type="text" class="form-control" id="start" name="start" placeholder="TT-MM-JJJJ" required>
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-sm-2" for="duration">Dauer:</label>
+            <label class="control-label col-sm-2" for="duration">Dauer: *</label>
             <div class="col-sm-2"> 
                 <select class="form-control text-center" id="duration" name="duration">
                     <option selected disabled>Bitte wählen</option>
@@ -278,3 +278,136 @@ include ("Layout/ads.html");
 include ("Layout/footer.html");
 ?>
 </html>
+<!--Codeteile von Rainer Telesko aus dem Web-Engineering Modul.-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>  
+        <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+       <!-- <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>  -->
+        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/css/bootstrapValidator.min.css"/>
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
+        <script id="source" language="javascript" type="text/javascript">
+            $(document).ready(function () {
+                $('#adForm').bootstrapValidator({
+                    // Source: http://formvalidation.io/examples/showing-message-custom-area/
+                    err: {
+                        container: function($field, validator) {
+                        // Look at the markup
+                        //  <div class="col-xs-4">
+                        //      <field>
+                        //  </div>
+                        //  <div class="col-xs-5 messageContainer"></div>
+                        return $field.parent().next('.messageContainer');
+                        }
+                    },
+                    feedbackIcons: {
+                        valid: 'glyphicon glyphicon-ok',
+                        invalid: 'glyphicon glyphicon-remove',
+                        validating: 'glyphicon glyphicon-refresh'
+                    },
+                    fields: {
+                        gender: {
+                            validators: {
+                                callback: {
+                                    message: 'Bitte wählen Sie eine Anrede aus.',
+                                    callback: function(value, validator, $field) {
+                                        // Get the selected options
+                                        var options = validator.getFieldElements('gender').val();
+                                        return (options != null && options.length >= 2);
+                                    }
+                                }
+                            }
+                        },
+                        firstname: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Bitte geben Sie Ihren Vornamen an.'
+                                }
+                            }
+                        },
+                        lastname: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Bitte geben Sie Ihren Nachnamen an.'
+                                }
+                            }
+                        },
+                        street: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Bitte geben Sie Ihre Strasse an.'
+                                }
+                            }
+                        },
+                        plz: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Bitte geben Sie Ihre PLZ an.'
+                                },
+                                regexp: {
+                                    message: 'Die Postleitzahl muss aus 4 oder 5 Ziffern bestehen.',
+                                    regexp: /^[0-9]{4,5}$/
+                                }
+                            }
+                        },
+                        city: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Bitte geben Sie Ihren Ort an.'
+                                }  
+                            }
+                        },
+                        email: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Bitte geben Sie Ihre Emailadresse an.'
+                                },
+                                emailAddress: {
+                                    message: 'Sie haben keine gültige Emailadresse eingegeben.'
+                                }
+                            }
+                        },
+                        phonenumber: {
+                            validators: {
+                                regexp: {
+                                    message: 'Die Telefonnummer darf nur Ziffern, Leerschläge, -, (, ), + und . enthalten.',
+                                    regexp: /^[0-9\s\-()+\.]+$/
+                                }
+                            }
+                        },
+                        start: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Bitte geben Sie ein Startdatum an.'
+                                },
+                                date: {
+                                    format: 'DD-MM-YYYY',
+                                    message: 'Bitte geben Sie ein gültiges Datum ein.'
+                                }
+                            }
+                        },
+                        duration: {
+                            validators: {
+                                callback: {
+                                    message: 'Bitte wählen Sie eine Dauer aus.',
+                                    callback: function(value, validator, $field) {
+                                        // Get the selected options
+                                        var options = validator.getFieldElements('duration').val();
+                                        return (options != null && options.length >= 2);
+                                    }
+                                }
+                            }
+                        },
+                        fileName: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Bitte laden Sie ein Bild für die Werbeanzeige hoch.'
+                                },
+                                file: {
+                                    maxSize: 52 * 1024,
+                                    message: 'Das Bild darf maximal eine Grösse von 52KB haben!'
+                                }
+                            }
+                        }
+                    }
+                });
+            }); 
+</script>

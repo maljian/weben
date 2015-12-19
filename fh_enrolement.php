@@ -59,7 +59,7 @@
             <label class="control-label col-sm-2" for="region">Region:</label>
             <div class="col-sm-6 selectContainer"> 
                 <select class="form-control text-center" id="region" name="region">
-                        <option value=""></option>
+                        <option selected disabled>Bitte wählen</option>
                         <option value="Nordwestschweiz">Nordwestschweiz</option>
                         <option value="Zentralschweiz">Zentralschweiz</option>
                         <option value="Ostschweiz">Ostschweiz</option>
