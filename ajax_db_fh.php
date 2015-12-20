@@ -2,7 +2,7 @@
     header("Content-Type: text/html; charset=utf-8");
    
     include 'db.inc.php';
-    $con = mysqli_connect($passwort,$user);
+    $con = mysqli_connect("localhost", $benutzer, $passwort);
     mysqli_select_db($con, $dbname);
     $query = "SELECT * from fh where institution = " . $_GET["institution"];
     $res = mysqli_query($con, $query);
