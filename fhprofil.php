@@ -4,10 +4,10 @@
 ?>
     <!-- Main content -->
     <!-- Copyright T. Theis: Einstieg in PHP 5.6 und MySQL 5.6, Galileo Computing, 2015 -->
-        <script type="text/javascript"> 
+        <!--<script type="text/javascript"> 
             function anfordern(inst){
                 var req = new XMLHttpRequest();
-                req.open("get", "ajax_db_fh.php?email=" + inst, true);
+                req.open("post", "ajax_db_fh.php?email=" + inst, true);
                 req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                 req.onreadystatechange = auswerten;
                 req.send();
@@ -23,12 +23,33 @@
                             antwort.getElementByTagName("em")[0].firstChild.nodeValue;
                 }
             }
-        </script>
+        </script> -->
+    <script>
+        function showFh(str) {
+          if (str=="") {
+            document.getElementById("txtHint").innerHTML="";
+            return;
+          }
+          if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp=new XMLHttpRequest();
+          } else { // code for IE6, IE5
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+          }
+          xmlhttp.onreadystatechange=function() {
+            if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+              document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
+            }
+          }
+          xmlhttp.open("GET","ajax_db_fh.php?q="+str,true);
+          xmlhttp.send();
+        }
+    </script>
     <div class = "col-md-7" id="mainBody">
         <h1>FHNW</h1>
-        
+        <!--
         <p>
-            <?php
+            ?php
                 include 'db.inc.php';
                 $link = mysqli_connect("localhost", $benutzer, $passwort) or die("Keine Verbindung zur Datenbank!");
                 mysqli_select_db($link, $dbname) or die("Datenbank nicht gefunden!". mysql_error());
@@ -43,7 +64,21 @@
         </p>
         <p><span id="idpartner">&nbsp;</span>
             <span id="idemail">&nbsp;</span></p>
-        
+        -->
+        <form>
+            <select name="region" onchange="showFh(this.value)">
+                <option value=""> --------- Auswahl --------- </option>
+                <option value="Nordwestschweiz">Nordwestschweiz</option>
+                <option value="Zenralschweiz">Zentralschweiz</option>
+                <option value="Ostschweiz">Ostschweiz</option>
+                <option value="Westschweiz">Westschweiz</option>
+                <option value="Raum Z&uuml;rich">Raum Z&uuml;rich</option>
+                <option value="Raum Bern">Raum Bern</option>
+                <option value="Gesamtschweiz">Gesamtschweiz</option>
+            </select>
+        </form>
+        <br>
+        <div id="txtHint"><b>FH info will be listed here.</b></div>
         
         <form role="form">
             <div class="form-group">
