@@ -21,6 +21,7 @@ echo "<table class='table table-striped table-bordered'>
                 </tr>
                 </thread><tbody>";
 while ($row = mysqli_fetch_array($result)) {
+    echo "success!!";
     echo "<tr>";
     echo "<td>" . $row['instituion'] . "</td>";
     echo "<td>" . $row['city'] . "</td>";
