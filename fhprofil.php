@@ -17,7 +17,7 @@
 
             function auswerten(e)
             {
-                if (rq.readyState == 4 && rq.status == 200){
+                if (e.readyState == 4 && e.status == 200){
                     var antwort = e.target.responseXML;
                     document.getElementById("idpartner").firstChild.nodeValue = 
                             antwort.getElementByTagName("pa")[0].firstChild.nodeValue;
@@ -39,7 +39,7 @@
                 while ($dsatz = mysqli_fetch_assoc($res))
                         echo "<a href='javascript:anfordern("
                         .$dsatz["institution"]. ")'> "
-                        .$dsatz["institution"]. ", ".$dsatz["website"]."</a><br/>";
+                        .$dsatz["institution"]. "</a>, ".$dsatz["website"]."<br/>";
                     mysqli_close($con);
             ?>
         </p>
