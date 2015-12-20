@@ -1,13 +1,12 @@
 <?php
 $reg = $_GET['reg'];
-$fach = $_GET['fach'];
 include 'db.inc.php';
 $con = mysqli_connect('localhost', $benutzer, $passwort, $dbname);
 if (!$con) {
     die('Could not connect: ' . mysqli_error($con));
 }
 
-$sql = "SELECT * FROM `fh` WHERE `region` = '" . $reg . "' and `college`= '" . $fach ."'";
+$sql = "SELECT * FROM `fh` WHERE `region` = '" . $reg . "'";
 $result = mysqli_query($con, $sql);
 
 echo "<table class='table table-striped table-bordered'>
