@@ -25,6 +25,7 @@
     <!-- Main content -->
     <div class = "col-md-7" id="mainBody">
         <h1>Mein FH Profil</h1>
+        <?php include("success_reset.php"); ?>
         <p>
             <a href="fhInfo_update.php?email=" class="btn btn-success" role="button">Infos bearbeiten</a>
         </p>
@@ -62,6 +63,7 @@
                 </tbody>
             </table>
         </div>
+        <a href="reset.php">Passwort ändern</a>
     </div>
 <?php
     include ("login/login_alert.php");
