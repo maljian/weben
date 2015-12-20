@@ -3,8 +3,39 @@
     include("login/header.php");
 ?>
     <!-- Main content -->
+    <!-- Copyright T. Theis: Einstieg in PHP 5.6 und MySQL 5.6, Galileo Computing, 2015 -->
+        <script type="text/javascript"> 
+            var rq;
+
+            function anfordern(id){
+                rq = new XMLHttpRequest();
+                rq.open("get", "ajax_db_course.php?id=" + id, true);
+                rq.setRequestHeader("ContentType", "application/x-www-form-urlencoded");
+                rq.onreadystatechange = auswerten;
+                rq.send();
+            }
+
+            function auswerten(e)
+            {
+                if (rq.readyState == 4 && rq.status == 200){
+                    var antwort = e.target.responseXML;
+                    document.getElementById("name").firstChild.nodeValue = 
+                            antwort.getElementByTagName("na")[0].firstChild.nodeValue;
+                    document.getElementById("idfh").firstChild.nodeValue = 
+                            antwort.getElementByTagName("fh")[0].firstChild.nodeValue;
+                }
+            }
+        </script>
     <div class = "col-md-7" id="mainBody">
         <h1>FHNW</h1>
+        
+        <p>
+                
+        </p>
+        <div id="myDiv">Bitte klicken ...</div>
+        <button type="button" onclick="anfordern()">Neuer Text</button>
+        
+        
         <form role="form">
             <div class="form-group">
                 <div class="col-md-4">

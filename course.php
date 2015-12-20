@@ -3,7 +3,7 @@
     include("login/header.php");
 ?>
         <!-- Main content -->
-        <div class = "col-md-7" id="mainBody">
+        <div class = "col-md-7">
             <h1>Kurs</h1>
             <p>Tabelle mit allen Kursen einfügen. Diese soll gefiltert werden können und sich somit automatisch updaten.
                 <br/> zusätzlich soll per klick auf den Kurstitel eine Detailansicht geöffnet werden.</p>
