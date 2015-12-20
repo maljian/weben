@@ -63,7 +63,7 @@
                 </tbody>
             </table>
         </div>
-        <a href="reset.php">Passwort ändern</a>
+        <p><a href="reset.php">Passwort ändern</a></p>
     </div>
 <?php
     include ("login/login_alert.php");
