@@ -1,12 +1,13 @@
 <?php
-$reg = $_GET['reg'];
+$q = $_GET['q'];
 include 'db.inc.php';
 $con = mysqli_connect('localhost', $benutzer, $passwort, $dbname);
 if (!$con) {
     die('Could not connect: ' . mysqli_error($con));
 }
 
-$sql = "SELECT * FROM `fh` WHERE `region` = '" . $reg . "'";
+//mysqli_select_db($con, "ajax_demo");
+$sql = "SELECT * FROM `fh` WHERE `region` = '" . $q . "'";
 $result = mysqli_query($con, $sql);
 
 echo "<table class='table table-striped table-bordered'>
@@ -20,8 +21,9 @@ echo "<table class='table table-striped table-bordered'>
                 </tr>
                 </thread><tbody>";
 while ($row = mysqli_fetch_array($result)) {
+    echo "success!!";
     echo "<tr>";
-    echo "<td>" . $row['institution'] . "</td>";
+    echo "<td>" . $row['instituion'] . "</td>";
     echo "<td>" . $row['city'] . "</td>";
     echo "<td>" . $row['website'] . "</td>";
     echo "<td>" . $row['partner'] . "</td>";
