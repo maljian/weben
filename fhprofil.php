@@ -7,9 +7,9 @@
         <script type="text/javascript"> 
             var rq;
 
-            function anfordern(id){
+            function anfordern(institution){
                 rq = new XMLHttpRequest();
-                rq.open("get", "ajax_db_course.php?id=" + id, true);
+                rq.open("get", "ajax_db_fh.php?institution=" + institution, true);
                 rq.setRequestHeader("ContentType", "application/x-www-form-urlencoded");
                 rq.onreadystatechange = auswerten;
                 rq.send();
@@ -19,10 +19,10 @@
             {
                 if (rq.readyState == 4 && rq.status == 200){
                     var antwort = e.target.responseXML;
-                    document.getElementById("name").firstChild.nodeValue = 
-                            antwort.getElementByTagName("na")[0].firstChild.nodeValue;
-                    document.getElementById("idfh").firstChild.nodeValue = 
-                            antwort.getElementByTagName("fh")[0].firstChild.nodeValue;
+                    document.getElementById("idpartner").firstChild.nodeValue = 
+                            antwort.getElementByTagName("pa")[0].firstChild.nodeValue;
+                    document.getElementById("idemail").firstChild.nodeValue = 
+                            antwort.getElementByTagName("em")[0].firstChild.nodeValue;
                 }
             }
         </script>
@@ -30,10 +30,21 @@
         <h1>FHNW</h1>
         
         <p>
-                
+            <?php
+                include 'db.inc.php';
+                $con = mysqli_connect($passwort,$user);
+                mysqli_select_db($con, $dbname);
+                $query = "SELECT * from fh order by institution";
+                $res = mysqli_query($con, $query);
+                while ($dsatz = mysqli_fetch_assoc($res))
+                        echo "<a href='javascript:anfordern("
+                        .$dsatz["institution"]. ")'>"
+                        .$dsatz["website"]. ", ".$dsatz["city"]."</a><br/>";
+                    mysqli_close($con);
+            ?>
         </p>
-        <div id="myDiv">Bitte klicken ...</div>
-        <button type="button" onclick="anfordern()">Neuer Text</button>
+        <p><span id="idpartner">$nbsp;</span>
+            <span id="idemail">&nbsp;</span></p>
         
         
         <form role="form">
