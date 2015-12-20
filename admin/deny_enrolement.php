@@ -11,7 +11,7 @@
         $zieladresse = $emailaddress;
 
         //Absenderadresse
-        $absenderadresse = 'fhnw.weben@gmail.com';
+        $absenderadresse = $USER;
 
         //Absendername
         $absendername = "FH Portal";
@@ -68,8 +68,8 @@
                                                                          aber keine Information von logger     */
 
              $Transport = Swift_SmtpTransport::newInstance('smtp.gmail.com',587,'tls' )     /* 'tls', Ports je nach Server */
-              ->setUsername("fhnw.weben@gmail.com")
-              ->setPassword("");
+              ->setUsername("$USER")
+              ->setPassword("$PWD");
 
              $Transport2 = Swift_SmtpTransport::newInstance('mail.gmail.com',995,'tls' )  /* 'tls' */
               ->setUsername("...")
