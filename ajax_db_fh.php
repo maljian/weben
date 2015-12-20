@@ -10,15 +10,18 @@ mysqli_select_db($con, "ajax_demo");
 $sql = "SELECT * FROM fh WHERE region = '" . $q . "'";
 $result = mysqli_query($con, $sql);
 
-echo "<table>
+echo "<table class='table table-striped table-bordered'>
+                <thead>
                 <tr>
                 <th>Name</th>
                 <th>Stadt</th>
                 <th>Website</th>
                 <th>Kontkat</th>
                 <th>Email</th>
-                </tr>";
-while ($row = mysqli_fetch_array($result)) {
+                </tr>
+                </thread><tbody>";
+while ($row = mysqli_fetch_array($result) === true) {
+    echo "success!!";
     echo "<tr>";
     echo "<td>" . $row['instituion'] . "</td>";
     echo "<td>" . $row['city'] . "</td>";
@@ -27,6 +30,6 @@ while ($row = mysqli_fetch_array($result)) {
     echo "<td>" . $row['email'] . "</td>";
     echo "</tr>";
 }
-echo "</table>";
+echo "</tbody></table>";
 mysqli_close($con);
 ?>
