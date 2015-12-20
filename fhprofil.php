@@ -5,9 +5,9 @@
     <!-- Main content -->
     <!-- Copyright T. Theis: Einstieg in PHP 5.6 und MySQL 5.6, Galileo Computing, 2015 -->
         <script type="text/javascript"> 
-            function anfordern(institution){
+            function anfordern(inst){
                 var req = new XMLHttpRequest();
-                req.open("get", "ajax_db_fh.php?institution=" + institution, true);
+                req.open("get", "ajax_db_fh.php?institution=" + inst, true);
                 req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                 req.onreadystatechange = auswerten;
                 req.send();

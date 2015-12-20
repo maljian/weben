@@ -4,7 +4,7 @@
     include 'db.inc.php';
     $con = mysqli_connect("localhost", $benutzer, $passwort);
     mysqli_select_db($con, $dbname);
-    $query = "SELECT * from fh where institution = " . $_GET["institution"];
+    $query = "SELECT * from fh where institution = " . $_GET["inst"];
     $res = mysqli_query($con, $query);
     $dsatz = mysqli_fetch_assoc($res);
     
