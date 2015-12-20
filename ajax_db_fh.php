@@ -1,32 +1,33 @@
 <?php
-$q = intval($_GET['q']);
+$reg = $_GET['reg'];
 include 'db.inc.php';
 $con = mysqli_connect('localhost', $benutzer, $passwort, $dbname);
 if (!$con) {
     die('Could not connect: ' . mysqli_error($con));
 }
 
-mysqli_select_db($con, "ajax_demo");
-$sql = "SELECT * FROM fh WHERE region = '" . $q . "'";
+$sql = "SELECT * FROM `fh` WHERE `region` = '" . $reg . "'";
 $result = mysqli_query($con, $sql);
 
-echo "<table>
+echo "<table class='table table-striped table-bordered'>
+                <thead>
                 <tr>
                 <th>Name</th>
                 <th>Stadt</th>
                 <th>Website</th>
                 <th>Kontkat</th>
                 <th>Email</th>
-                </tr>";
+                </tr>
+                </thread><tbody>";
 while ($row = mysqli_fetch_array($result)) {
     echo "<tr>";
-    echo "<td>" . $row['instituion'] . "</td>";
+    echo "<td>" . $row['institution'] . "</td>";
     echo "<td>" . $row['city'] . "</td>";
     echo "<td>" . $row['website'] . "</td>";
     echo "<td>" . $row['partner'] . "</td>";
     echo "<td>" . $row['email'] . "</td>";
     echo "</tr>";
 }
-echo "</table>";
+echo "</tbody></table>";
 mysqli_close($con);
 ?>

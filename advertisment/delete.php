@@ -1,4 +1,8 @@
 <?php
+    session_start();
+    include '../login/header1.php';
+    include("../login/login_pruefen_fh1.inc.php");
+    
     require '../database.php';
     $id = 0;
 
@@ -19,9 +23,7 @@
         Database::disconnect();
         header("Location: ../addAd.php");
     }
-    session_start();
-    include ("../Layout/header.html");
-    include "../db.inc.php";
+   
     if (isset($_SESSION['eingeloggt'])){
      if($_SESSION['eingeloggt']==true){
             include ("../Layout/nav-loggedin.html");

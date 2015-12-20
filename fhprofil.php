@@ -3,30 +3,13 @@
     include("login/header.php");
 ?>
     <!-- Main content -->
-    <!-- Copyright T. Theis: Einstieg in PHP 5.6 und MySQL 5.6, Galileo Computing, 2015 -->
-        <!--<script type="text/javascript"> 
-            function anfordern(inst){
-                var req = new XMLHttpRequest();
-                req.open("post", "ajax_db_fh.php?email=" + inst, true);
-                req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                req.onreadystatechange = auswerten;
-                req.send();
-            }
-
-            function auswerten(e)
-            {
-                if (e.target.readyState == 4 && e.target.status == 200){
-                    var antwort = e.target.responseXML;
-                    document.getElementById("idpartner").firstChild.nodeValue = 
-                            antwort.getElementByTagName("pa")[0].firstChild.nodeValue;
-                    document.getElementById("idemail").firstChild.nodeValue = 
-                            antwort.getElementByTagName("em")[0].firstChild.nodeValue;
-                }
-            }
-        </script> -->
     <script>
         function showFh(str) {
           if (str=="") {
+            document.getElementById("txtHint").innerHTML="";
+            return;
+          }
+          if (bb=="") {
             document.getElementById("txtHint").innerHTML="";
             return;
           }
@@ -46,78 +29,35 @@
         }
     </script>
     <div class = "col-md-7" id="mainBody">
-        <h1>FHNW</h1>
-        <!--
-        <p>
-            ?php
-                include 'db.inc.php';
-                $link = mysqli_connect("localhost", $benutzer, $passwort) or die("Keine Verbindung zur Datenbank!");
-                mysqli_select_db($link, $dbname) or die("Datenbank nicht gefunden!". mysql_error());
-                $query = "SELECT * from fh order by institution";
-                $res = mysqli_query($link, $query);
-                while ($dsatz = mysqli_fetch_assoc($res))
-                        echo "<a href='javascript:anfordern("
-                        .$dsatz["email"]. ")'> "
-                        .$dsatz["institution"]. "</a>, ".$dsatz["website"]."<br/>";
-                    mysqli_close($link);
-            ?>
-        </p>
-        <p><span id="idpartner">&nbsp;</span>
-            <span id="idemail">&nbsp;</span></p>
-        -->
-        <form>
-            <select name="region" onchange="showFh(this.value)">
-                <option value=""> --------- Auswahl --------- </option>
-                <option value="Nordwestschweiz">Nordwestschweiz</option>
-                <option value="Zenralschweiz">Zentralschweiz</option>
-                <option value="Ostschweiz">Ostschweiz</option>
-                <option value="Westschweiz">Westschweiz</option>
-                <option value="Raum Z&uuml;rich">Raum Z&uuml;rich</option>
-                <option value="Raum Bern">Raum Bern</option>
-                <option value="Gesamtschweiz">Gesamtschweiz</option>
-            </select>
-        </form>
-        <br>
-        <div id="txtHint">FH info will be listed here.</div>
-        
-        <form role="form">
+        <h1>FHNW</h1>      
+        <form role="form" action="">
             <div class="form-group">
                 <div class="col-md-4">
                     <label for="ort">Region:</label>
-                    <select class="form-control text-center" id="ort">
-                        <option> --------- Auswahl --------- </option>
-                        <option>Nordwestschweiz</option>
-                        <option>Zentralschweiz</option>
-                        <option>Ostschweiz</option>
-                        <option>Westschweiz</option>
-                        <option>Raum Z&uuml;rich</option>
-                        <option>Raum Bern</option>
-                        <option>Gesamtschweiz</option>
+                    <select class="form-control text-center" name="region" onchange="showFh(this.value)">
+                        <option value=""> --------- Auswahl --------- </option>
+                        <option value="Nordwestschweiz">Nordwestschweiz</option>
+                        <option value="Zenralschweiz">Zentralschweiz</option>
+                        <option value="Ostschweiz">Ostschweiz</option>
+                        <option value="Westschweiz">Westschweiz</option>
+                        <option value="Raum Z&uuml;rich">Raum Z&uuml;rich</option>
+                        <option value="Raum Bern">Raum Bern</option>
+                        <option value="Gesamtschweiz">Gesamtschweiz</option>
                     </select>
                 </div>
                 <div class="col-md-4">
                     <label for="fachbereich">Fachbereich:</label>
                     <select class="form-control text-center" id="fachbereich">
-                        <option> --------- Auswahl --------- </option>
-                        <option>Wirtschaft</option>
-                        <option>Technik</option>
-                        <option>Angewandte Psychologie</option>
-                        <option>Architektur, Bau und Geomatik</option>
-                        <option>Gestaltung und Kunst</option>
-                        <option>Life Science</option>
-                        <option>Musik</option>
-                        <option>P&auml;dagogik</option>
-                        <option>Soziale Arbeit</option>
-                    </select>
-                </div>
-                <div class="col-md-4">
-                    <label for="stform">Studienform:</label>
-                    <select class="form-control text-center" id="stform">
-                        <option> --------- Auswahl --------- </option>
-                        <option>Pr&auml;senzstudium Vollzeit</option>
-                        <option>Pr&auml;senzstudium Teilzeit</option>
-                        <option>Fernstudium Vollzeit</option>
-                        <option>Fernstudium Teilzeit</option>
+                        <option value=""> --------- Auswahl --------- </option>
+                        <option value="Wirtschaft">Wirtschaft</option>
+                        <option value="Technik">Technik</option>
+                        <option value="Angewandte Psychologie">Angewandte Psychologie</option>
+                        <option value="Architektur, Bau und Geomatik">Architektur, Bau und Geomatik</option>
+                        <option value="Gestaltung und Kunst">Gestaltung und Kunst</option>
+                        <option value="Life Science">Life Science</option>
+                        <option value="Musik">Musik</option>
+                        <option value="P&auml;dagogik">P&auml;dagogik</option>
+                        <option value="Soziale Arbeit">Soziale Arbeit</option>
                     </select>
                 </div>
             </div>
@@ -128,6 +68,10 @@
                 </div>
             </div>
         </form>
+        <div id="txtHint" class="form-group">
+            <br/>
+            <p>FH info will be listed here.</p>
+        </div>
     </div>
     <?php
         include ("login/login_alert.php");
