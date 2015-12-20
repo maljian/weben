@@ -7,7 +7,7 @@ include("login/header.php");
 <div class = "col-md-7" id="mainBody">
     <h1>Meine Kursliste</h1>
     <p>
-        <a href="create_course.php" class="btn btn-success" role="button">neuer Kurs erfassen</a>
+        <a href="create_course.php" class="btn btn-success" role="button">Neuen Kurs erfassen</a>
     </p>
     <table class="table table-striped table-bordered">
         <thead>
@@ -53,6 +53,10 @@ include("login/header.php");
             ?>
         </tbody>
     </table>
+    
+    <p>
+        <a href="pdf/Kursrechnung/buyCourse.php" class="btn btn-success" role="button">Kurse kaufen</a>
+    </p>
 </div>
 <?php
 include ("login/login_alert.php");

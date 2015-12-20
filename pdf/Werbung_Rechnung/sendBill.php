@@ -2,7 +2,7 @@
 session_start();
 if (!empty($_SESSION['refn'])) {
    
-    include('../credentials.php');
+    include('../../credentials.php');
     
 //Quelle: http://wiki.selfhtml.org/wiki/PHP/Anwendung_und_Praxis/Formmailer-Advanced
 // eigene Mailadresse
@@ -18,7 +18,7 @@ if (!empty($_SESSION['refn'])) {
     $betreff = 'Rechnung FH Portal';
 
 //Weiterleitung nach Absenden
-    $urlDankeSeite = '../addAd.php';
+    $urlDankeSeite = '../../addAd.php';
 
 // Welches Zeichen soll zwischen dem Feldnamen und dem angegebenen Wert stehen
     $trenner = ":\t"; // Doppelpunkt und Tabulator
@@ -26,7 +26,7 @@ if (!empty($_SESSION['refn'])) {
     /**
      * Ende Konfigurator
      */
-    require_once "../swiftmailer/lib/swift_required.php"; // Swift initialisieren
+    require_once "../../swiftmailer/lib/swift_required.php"; // Swift initialisieren
     
     $attachment = Swift_Attachment::fromPath("Rechnung_".$_SESSION['refn'].".pdf", "application/pdf");
 
