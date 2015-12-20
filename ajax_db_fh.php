@@ -20,7 +20,7 @@ echo "<table class='table table-striped table-bordered'>
                 <th>Email</th>
                 </tr>
                 </thread><tbody>";
-while ($row = mysqli_fetch_array($result)) {
+while ($row = mysqli_fetch_array($result) === true) {
     echo "success!!";
     echo "<tr>";
     echo "<td>" . $row['instituion'] . "</td>";
