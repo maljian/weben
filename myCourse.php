@@ -55,7 +55,7 @@ include("login/header.php");
     </table>
     
     <p>
-        <a href="pdf/Kursrechnung/buyCourse.php" class="btn btn-success" role="button">Kurse kaufen</a>
+        <a href="buyCourse.php" class="btn btn-success" role="button">Kurse kaufen</a>
     </p>
 </div>
 <?php
