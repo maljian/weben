@@ -1,5 +1,5 @@
 <?php
-$q = intval($_GET['q']);
+$q = $_GET['q'];
 include 'db.inc.php';
 $con = mysqli_connect('localhost', $benutzer, $passwort, $dbname);
 if (!$con) {
@@ -20,7 +20,7 @@ echo "<table class='table table-striped table-bordered'>
                 <th>Email</th>
                 </tr>
                 </thread><tbody>";
-while ($row = mysqli_fetch_array($result) === true) {
+while ($row = mysqli_fetch_array($result)) {
     echo "success!!";
     echo "<tr>";
     echo "<td>" . $row['instituion'] . "</td>";

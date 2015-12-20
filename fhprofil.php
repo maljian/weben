@@ -74,8 +74,10 @@
                 </div>
             </div>-->
         </form>
-        <br>
-        <div id="txtHint">FH info will be listed here.</div>
+        <div id="txtHint" class="form-group">
+            <br/>
+            <p>FH info will be listed here.</p>
+        </div>
     </div>
     <?php
         include ("login/login_alert.php");
