@@ -4,7 +4,7 @@ include("login/login_pruefen_fh.inc.php");
 include("login/header.php");
 ?>
 <!-- Main content -->
-<div class = "col-md-7" id="mainBody">
+<div class = "col-md-10" id="mainBody">
     <h1>Werbeanfragen</h1>
     
     <table class="table table-striped table-bordered">
@@ -50,7 +50,7 @@ include("login/header.php");
 </div>
 <?php
 include ("login/login_alert.php");
-include ("Layout/login.html");
+//include ("Layout/login.html");
 include ("Layout/footer.html");
 ?>
 </html>

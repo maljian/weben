@@ -5,7 +5,7 @@
 ?>
 
 <!-- Main content -->
-<div class = "col-md-7" id="mainBody">
+<div class = "col-md-10" id="mainBody">
     <h1>FH Anmeldungen</h1>
     <p><a href="denied_fh_enrolement.php">Abgelehnte FHs</a></p>
         <table class="table table-striped table-bordered">
@@ -41,9 +41,9 @@
                         echo '<td>' . $row['email'] . '</td>';
                         echo '<td>' . $row['phonenumber'] . '</td>';
                         echo '<td>' . $row['date'] . '</td>';
-                        echo '<td width=250>';
-                        echo '<a class="btn btn-default btn-success col-md-12" href="admin/accept_enrolement.php?emailaddress='.$row['email'].'">akzeptieren</a>';
-                        echo '<a class="btn btn-default btn-danger col-md-12" href="admin/deny_enrolement.php?emailaddress=' . $row['email'] . '">ablehnen</a>';
+                        echo '<td>';
+                        echo '<a class="btn btn-default btn-success" href="admin/accept_enrolement.php?emailaddress='.$row['email'].'">akzeptieren</a>';
+                        echo '<a class="btn btn-default btn-danger" href="admin/deny_enrolement.php?emailaddress=' . $row['email'] . '">ablehnen</a>';
                         echo '</td>';
                         echo '</tr>';
             }
