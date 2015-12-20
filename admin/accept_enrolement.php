@@ -1,10 +1,9 @@
 <?PHP 
     require '../database.php';
-    include ("credentials.php");
+    include ("../credentials.php");
     $emailaddress = 0;
     if (!empty($_GET['emailaddress'])) {
         $emailaddress = $_REQUEST['emailaddress'];
-   
         $pdo = Database::connect();
         $pdo->exec('set names utf8');
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -14,9 +13,7 @@
         
         $sql= "SELECT * FROM user WHERE `email` = $emailaddress";
         $resultUser = $pdo->prepare($sql);
-       
-        if($resultFH->rowCount()== TRUE OR $resultUser->rowCount()==TRUE){
-        
+        if($resultFH->rowCount()== FALSE OR $resultUser->rowCount()==FALSE){
         //add FH to db fh
         $sql= "SELECT * FROM fh_enrolement WHERE `email`='$emailaddress'";
                     // PDO-Query (kein Prepared Statement)
@@ -31,9 +28,9 @@
                         $phonenumber = $row['phonenumber'];
                         $region = $row['region'];
             }
-        $sql = "INSERT INTO fh(`institution`,`partner`,street,`postalcode`,`city`,`website`,`email`,`phonenumber`,`site`,`region`,`college`) VALUES (?,?,?,?,?,?,?,?,?,?)";    
+        $sql = "INSERT INTO fh(`institution`,`partner`,street,`postalcode`,`city`,`website`,`email`,`phonenumber`,`site`,`region`,`college`) VALUES (?,?,?,?,?,?,?,?,?,?,?)";    
         $q = $pdo->prepare($sql);
-        $q->execute(array("$institution","$partner","$street","$postalcode","$city","$website","$email","$phonenumber","NULL","$region","NULL"));
+        $q->execute(array("$institution","$partner","$street","$postalcode","$city","$website","$email","$phonenumber","","$region",""));
         
         //generate password and add to db user
         $chars = ("abcdefghijklmnopqrstuvwxyz1234567890"); 
@@ -81,10 +78,10 @@
                             ->setFrom(array($absenderadresse => $absendername))
                             ->setTo(array($zieladresse))
                             ->setSubject($betreff)
-                            ->setBody("Sehr geehrte Kundin\nSehr geehrter Kunde\n\n Vielen Dank für Ihre Anmeldung bei FH Portal.\n"
+                            ->setBody("Sehr geehrte Kundin\nSehr geehrter Kunde\n\nVielen Dank für Ihre Anmeldung bei FH Portal.\n"
                                     . "Gerne haben wir Ihre Anmeldung akzeptiert und Sie können sich nun mit folgenden Logindaten einloggen:\n\n"
                                     ."Benutzername: ".$email."\n"."Passwort: ".$newpassword."\n\nBitte passen Sie das Passwort nach dem ersten Login an."
-                                    ."\nFreundliche Grüsse\nIhr FH-Portal-Team\nwww.dine.bronxx.org");
+                                    ."\n\nFreundliche Grüsse\nIhr FH-Portal-Team\nwww.dine.bronxx.org");
 
                     $mailtext = "";
 

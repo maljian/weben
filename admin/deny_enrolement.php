@@ -1,5 +1,6 @@
 <?PHP 
     require '../database.php';
+    include ("../credentials.php");
     $emailaddress = null;
     session_start();
 
