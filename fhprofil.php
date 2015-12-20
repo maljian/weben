@@ -32,7 +32,7 @@
         <p>
             <?php
                 include 'db.inc.php';
-                $con = mysqli_connect($passwort,$user);
+                $con = mysqli_connect($user,$passwort);
                 mysqli_select_db($con, $dbname);
                 $query = "SELECT * from fh order by institution";
                 $res = mysqli_query($con, $query);
