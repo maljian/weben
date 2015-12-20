@@ -7,8 +7,6 @@
     mysqli_select_db($link, $dbname) or die("Datenbank nicht gefunden!");
     $abfrage = "SELECT * FROM fh";
     $ergebnis = mysqli_query($link, $abfrage) or die("Keine Verbindung!");
-    $abfrage2 = "SELECT * FROM fh";
-    $ergebnis2 = mysqli_query($link, $abfrage2) or die("Keine Verbindung!");
 ?>
     <!-- Main content -->
     <div class = "col-md-7" id="mainBody">
@@ -19,13 +17,13 @@
                     <label for="ort">Region:</label>
                     <select class="form-control text-center" id="ort">
                         <option> --------- Auswahl --------- </option>
-                        <option>Nordwestschweiz</option>
-                        <option>Zentralschweiz</option>
-                        <option>Ostschweiz</option>
-                        <option>Westschweiz</option>
-                        <option>Raum Z&uuml;rich</option>
-                        <option>Raum Bern</option>
-                        <option>Gesamtschweiz</option>
+                        <option value="Nordwestschweiz">Nordwestschweiz</option>
+                        <option value="Zenralschweiz">Zentralschweiz</option>
+                        <option value="Ostschweiz">Ostschweiz</option>
+                        <option value="Westschweiz">Westschweiz</option>
+                        <option value="Raum Z&uuml;rich">Raum Z&uuml;rich</option>
+                        <option value="Raum Bern">Raum Bern</option>
+                        <option value="Gesamtschweiz">Gesamtschweiz</option>
                     </select>
                     <label for="fh">Fachhochschule:</label>
                     <select class="form-control text-center" id="fh">
@@ -66,32 +64,32 @@
                     <label for="fachbereich">Fachbereich:</label>
                     <select class="form-control text-center" id="fachbereich">
                         <option> --------- Auswahl --------- </option>
-                        <option>Wirtschaft</option>
-                        <option>Technik</option>
-                        <option>Angewandte Psychologie</option>
-                        <option>Architektur, Bau und Geomatik</option>
-                        <option>Gestaltung und Kunst</option>
-                        <option>Life Science</option>
-                        <option>Musik</option>
-                        <option>P&auml;dagogik</option>
-                        <option>Soziale Arbeit</option>
+                        <option value="Wirtschaft">Wirtschaft</option>
+                        <option value="Technik">Technik</option>
+                        <option value="Angewandte Psychologie">Angewandte Psychologie</option>
+                        <option value="Architektur, Bau und Geomatik">Architektur, Bau und Geomatik</option>
+                        <option value="Gestaltung und Kunst">Gestaltung und Kunst</option>
+                        <option value="Life Science">Life Science</option>
+                        <option value="Musik">Musik</option>
+                        <option value="P&auml;dagogik">P&auml;dagogik</option>
+                        <option value="Soziale Arbeit">Soziale Arbeit</option>
                     </select>
                     <label for="studiengang">Studium und Weiterbildung:</label>
                     <select class="form-control text-center" id="studiengang">
                         <option> --------- Auswahl --------- </option>
-                        <option>Bachelor</option>
-                        <option>Master</option>
-                        <option>Weiterbildung</option>
+                        <option value="Bachelor">Bachelor</option>
+                        <option value="Master">Master</option>
+                        <option value="Weiterbildung">Weiterbildung</option>
                     </select>
                 </div>
                 <div class="col-md-4">
                     <label for="stform">Studienform:</label>
                     <select class="form-control text-center" id="stform">
                         <option> --------- Auswahl --------- </option>
-                        <option>Pr&auml;senzstudium Vollzeit</option>
-                        <option>Pr&auml;senzstudium Teilzeit</option>
-                        <option>Fernstudium Vollzeit</option>
-                        <option>Fernstudium Teilzeit</option>
+                        <option value="Pr&auml;senzstudium Vollzeit">Pr&auml;senzstudium Vollzeit</option>
+                        <option value="Pr&auml;senzstudium Teilzeit">Pr&auml;senzstudium Teilzeit</option>
+                        <option value="Fernstudium Vollzeit">Fernstudium Vollzeit</option>
+                        <option value="Fernstudium Teilzeit">Fernstudium Teilzeit</option>
                     </select>
                 </div>
             </div>
