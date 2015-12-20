@@ -30,7 +30,7 @@
             <div class="form-group">
                 <div class="col-md-4">
                     <label for="ort">Region:</label>
-                    <select name="region" onchange="showFh(this.value)">
+                    <select class="form-control text-center" name="region" onchange="showFh(this.value)">
                         <option value=""> --------- Auswahl --------- </option>
                         <option value="Nordwestschweiz">Nordwestschweiz</option>
                         <option value="Zenralschweiz">Zentralschweiz</option>
