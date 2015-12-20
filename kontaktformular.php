@@ -1,19 +1,133 @@
 <?php
 session_start();
+if (!empty($_POST)) {
+    $gender = $_POST['gender'];
+    $firstname = $_POST['firstname'];
+    $lastname = $_POST['lastname'];
+    $email = $_POST['email'];
+    $phonenumber = $_POST['phonenumber'];
+    $question = $_POST['question'];
+    
+
+   
+    include('credentials.php');
+    
+//Quelle: http://wiki.selfhtml.org/wiki/PHP/Anwendung_und_Praxis/Formmailer-Advanced
+// eigene Mailadresse
+    $zieladresse = 'dine.bronxx@gmail.com';
+
+//Absenderadresse
+    $absenderadresse = $_POST['email'];
+
+//Absendername
+    $absendername = $firstname . " " . $lastname;
+
+//Betreff Empfänger und Absender
+    $betreff = 'Kontaktanfrage FH Portal';
+
+//Weiterleitung nach Absenden
+    $urlDankeSeite = '';
+
+// Welches Zeichen soll zwischen dem Feldnamen und dem angegebenen Wert stehen
+    $trenner = ":\t"; // Doppelpunkt und Tabulator
+
+    /**
+     * Ende Konfigurator
+     */
+    require_once "swiftmailer/lib/swift_required.php"; // Swift initialisieren
+
+    if ($_SERVER['REQUEST_METHOD'] === "POST") {
+
+        $message = Swift_Message::newInstance(); // Ein Objekt für die Mailnachricht
+
+        $message
+                ->setFrom(array($absenderadresse => $absendername))
+                ->setTo(array($zieladresse))
+                ->setBcc(array($absenderadresse))
+                ->setSubject($betreff)
+                ->setBody(
+"Anfrage FH Portal erhalten:
+    
+Vorname : $firstname
+Nachname: $lastname
+E-Mailadresse: $email
+Telefonnummer: $phonenumber
+    
+Anfrage: 
+$question");
+
+        $mailtext = "";
+
+        foreach ($_POST as $name => $wert) {
+            if (is_array($wert)) {
+                foreach ($wert as $einzelwert) {
+                    $mailtext .= $name . $trenner . $einzelwert . "\n";
+                }
+            } else {
+                $mailtext .= $name . $trenner . $wert . "\n";
+            }
+        }
+
+        // Code Ergänzungen: try und catch, logger
+        // gemäss: [http://swiftmailer.org/pdf/Swiftmailer.pdf Swiftmailer.pdf]
+
+        try {
+            /* Mit try und catch können die Fehlerevents differenzierter getestet werden
+             *
+             * diverse Möglichkeiten für $Transport 
+             * smtp mit den gewohnten Optionen, siehe Dokumentation Swiftmailer  
+             *  für TLS und SSL  allenfalls phpinfo ob extentiens installiert
+             */
+
+            $Transport0 = Swift_MailTransport::newInstance();        /* Beispiel geht über PHP-Mail, geht i.a. 
+              aber keine Information von logger */
+
+            $Transport = Swift_SmtpTransport::newInstance('smtp.gmail.com', 587, 'tls') /* 'tls', Ports je nach Server */
+                    ->setUsername($USER)
+                    ->setPassword($PWD);
+
+            $Transport2 = Swift_SmtpTransport::newInstance('mail.gmail.com', 995, 'tls') /* 'tls' */
+                    ->setUsername("...")
+                    ->setPassword("...");
+
+            $mailer = Swift_Mailer::newInstance($Transport);
+
+            // Echo Logger aktivieren (es gibt noch einen logger der auf File schreibt)
+            $logger = new Swift_Plugins_Loggers_EchoLogger();
+            $mailer->registerPlugin(new Swift_Plugins_LoggerPlugin($logger));
+
+            $result = $mailer->send($message);
+        } catch (Exception $e) {
+            $error_log = $logger->dump();
+        }
+
+        if ($result == 0) {
+            die($_SESSION['contactMessage']='failed');
+        }
+        $_SESSION['contactMessage']='successful';
+        header("Location: $urlDankeSeite");
+        exit;
+    }
+//echo $message->toString();
+
+    header("Content-type: text/html; charset=utf-8");
+}
+session_start();
 include("login/header.php");
 ?>
+
 <!-- Main content -->
 <div class = "col-md-7" id="mainBody">
     <h1>Kontaktformular</h1>
     <br/>
-    <?php    include ("success_contact.php") ?>
+
     <!-- Kontaktformular für die Webseite -->
-    <form class="form-horizontal" id="contactForm" role="form" action="sendContact.php" method="post" enctype="multipart/form-data">
+    <form class="form-horizontal" id="contactForm" role="form" action="" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label class="control-label col-sm-2" for="gender">Anrede:</label>
-            <div class="selectContainer col-sm-2"> 
+            <div class="col-sm-2"> 
                 <select class="form-control text-center" id="gender" name="gender">
-                    <option value=""></option>
+                    <option selected disabled>Anrede</option>
                     <option value="Frau">Frau</option>
                     <option value="Herr">Herr</option>
                 </select>
@@ -96,7 +210,7 @@ include ("Layout/footer.html");
                         gender: {
                             validators: {
                                 callback: {
-                                    message: 'Bitte wählen Sie eine Anrede.',
+                                    message: 'Bitte wählen Sie eine Anrede aus.',
                                     callback: function(value, validator, $field) {
                                         // Get the selected options
                                         var options = validator.getFieldElements('gender').val();
@@ -108,21 +222,21 @@ include ("Layout/footer.html");
                         firstname: {
                             validators: {
                                 notEmpty: {
-                                    message: 'Bitte geben Sie Ihren Vornamen ein.'
+                                    message: 'Bitte geben Sie Ihren Vornamen an.'
                                 }
                             }
                         },
                         lastname: {
                             validators: {
                                 notEmpty: {
-                                    message: 'Bitte geben Sie Ihren Nachnamen ein.'
+                                    message: 'Bitte geben Sie Ihren Nachnamen an.'
                                 }
                             }
                         },
                         email: {
                             validators: {
                                 notEmpty: {
-                                    message: 'Eine Emailadresse muss zwingend angegeben werden.'
+                                    message: 'Bitte geben Sie Ihre Emailadresse an.'
                                 },
                                 emailAddress: {
                                     message: 'Sie haben keine gültige Emailadresse eingegeben.'
@@ -147,7 +261,7 @@ include ("Layout/footer.html");
                                     message: 'Ihre Anfrage darf maximal 500 Zeichen lang sein!'
                                 }
                             }
-                        }
+                        }                        
                     }
                 });
             }); 
