@@ -78,7 +78,7 @@
             </select>
         </form>
         <br>
-        <div id="txtHint"><b>FH info will be listed here.</b></div>
+        <div id="txtHint">FH info will be listed here.</div>
         
         <form role="form">
             <div class="form-group">
