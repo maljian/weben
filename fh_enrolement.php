@@ -30,7 +30,7 @@
         <div class="form-group">
             <label class="control-label col-sm-2" for="postalcode">PLZ:</label>
             <div class="col-sm-2">
-                <input type="number" class="form-control" id="postalcode" name="postalcode">
+                <input type="text" class="form-control" id="postalcode" name="postalcode">
             </div>
             <label class="control-label col-sm-1" for="city">Ort:</label>
             <div class="col-sm-3">
@@ -149,6 +149,10 @@
                             validators: {
                                 notEmpty: {
                                     message: 'Eine Postleitzahl muss zwingend angegeben werden.'
+                                },
+                                regexp: {
+                                    message: 'Die Postleitzahl muss aus 4 oder 5 Ziffern bestehen.',
+                                    regexp: /^[0-9]{4,5}$/
                                 }
                             }
                         },

@@ -1,16 +1,17 @@
 <?php
 session_start();
+include ('credentials.php');
 
-if(!empty($_GET)){
-$firstname = $_SESSION['firstname'];
-$lastname = $_SESSION['lastname'];
-$phonenumber = $_SESSION['phonenumber'];
-$email = $_SESSION['email'];
-$question = $_SESSION['question'];
+if(!empty($_POST)){
+$firstname = $_POST['firstname'];
+$lastname = $_POST['lastname'];
+$phonenumber = $_POST['phonenumber'];
+$email = $_POST['email'];
+$question = $_POST['question'];
 
 //Quelle: http://wiki.selfhtml.org/wiki/PHP/Anwendung_und_Praxis/Formmailer-Advanced
 // eigene Mailadresse
-$zieladresse = 'dine.bronxx@gmail.com';
+$zieladresse = $USER;
 
 //Absenderadresse
 $absenderadresse = $email;
@@ -22,7 +23,7 @@ $absendername = $firstname." ".$lastname;
 $betreff = 'Kontaktanfrage FH Portal';
 
 //Weiterleitung nach Absenden
-$urlDankeSeite = 'http://www.dine.bronxx.org/kontaktformular.php';
+$urlDankeSeite = 'kontaktformular.php';
 
 // Welches Zeichen soll zwischen dem Feldnamen und dem angegebenen Wert stehen
 $trenner = ":\t"; // Doppelpunkt und Tabulator
@@ -32,12 +33,8 @@ $trenner = ":\t"; // Doppelpunkt und Tabulator
  */
 
 require_once "swiftmailer/lib/swift_required.php"; // Swift initialisieren
-include ('credentials.php');
 
-if ($_SERVER['REQUEST_METHOD']==="GET"){
-    
-    
-    
+if ($_SERVER['REQUEST_METHOD']==="POST"){
     $message = Swift_Message::newInstance(); // Ein Objekt für die Mailnachricht
     
     $message
@@ -83,7 +80,7 @@ $question");
      $Transport0 = Swift_MailTransport::newInstance();        /* Beispiel geht über PHP-Mail, geht i.a. 
                                                                  aber keine Information von logger     */
  
-     $Transport = Swift_SmtpTransport::newInstance('smtp.fhnw.ch',465,'tls' )     /* 'tls', Ports je nach Server */
+     $Transport = Swift_SmtpTransport::newInstance('smtp.gmail.ch',587,'tls' )     /* 'tls', Ports je nach Server */
       ->setUsername ($USER)
       ->setPassword ($PWD);
      
@@ -107,12 +104,17 @@ $question");
     if ($result == 0){
         die("Mail konnte nicht versandt werden.");
     }
+    $_SESSION['contactMessage']='successful';
     header("Location: $urlDankeSeite");
     exit;
 }
-
+$_SESSION['contactMessage']='failed';
+header("Location: $urlDankeSeite");
 header("Content-type: text/html; charset=utf-8");
 }
-session_start();
-include("login/header.php");
+else{
+    $_SESSION['contactMessage']='failed';
+    header("Location: $urlDankeSeite");
+}
+
 ?>

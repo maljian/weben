@@ -1,15 +1,14 @@
 <?php
 session_start();
 include("login/header.php");
-
 ?>
 <!-- Main content -->
 <div class = "col-md-7" id="mainBody">
     <h1>Kontaktformular</h1>
     <br/>
-   
+    <?php    include ("success_contact.php") ?>
     <!-- Kontaktformular für die Webseite -->
-    <form class="form-horizontal" id="contactForm" role="form" action="" method="post" enctype="multipart/form-data">
+    <form class="form-horizontal" id="contactForm" role="form" action="sendContact.php" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label class="control-label col-sm-2" for="gender">Anrede:</label>
             <div class="selectContainer col-sm-2"> 
@@ -62,16 +61,10 @@ include("login/header.php");
 </div>
 
 <?php
-$_SESSION['firstname']='firstname';
-$_SESSION['lastname']='lastname';
-$_SESSION['email']='email';
-$_SESSION['phonenumber']='phonenumber';
-$_SESSION['question']='question';
 include ("login/login_alert.php");
 include ("Layout/login.html");
 include ("Layout/ads.html");
 include ("Layout/footer.html");
-include ('sendContact.php');
 ?>
 </html>
 <!--Codeteile von Rainer Telesko aus dem Web-Engineering Modul.-->
