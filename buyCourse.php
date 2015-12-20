@@ -18,7 +18,7 @@ if (!empty($_POST)) {
     }
 }
 mysqli_close($link);
-
+include("login/login_pruefen_fh.php");
 include("login/header.php");
 ?>
 <!-- Main content -->
