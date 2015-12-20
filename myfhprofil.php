@@ -10,6 +10,7 @@
     }
     
     $pdo = Database::connect();
+    $pdo->exec('set names utf8');
     $sql = 'SELECT * FROM fh where email = ?';
     $q = $pdo->prepare($sql);
     $q->execute(array($email));
