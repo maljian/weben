@@ -33,7 +33,7 @@
                 $link = mysqli_connect("localhost", $benutzer, $passwort) or die("Keine Verbindung zur Datenbank!");
                 mysqli_select_db($link, $dbname) or die("Datenbank nicht gefunden!". mysql_error());
                 $query = "SELECT * from fh order by institution";
-                $res = mysqli_query($con, $query);
+                $res = mysqli_query($link, $query);
                 while ($dsatz = mysqli_fetch_assoc($res))
                         echo "<a href='javascript:anfordern("
                         .$dsatz["email"]. ")'> "
