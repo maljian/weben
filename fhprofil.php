@@ -16,7 +16,7 @@
               document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
             }
           }
-          var url="dd.php";
+          var url="ajax_db_fh.php";
             var reg_id=document.getElementById('region').value;
             var fach_id=document.getElementById('fachbereich').value;
             url=url+"?reg="+reg_id;
@@ -58,12 +58,6 @@
                         <option value="P&auml;dagogik">P&auml;dagogik</option>
                         <option value="Soziale Arbeit">Soziale Arbeit</option>
                     </select>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-2">
-                    <br/>
-                    <button type="submit" class="btn btn-default">Filtern</button>
                 </div>
             </div>
         </form>
