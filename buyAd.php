@@ -39,9 +39,11 @@ if (!empty($_POST)) {
     
     mysqli_close($link);
 
+    include('credentials.php');
+    
 //Quelle: http://wiki.selfhtml.org/wiki/PHP/Anwendung_und_Praxis/Formmailer-Advanced
 // eigene Mailadresse
-    $zieladresse = 'fhnw.weben@gmail.com';
+    $zieladresse = 'dine.bronxx@gmail.com';
 
 //Absenderadresse
     $absenderadresse = $_POST['email'];
@@ -112,8 +114,8 @@ Das Bild wurde in der Datenbank gespeichert.");
               aber keine Information von logger */
 
             $Transport = Swift_SmtpTransport::newInstance('smtp.gmail.com', 587, 'tls') /* 'tls', Ports je nach Server */
-                    ->setUsername("fhnw.weben@gmail.com")
-                    ->setPassword("");
+                    ->setUsername($USER)
+                    ->setPassword($PWD);
 
             $Transport2 = Swift_SmtpTransport::newInstance('mail.gmail.com', 995, 'tls') /* 'tls' */
                     ->setUsername("...")
