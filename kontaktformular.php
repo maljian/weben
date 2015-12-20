@@ -26,7 +26,7 @@ if (!empty($_POST)) {
     $betreff = 'Kontaktanfrage FH Portal';
 
 //Weiterleitung nach Absenden
-    $urlDankeSeite = '';
+    $urlDankeSeite = 'kontaktformular.php';
 
 // Welches Zeichen soll zwischen dem Feldnamen und dem angegebenen Wert stehen
     $trenner = ":\t"; // Doppelpunkt und Tabulator
@@ -112,7 +112,6 @@ $question");
 
     header("Content-type: text/html; charset=utf-8");
 }
-session_start();
 include("login/header.php");
 ?>
 
@@ -120,7 +119,7 @@ include("login/header.php");
 <div class = "col-md-7" id="mainBody">
     <h1>Kontaktformular</h1>
     <br/>
-
+    <?php include("success_contact.php")?>
     <!-- Kontaktformular für die Webseite -->
     <form class="form-horizontal" id="contactForm" role="form" action="" method="post" enctype="multipart/form-data">
         <div class="form-group">

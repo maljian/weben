@@ -7,6 +7,7 @@
     <!-- Main content -->
     <div class = "col-md-7" id="mainBody">
         <h1> Passwort anpassen</h1>
+        </br>
         <?php include("success_reset.php"); ?>
         <form id="passwordForm" role="form" action="login/reset_password.php" method="POST" class="form-horizontal">
             <div class="form-group">
