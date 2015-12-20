@@ -7,7 +7,7 @@ if (!$con) {
 }
 
 mysqli_select_db($con, "ajax_demo");
-$sql = "SELECT * FROM fh WHERE region = '" . $q . "'";
+$sql = "SELECT * FROM `fh` WHERE `region` = '" . $q . "'";
 $result = mysqli_query($con, $sql);
 
 echo "<table class='table table-striped table-bordered'>
