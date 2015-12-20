@@ -21,17 +21,8 @@
         $q = $pdo->prepare($sql);
         $q->execute(array($id));
         Database::disconnect();
-        header("Location: ../addAd.php");
     }
-   
-    if (isset($_SESSION['eingeloggt'])){
-     if($_SESSION['eingeloggt']==true){
-            include ("../Layout/nav-loggedin.html");
-        }
-    }
-    else{
-        include ("../Layout/nav.html");
-    }
+
 ?>
     <!-- Main content -->
     <div class = "col-md-7" id="mainBody">

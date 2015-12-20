@@ -32,8 +32,8 @@
             <input type="hidden" name="id" value="<?php echo $id; ?>"/>
             <p class="alert alert-error">Möchten Sie wirklich den Kurs löschen ?</p>
             <div class="form-actions">
-                <button type="submit" class="btn btn-danger">Yes</button>
-                <a class="btn btn-default" href="../myCourse.php">No</a>
+                <button type="submit" class="btn btn-danger">Ja</button>
+                <a class="btn btn-default" href="../myCourse.php">Nein</a>
             </div>
         </form>
     </div>

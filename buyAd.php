@@ -55,7 +55,7 @@ if (!empty($_POST)) {
     $betreff = 'Werbefläche FH Portal mieten';
 
 //Weiterleitung nach Absenden
-    $urlDankeSeite = '';
+    $urlDankeSeite = 'buyAd.php';
 
 // Welches Zeichen soll zwischen dem Feldnamen und dem angegebenen Wert stehen
     $trenner = ":\t"; // Doppelpunkt und Tabulator
