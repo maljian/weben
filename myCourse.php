@@ -7,7 +7,7 @@ include("login/header.php");
 <div class = "col-md-7" id="mainBody">
     <h1>Meine Kursliste</h1>
     <p>
-        <a href="create_course2.php" class="btn btn-success" role="button">neuer Kurs erfassen</a>
+        <a href="create_course.php" class="btn btn-success" role="button">neuer Kurs erfassen</a>
     </p>
     <table class="table table-striped table-bordered">
         <thead>
