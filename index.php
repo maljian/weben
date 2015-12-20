@@ -15,8 +15,8 @@
             <div class="form-group">
                 <div class="col-md-4">
                     <label for="ort">Region:</label>
-                    <select class="form-control text-center" id="ort">
-                        <option> --------- Auswahl --------- </option>
+                    <select class="form-control text-center" name="region">
+                        <option value=""> --------- Auswahl --------- </option>
                         <option value="Nordwestschweiz">Nordwestschweiz</option>
                         <option value="Zenralschweiz">Zentralschweiz</option>
                         <option value="Ostschweiz">Ostschweiz</option>
@@ -95,6 +95,7 @@
             </div>
         </form>
     </div>
+    
     <?php
         include ("login/login_alert.php");
         include ("Layout/login.html");

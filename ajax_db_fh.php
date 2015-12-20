@@ -1,5 +1,6 @@
 <?php
-$q = $_GET['q'];
+$reg = $_GET['reg'];
+$fach = $_GET['fach'];
 include 'db.inc.php';
 $con = mysqli_connect('localhost', $benutzer, $passwort, $dbname);
 if (!$con) {
@@ -7,7 +8,7 @@ if (!$con) {
 }
 
 mysqli_select_db($con, "ajax_demo");
-$sql = "SELECT * FROM `fh` WHERE `region` = '" . $q . "'";
+$sql = "SELECT * FROM `fh` WHERE `region` = '" . $reg . "' and `college`= '" . $fach ."'";
 $result = mysqli_query($con, $sql);
 
 echo "<table class='table table-striped table-bordered'>

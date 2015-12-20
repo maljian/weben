@@ -4,11 +4,7 @@
 ?>
     <!-- Main content -->
     <script>
-        function showFh(str) {
-          if (str=="") {
-            document.getElementById("txtHint").innerHTML="";
-            return;
-          }
+        function showFh() {
           if (window.XMLHttpRequest) {
             // code for IE7+, Firefox, Chrome, Opera, Safari
             xmlhttp=new XMLHttpRequest();
@@ -20,17 +16,24 @@
               document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
             }
           }
-          xmlhttp.open("GET","ajax_db_fh.php?q="+str,true);
+          var url="dd.php";
+            var reg_id=document.getElementById('region').value;
+            var fach_id=document.getElementById('fachbereich').value;
+            url=url+"?reg="+reg_id;
+            url=url+"&fach="+fach_id);
+            httpxml.onreadystatechange=stateck;
+            //alert(url);
+            httpxml.open("GET",url,true);
           xmlhttp.send();
         }
     </script>
     <div class = "col-md-7" id="mainBody">
         <h1>FHNW</h1>      
-        <form role="form">
+        <form role="form" action="">
             <div class="form-group">
                 <div class="col-md-4">
                     <label for="ort">Region:</label>
-                    <select class="form-control text-center" name="region" onchange="showFh(this.value)">
+                    <select class="form-control text-center" id="region" onchange="showFh()">
                         <option value=""> --------- Auswahl --------- </option>
                         <option value="Nordwestschweiz">Nordwestschweiz</option>
                         <option value="Zenralschweiz">Zentralschweiz</option>
@@ -43,36 +46,26 @@
                 </div>
                 <div class="col-md-4">
                     <label for="fachbereich">Fachbereich:</label>
-                    <select class="form-control text-center" id="fachbereich">
-                        <option> --------- Auswahl --------- </option>
-                        <option>Wirtschaft</option>
-                        <option>Technik</option>
-                        <option>Angewandte Psychologie</option>
-                        <option>Architektur, Bau und Geomatik</option>
-                        <option>Gestaltung und Kunst</option>
-                        <option>Life Science</option>
-                        <option>Musik</option>
-                        <option>P&auml;dagogik</option>
-                        <option>Soziale Arbeit</option>
-                    </select>
-                </div>
-                <div class="col-md-4">
-                    <label for="stform">Studienform:</label>
-                    <select class="form-control text-center" id="stform">
-                        <option> --------- Auswahl --------- </option>
-                        <option>Pr&auml;senzstudium Vollzeit</option>
-                        <option>Pr&auml;senzstudium Teilzeit</option>
-                        <option>Fernstudium Vollzeit</option>
-                        <option>Fernstudium Teilzeit</option>
+                    <select class="form-control text-center" id="fachbereich"onchange="showFh()">
+                        <option value=""> --------- Auswahl --------- </option>
+                        <option value="Wirtschaft">Wirtschaft</option>
+                        <option value="Technik">Technik</option>
+                        <option value="Angewandte Psychologie">Angewandte Psychologie</option>
+                        <option value="Architektur, Bau und Geomatik">Architektur, Bau und Geomatik</option>
+                        <option value="Gestaltung und Kunst">Gestaltung und Kunst</option>
+                        <option value="Life Science">Life Science</option>
+                        <option value="Musik">Musik</option>
+                        <option value="P&auml;dagogik">P&auml;dagogik</option>
+                        <option value="Soziale Arbeit">Soziale Arbeit</option>
                     </select>
                 </div>
             </div>
-<!--            <div class="form-group">
+            <div class="form-group">
                 <div class="col-sm-2">
                     <br/>
                     <button type="submit" class="btn btn-default">Filtern</button>
                 </div>
-            </div>-->
+            </div>
         </form>
         <div id="txtHint" class="form-group">
             <br/>
