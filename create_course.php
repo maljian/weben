@@ -16,7 +16,7 @@
         $resultError = null;
         $studigangError = null;
         $fachbereichError = null;
-        $next = "course_create.php";
+        $next = "create_course.php";
 
         // keep track post values
         $title = $_POST['title'];
@@ -231,8 +231,5 @@
     include ("Layout/login.html");
     include ("Layout/ads.html");
     include ("Layout/footer.html");
-?>
-</html>
-<?php
-    header("location: myCourse.php");
-?>
+    
+    header("Location: myCourse.php");

@@ -20,8 +20,7 @@
         $sql = "DELETE FROM studiengang  WHERE id = ?";
         $q = $pdo->prepare($sql);
         $q->execute(array($id));
-        Database::disconnect();
-        
+        Database::disconnect(); 
     }
     
 ?>
@@ -38,9 +37,5 @@
         </form>
     </div>
     <?php
-        include ("../login/login_alert.php");
-        include ("../Layout/login.html");
-        include ("../Layout/ads.html");
+        include ("../login/login_error.php");
         include ("../Layout/footer.html");
-    ?>
-</html>
