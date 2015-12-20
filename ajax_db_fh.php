@@ -7,7 +7,6 @@ if (!$con) {
     die('Could not connect: ' . mysqli_error($con));
 }
 
-mysqli_select_db($con, "ajax_demo");
 $sql = "SELECT * FROM `fh` WHERE `region` = '" . $reg . "' and `college`= '" . $fach ."'";
 $result = mysqli_query($con, $sql);
 
