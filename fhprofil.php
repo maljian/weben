@@ -7,7 +7,7 @@
         <script type="text/javascript"> 
             function anfordern(inst){
                 var req = new XMLHttpRequest();
-                req.open("get", "ajax_db_fh.php?institution=" + inst, true);
+                req.open("get", "ajax_db_fh.php?email=" + inst, true);
                 req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                 req.onreadystatechange = auswerten;
                 req.send();
@@ -30,15 +30,15 @@
         <p>
             <?php
                 include 'db.inc.php';
-                $con = mysqli_connect("localhost", $benutzer, $passwort);
-                mysqli_select_db($con, $dbname);
+                $link = mysqli_connect("localhost", $benutzer, $passwort) or die("Keine Verbindung zur Datenbank!");
+                mysqli_select_db($link, $dbname) or die("Datenbank nicht gefunden!". mysql_error());
                 $query = "SELECT * from fh order by institution";
                 $res = mysqli_query($con, $query);
                 while ($dsatz = mysqli_fetch_assoc($res))
                         echo "<a href='javascript:anfordern("
-                        .$dsatz["institution"]. ")'> "
+                        .$dsatz["email"]. ")'> "
                         .$dsatz["institution"]. "</a>, ".$dsatz["website"]."<br/>";
-                    mysqli_close($con);
+                    mysqli_close($link);
             ?>
         </p>
         <p><span id="idpartner">&nbsp;</span>

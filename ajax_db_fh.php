@@ -2,9 +2,9 @@
     header("Content-Type: text/html; charset=utf-8");
    
     include 'db.inc.php';
-    $con = mysqli_connect("localhost", $benutzer, $passwort);
-    mysqli_select_db($con, $dbname);
-    $query = "SELECT * from fh where institution = " . $_GET["inst"];
+    $link = mysqli_connect("localhost", $benutzer, $passwort) or die("Keine Verbindung zur Datenbank!");
+            mysqli_select_db($link, $dbname) or die("Datenbank nicht gefunden!". mysql_error());
+    $query = "SELECT * from fh where email = " . $_GET["inst"];
     $res = mysqli_query($con, $query);
     $dsatz = mysqli_fetch_assoc($res);
     
@@ -13,5 +13,6 @@
     echo "<pa>" . $dsatz["partner"] . "</pa>\n";
     echo "<em>" . $dsatz["email"] . "</em>\n";
     echo "</daten>\n";
+    
 ?>
 
