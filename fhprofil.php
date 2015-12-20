@@ -38,12 +38,12 @@
                 $res = mysqli_query($con, $query);
                 while ($dsatz = mysqli_fetch_assoc($res))
                         echo "<a href='javascript:anfordern("
-                        .$dsatz["institution"]. ")'>"
-                        .$dsatz["website"]. ", ".$dsatz["city"]."</a><br/>";
+                        .$dsatz["institution"]. ")'> "
+                        .$dsatz["institution"]. ", ".$dsatz["website"]."</a><br/>";
                     mysqli_close($con);
             ?>
         </p>
-        <p><span id="idpartner">$nbsp;</span>
+        <p><span id="idpartner">&nbsp;</span>
             <span id="idemail">&nbsp;</span></p>
         
         
