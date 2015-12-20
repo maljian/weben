@@ -5,19 +5,17 @@
     <!-- Main content -->
     <!-- Copyright T. Theis: Einstieg in PHP 5.6 und MySQL 5.6, Galileo Computing, 2015 -->
         <script type="text/javascript"> 
-            var rq;
-
             function anfordern(institution){
-                rq = new XMLHttpRequest();
-                rq.open("get", "ajax_db_fh.php?institution=" + institution, true);
-                rq.setRequestHeader("ContentType", "application/x-www-form-urlencoded");
-                rq.onreadystatechange = auswerten;
-                rq.send();
+                var req = new XMLHttpRequest();
+                req.open("get", "ajax_db_fh.php?institution=" + institution, true);
+                req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                req.onreadystatechange = auswerten;
+                req.send();
             }
 
             function auswerten(e)
             {
-                if (e.readyState == 4 && e.status == 200){
+                if (e.target.readyState == 4 && e.target.status == 200){
                     var antwort = e.target.responseXML;
                     document.getElementById("idpartner").firstChild.nodeValue = 
                             antwort.getElementByTagName("pa")[0].firstChild.nodeValue;
