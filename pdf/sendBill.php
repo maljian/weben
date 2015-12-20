@@ -37,7 +37,7 @@ $message
 ->setFrom(array($absenderadresse => $absendername))
 ->setTo(array($zieladresse))
 ->setSubject($betreff)
-->attach($attachment)
+->attach ($attachment)
 ->setBody(
 "Sehr geehrte/r ".$_SESSION['gender']." ".$_SESSION['lastname'].
     
