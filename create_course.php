@@ -2,7 +2,19 @@
 session_start();
 include("login/login_pruefen_admin.inc.php");
 include("login/header.php");
-$fh = $_SESSION['Name'];
+$email = $_SESSION['email'];
+            
+    include 'database.php';
+    if ( !empty($_GET['email'])) {
+            $email = $_REQUEST['email'];
+    }
+    
+    $pdo = Database::connect();
+    $pdo->exec('set names utf8');
+    $sql = 'SELECT * FROM fh where email = ?';
+    $q = $pdo->prepare($sql);
+    $q->execute(array($email));
+    $fh = $data['Name'];
 
 // Codeteile von Rainer Telesko aus dem Web-Engineering Modul.
 if (!empty($_POST)) {
