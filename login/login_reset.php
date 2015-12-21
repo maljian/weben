@@ -13,6 +13,9 @@ if (isset($_POST['resetEmail']) AND ($_POST['resetEmail']!=''))
     $link=mysqli_connect("localhost", $benutzer, $passwort) or die("Keine Verbindung zur Datenbank!");
     mysqli_select_db($link, $dbname) or die("Datenbank nicht gefunden!");
     
+    // damit ä,ö,ü und é richtig dargestellt werden! --> auf utf8 stellen
+    mysqli_set_charset($link, 'utf8');
+    
     // Check if emailadress exists in the database
     $query = "SELECT * from user WHERE `Email`='$email'";
     $result = mysqli_query($link, $query);
@@ -27,10 +30,11 @@ if (isset($_POST['resetEmail']) AND ($_POST['resetEmail']!=''))
         } 
         $passwort = $newpwd;
         $betreff = "Neues Passwort vom FH-Portal!";
-        $inhalt = "Sehr geehrte Kundin\nSehr geehrter Kunde\n\nHier Ihr neues Passwort: '$passwort'\n
+        $inhalt = "Sehr geehrte Kundin\nSehr geehrter Kunde\n\nMit dieser Mail erhalten Sie Ihr neues Passwort: '$passwort'\n
         Freundliche Grüsse\nIhr FH-Portal-Team\nwww.dine.bronxx.org";
-        $header = "From: fhnw.weben@gmail.com";
-        @mail($email,$betreff,$inhalt,$header);
+        $header = "From: dine.bronxx@gmail.com";
+        
+        include('../credentials.php');
   
         if(!empty($_POST)){
                 //Quelle: http://wiki.selfhtml.org/wiki/PHP/Anwendung_und_Praxis/Formmailer-Advanced
@@ -38,7 +42,7 @@ if (isset($_POST['resetEmail']) AND ($_POST['resetEmail']!=''))
                 $zieladresse = $email;
 
                 //Absenderadresse
-                $absenderadresse = 'fhnw.weben@gmail.com';
+                $absenderadresse = 'dine.bronxx@gmail.com';
 
                 //Absendername
                 $absendername = "FH Portal";
@@ -93,8 +97,8 @@ if (isset($_POST['resetEmail']) AND ($_POST['resetEmail']!=''))
                                                                                  aber keine Information von logger     */
 
                      $Transport = Swift_SmtpTransport::newInstance('smtp.gmail.com',587,'tls' )     /* 'tls', Ports je nach Server */
-                      ->setUsername("fhnw.weben@gmail.com")
-                      ->setPassword("!Je8Na8Sa9!");
+                      ->setUsername($USER)
+                      ->setPassword($PWD);
 
                      $Transport2 = Swift_SmtpTransport::newInstance('mail.gmail.com',995,'tls' )  /* 'tls' */
                       ->setUsername("...")
