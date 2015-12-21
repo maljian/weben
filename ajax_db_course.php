@@ -14,10 +14,10 @@ $sql1 = "SELECT institution FROM `fh` WHERE `region` = '" . $q3 . "'";
 $res = mysqli_query($con, $sql1);
 $i = 0;
 while($reg = mysqli_fetch_array($res)){
-    $region[$i] = $reg['institution'];
-    $i = $i + 1;
+    $region[$i] = "'". $reg['institution']."'";
+    $i++;
 }
-
+//$sql = "SELECT * FROM `studiengang` WHERE `category` = '" . $q . "' and `degreeprogram` = '".$q2."' `region` IN (" . implode(',', $reg) . ")";
 $sql = "SELECT * FROM `studiengang` WHERE `category` = '" . $q . "' and `degreeprogram` = '".$q2."'";
 $result = mysqli_query($con, $sql);
 
