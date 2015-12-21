@@ -5,7 +5,7 @@ $con = mysqli_connect('localhost', $benutzer, $passwort, $dbname);
 if (!$con) {
     die('Could not connect: ' . mysqli_error($con));
 }
-
+mysqli_set_charset($con, 'utf8');
 //mysqli_select_db($con, "ajax_demo");
 $sql = "SELECT * FROM `fh` WHERE `region` = '" . $q . "'";
 $result = mysqli_query($con, $sql);

@@ -43,21 +43,6 @@
                         <option value="Gesamtschweiz">Gesamtschweiz</option>
                     </select>
                 </div>
-                <div class="col-md-4">
-                    <label for="fachbereich">Fachbereich:</label>
-                    <select class="form-control text-center" id="fachbereich">
-                        <option> --------- Auswahl --------- </option>
-                        <option value="Wirtschaft">Wirtschaft</option>
-                        <option value="Technik">Technik</option>
-                        <option value="Angewandte Psychologie">Angewandte Psychologie</option>
-                        <option value="Architektur, Bau und Geomatik">Architektur, Bau und Geomatik</option>
-                        <option value="Gestaltung und Kunst">Gestaltung und Kunst</option>
-                        <option value="Life Science">Life Science</option>
-                        <option value="Musik">Musik</option>
-                        <option value="P&auml;dagogik">P&auml;dagogik</option>
-                        <option value="Soziale Arbeit">Soziale Arbeit</option>
-                    </select>
-                </div>
                 <br/>
                 <br/>
                 <br/>
