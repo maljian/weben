@@ -3,6 +3,41 @@
     include("login/header.php");
 ?>
     <!-- Main content -->
+    <script>
+        function showChoice(col,deg) {
+            if (col == "") {
+                document.getElementById("txtHint").innerHTML = "";
+                return;
+            } else { 
+                if (window.XMLHttpRequest) {
+                    // code for IE7+, Firefox, Chrome, Opera, Safari
+                    xmlhttp = new XMLHttpRequest();
+                } else {
+                    // code for IE6, IE5
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                xmlhttp.onreadystatechange = function() {
+                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                        document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
+                    }
+                }
+                xmlhttp.open("GET","ajax_db_course.php?q="+col+"&q2="+deg,true);
+                xmlhttp.send();
+            }
+        }
+
+        $(document).ready(function()
+        {
+            $('.course').change(function()
+            {
+                var col=$('#college').val();
+                var deg=$('#degree').val();
+                showChoice(col,deg);
+
+            })
+
+        });
+    </script>
     <div class = "col-md-7" id="mainBody">
         <h2>Suchen und Finden Sie jetzt den passenden Bachelor- , Master- oder Weiterbildungskurs</h2>
         <form role="form">
@@ -22,7 +57,7 @@
                 </div>
                 <div class="col-md-4">
                     <label for="fachbereich">Fachbereich:</label>
-                    <select class="form-control text-center" id="fachbereich">
+                    <select class="course form-control text-center" id="college">
                         <option value=""> --------- Auswahl --------- </option>
                         <option value="Wirtschaft">Wirtschaft</option>
                         <option value="Technik">Technik</option>
@@ -35,7 +70,7 @@
                         <option value="Soziale Arbeit">Soziale Arbeit</option>
                     </select>
                     <label for="studiengang">Studium und Weiterbildung:</label>
-                    <select class="form-control text-center" id="studiengang">
+                    <select class=" course form-control text-center" id="degree">
                         <option value=""> --------- Auswahl --------- </option>
                         <option value="Bachelor">Bachelor</option>
                         <option value="Master">Master</option>
@@ -44,6 +79,10 @@
                 </div>
             </div>
         </form>
+        <div id="txtHint" class="form-group">
+            <br/>
+            <p>Die gefilterten Kurse werden hier angezeigt werden.</p>
+        </div>
     </div>
     
     <?php
