@@ -4,7 +4,9 @@ include("login/login_pruefen_fh.inc.php");
 include("login/header.php");
 ?>
 <!-- Main content -->
-<div class = "col-md-7" id="mainBody">
+<div class = "col-md-10" id="mainBody">
+    <!-- alert window for course edit messages-->
+    <?php include("course/course_alert.php"); ?>
     <h1>Meine Kursliste</h1>
     <p>
         <a href="create_course.php" class="btn btn-success" role="button">Neuen Kurs erfassen</a>
@@ -16,9 +18,10 @@ include("login/header.php");
                 <th>Durchf&uuml;hrungsort</th>
                 <th>Startdatum</th>
                 <th>Enddatum</th>
-                <th>Type</th>
+                <th>Typ</th>
                 <th>Studium und Weiterbildung</th>
                 <th>Fachbereich</th>
+                <th>Bearbeiten</th>
             </tr>
         </thead>
         <tbody>
@@ -41,11 +44,11 @@ include("login/header.php");
                 echo '<td>' . $row['degreeprogram'] . '</td>';
                 echo '<td>' . $row['category'] . '</td>';
                 echo '<td width=250>';
-                echo '<a class="btn btn-default" href="course/read.php?id=' . $row['id'] . '">Read</a>';
+                echo '<a class="btn btn-default" href="course/read.php?id=' . $row['id'] . '">Anzeigen</a>';
                 echo '&nbsp;';
-                echo '<a class="btn btn-success" href="course/update.php?id=' . $row['id'] . '">Update</a>';
+                echo '<a class="btn btn-success" href="course/update.php?id=' . $row['id'] . '">Aktualisieren</a>';
                 echo '&nbsp;';
-                echo '<a class="btn btn-danger" href="course/delete.php?id=' . $row['id'] . '">Delete</a>';
+                echo '<a class="btn btn-danger" href="course/delete.php?id=' . $row['id'] . '">Löschen</a>';
                 echo '</td>';
                 echo '</tr>';
             }
@@ -60,8 +63,6 @@ include("login/header.php");
 </div>
 <?php
 include ("login/login_alert.php");
-include ("Layout/login.html");
-include ("Layout/ads.html");
 include ("Layout/footer.html");
 ?>
 </html>
