@@ -33,7 +33,7 @@
         $q->execute(array("$institution","$partner","$street","$postalcode","$city","$website","$email","$phonenumber","","$region",""));
         
         //generate password and add to db user
-        $chars = ("abcdefghijklmnopqrstuvwxyz1234567890"); 
+        $chars = ("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890/()&%_-"); 
         $newpwd = ''; 
         for ($i = 0; $i < 8; $i++) 
         { 
