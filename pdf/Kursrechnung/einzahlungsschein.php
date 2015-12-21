@@ -3,6 +3,8 @@ session_start();
 require_once('class.einzahlungsschein.php');
 require_once('../../fpdf/fpdf.php');
 
+$number=$_SESSION['number'];
+
 require '../../database.php';
 
 $pdo = Database::connect();
@@ -11,8 +13,7 @@ $pdo = Database::connect();
     $q = $pdo->prepare($sql);
     $q->execute();
     $data = $q->fetch(PDO::FETCH_ASSOC);
-    $id = $data['id'];
-
+    
 if($number == 10){
     $return = floatval(500.00);
 }if($number == 20){
