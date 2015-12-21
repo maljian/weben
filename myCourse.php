@@ -12,7 +12,7 @@ include("login/header.php");
         <a href="create_course.php" class="btn btn-success" role="button">Neuen Kurs erfassen</a>
         <a href="buyCourse.php?id=$id" class="btn btn-success" role="button">Kurse kaufen</a>
     </p>
-    <table class="table table-striped table-bordered">
+    <table class="table table-striped table-bordered sortable">
         <thead>
             <tr>
                 <th>Kurstitel</th>
@@ -22,7 +22,7 @@ include("login/header.php");
                 <th>Typ</th>
                 <th>Studium und Weiterbildung</th>
                 <th>Fachbereich</th>
-                <th>Bearbeiten</th>
+                <th class="sorttable_nosort">Bearbeiten</th>
             </tr>
         </thead>
         <tbody>

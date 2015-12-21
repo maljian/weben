@@ -4,7 +4,7 @@ require_once('class.einzahlungsschein.php');
 require_once('../../fpdf/fpdf.php');
 
 $number=$_SESSION['number'];
-
+$email = $_SESSION['email'];
 require '../../database.php';
 
 $pdo = Database::connect();
