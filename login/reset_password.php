@@ -29,12 +29,18 @@
                     header("Location: ../myfhprofil.php");
                 }
             }
-        $_SESSION['resetMessage']= 'wrong password';
         
+            $_SESSION['resetMessage']= 'successful';
+            header("Location: ../reset.php");
         }
-       header("Location: ../reset.php");
+        else {
+            $_SESSION['resetMessage']= 'wrong password';
+            header("Location: ../reset.php");
+        }
+       
     }
     else {
+    $_SESSION['resetMessage']= 'failed';
     header("Location: ../reset.php");   
     }    
 ?>

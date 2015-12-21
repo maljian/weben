@@ -19,7 +19,7 @@ if (isset($_POST['resetEmail']) AND ($_POST['resetEmail']!=''))
     $emailExists = mysqli_num_rows($result);
     if($emailExists == TRUE){
         //Create new password
-        $chars = ("abcdefghijklmnopqrstuvwxyz1234567890"); 
+        $chars = ("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890/()&%_-"); 
         $newpwd = ''; 
         for ($i = 0; $i < 8; $i++) 
         { 
