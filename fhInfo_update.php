@@ -141,7 +141,7 @@
                               <input type="checkbox" name="college[]" value="Pädagogik" <?php if (stripos($college,'Pädagogik') !== false) echo "checked='checked'"; ?>>Pädagogik
                             </label>
                             <label class="checkbox-inline" for="college">
-                                <input type="checkbox" name="college[]" value="Sozial Arbeit" <?php if (stripos($college,'Soziale Arbeit') !== false) echo "checked='checked'"; ?>>Soziale Arbeit
+                                <input type="checkbox" name="college[]" value="Soziale Arbeit" <?php if (stripos($college,'Soziale Arbeit') !== false) echo "checked='checked'"; ?>>Soziale Arbeit
                             </label>
                             <label class="checkbox" for="college">
                               <input type="checkbox" name="college[]" value="Angewandte Psychologie" <?php if (stripos($college,'Angewandte Psychologie') !== false) echo "checked='checked'"; ?> >Angewandte Psychologie
