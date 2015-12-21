@@ -29,15 +29,16 @@
         <form role="form">
             <div class="form-group">
                 <div class="col-md-4">
-                    <label for="ort">Region:</label>
+                    <label for="region">Region:</label>
                     <select class="form-control text-center" name="region" onchange="showFh(this.value)">
                         <option value=""> --------- Auswahl --------- </option>
                         <option value="Nordwestschweiz">Nordwestschweiz</option>
-                        <option value="Zenralschweiz">Zentralschweiz</option>
+                        <option value="Zentralschweiz">Zentralschweiz</option>
                         <option value="Ostschweiz">Ostschweiz</option>
                         <option value="Westschweiz">Westschweiz</option>
-                        <option value="Raum Z&uuml;rich">Raum Z&uuml;rich</option>
+                        <option value="Raum Zuerich">Raum Z&uuml;rich</option>
                         <option value="Raum Bern">Raum Bern</option>
+                        <option value="Tessin">Tessin</option>
                         <option value="Gesamtschweiz">Gesamtschweiz</option>
                     </select>
                 </div>
@@ -63,7 +64,7 @@
         </form>
         <div id="txtHint" class="form-group">
             <br/>
-            <p>FH info will be listed here.</p>
+            <p>Die gefilterten Fachhochschulen werden hier angezeigt werden.</p>
         </div>
     </div>
     <?php
