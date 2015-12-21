@@ -1,7 +1,5 @@
 <?php
     session_start();
-    include("login/header.php");
-    include("login/login_pruefen_fh.inc.php");
    
     $email = $_SESSION['email'];
     
@@ -47,7 +45,11 @@
             $q = $pdo->prepare($sql);
             $q->execute(array($location, $link, $person, $tel, $college, $email));
             Database::disconnect();
+            
+            $_SESSION['resetFhinfoMessage']='successful';
+            header("Location: myfhprofil.php");
         }
+        
     } else {
         $pdo = Database::connect();
         $pdo->exec('set names utf8');
@@ -65,6 +67,8 @@
             
         Database::disconnect();
     }
+    include("login/header.php");
+    include("login/login_pruefen_fh.inc.php"); 
 ?>
 <!-- Main content -->
     <div class = "col-md-7" id="mainBody">
