@@ -3,30 +3,30 @@
     include("login/header.php");
 ?>
     <!-- Main content -->
+    <!-- Source based on http://www.w3schools.com/php/php_ajax_database.asp -->
     <script>
         function showFh(str) {
-          if (str=="") {
-            document.getElementById("txtHint").innerHTML="";
-            return;
+            if (str=="") {
+              document.getElementById("txtHint").innerHTML="";
+              return;
           }
-          if (window.XMLHttpRequest) {
-            // code for IE7+, Firefox, Chrome, Opera, Safari
-            xmlhttp=new XMLHttpRequest();
-          } else { // code for IE6, IE5
-            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-          }
-          xmlhttp.onreadystatechange=function() {
-            if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-              document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
-            }
-          }
+                if (window.XMLHttpRequest) {
+                  // code for IE7+, Firefox, Chrome, Opera, Safari
+                  xmlhttp=new XMLHttpRequest();
+                } else { // code for IE6, IE5
+                  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                xmlhttp.onreadystatechange=function() {
+                    if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+                      document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
+                    }
+                }
           xmlhttp.open("GET","ajax_db_fh.php?q="+str,true);
-          xmlhttp.send();
-        }
+                xmlhttp.send();
+            }
     </script>
     <div class = "col-md-7" id="mainBody">
         <h1>FHNW</h1> 
-        </br>
         <form role="form">
             <div class="form-group">
                 <div class="col-md-4">
@@ -47,15 +47,15 @@
                     <label for="fachbereich">Fachbereich:</label>
                     <select class="form-control text-center" id="fachbereich">
                         <option> --------- Auswahl --------- </option>
-                        <option>Wirtschaft</option>
-                        <option>Technik</option>
-                        <option>Angewandte Psychologie</option>
-                        <option>Architektur, Bau und Geomatik</option>
-                        <option>Gestaltung und Kunst</option>
-                        <option>Life Science</option>
-                        <option>Musik</option>
-                        <option>P&auml;dagogik</option>
-                        <option>Soziale Arbeit</option>
+                        <option value="Wirtschaft">Wirtschaft</option>
+                        <option value="Technik">Technik</option>
+                        <option value="Angewandte Psychologie">Angewandte Psychologie</option>
+                        <option value="Architektur, Bau und Geomatik">Architektur, Bau und Geomatik</option>
+                        <option value="Gestaltung und Kunst">Gestaltung und Kunst</option>
+                        <option value="Life Science">Life Science</option>
+                        <option value="Musik">Musik</option>
+                        <option value="P&auml;dagogik">P&auml;dagogik</option>
+                        <option value="Soziale Arbeit">Soziale Arbeit</option>
                     </select>
                 </div>
                 <br/>
