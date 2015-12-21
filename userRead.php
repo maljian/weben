@@ -3,7 +3,7 @@ session_start();
 include("login/header.php");
 
 require 'database.php';
-$id = null;
+$id = 0;
 if (!empty($_GET['id'])) {
     $id = $_REQUEST['id'];
 }
