@@ -272,8 +272,19 @@ include ("Layout/footer.html");
                             message: 'Bitte geben Sie die Beschreibung der Veranstaltung an.'
                         },
                         stringLength: {
-                            max: 1000,
-                            message: 'Die Kursbeschreibung darf maximal 1000 Zeichen lang sein!'
+                            max: 2000,
+                            message: 'Die Kursbeschreibung darf maximal 2000 Zeichen lang sein!'
+                        }
+                    }
+                }
+                result: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Bitte geben Sie das Resultat der Veranstaltung an.'
+                        },
+                        stringLength: {
+                            max: 2000,
+                            message: 'Das Resultat darf maximal 2000 Zeichen lang sein!'
                         }
                     }
                 }
