@@ -10,4 +10,3 @@ if (isset($_SESSION['access']) and $_SESSION['access']== "denied")
         unset($_SESSION['access']);
         } 
 ?>
-

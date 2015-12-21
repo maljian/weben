@@ -1,7 +1,5 @@
 <?php
 session_start();
-include("../login/header1.php");
-include("../login/login_pruefen_fh1.inc.php");
 
 require '../database.php';
 
@@ -27,14 +25,18 @@ if (!empty($_POST)) {
 
     $pdo = Database::connect();
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $sql = "UPDATE studiengang  set name = ?, location =?, start =?, end =?, cost =?, text =?, result =?, contact_email =?, type =?, degreeprogram =?, category =? WHERE id = ?";
-
+    $sql = "UPDATE studiengang SET name = ?, location =?, start =?, end =?, cost =?, text =?, result =?, contact_email =?, type =?, degreeprogram =?, category =? WHERE id = ?";
+            
     // damit ä,ö,ü und é richtig dargestellt werden! --> auf utf8 stellen
     $pdo->exec('set names utf8');
 
     $q = $pdo->prepare($sql);
-    $q->execute(array($name, $location, $cost, $text, $contact, $type, $studigang, $fachbereich, $id));
+    $q->execute(array($title, $location, $start, $end, $cost, $text, $result, $contact, $type, $studigang, $fachbereich, $id));
     Database::disconnect();
+    
+    //forward to myCourse Page
+    $_SESSION['changeMessage']='updated';
+    header("Location: ../myCourse.php");
 } else {
     $pdo = Database::connect();
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -59,6 +61,8 @@ if (!empty($_POST)) {
     $fachbereich = $data['category'];
     Database::disconnect();
 }
+include("../login/header1.php");
+include("../login/login_pruefen_fh1.inc.php");
 ?>
 <!-- Main content -->
 <div class = "col-md-7" id="mainBody">

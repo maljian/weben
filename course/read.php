@@ -35,55 +35,51 @@ if (null != $id) {
         <table>
             <tbody>
                 <tr>
-                    <th>Kurstitel:</th>
+                    <th>Kurstitel: </th>
                     <td><?php echo $data['name']; ?></td>
                 </tr>
                 <tr>
-                    <th>Fachbereich:</th>
+                    <th>Fachbereich: </th>
                     <td><?php echo $data['category']; ?></td>
                 </tr>
                 <tr>
-                    <th>Studiengang:</th>
+                    <th>Studiengang: </th>
                     <td><?php echo $data['degreeprogram']; ?></td>
                 </tr>
                 <tr>
-                    <th>Studientyp:</th>
+                    <th>Studientyp: </th>
                     <td><?php echo $data['type']; ?></td>
                 </tr>
                 <tr>
-                    <th>Durchf&uuml;rungsort:</th>
+                    <th>Durchf&uuml;rungsort: </th>
                     <td><?php echo $data['location']; ?></td>
                 </tr>
                 <tr>
-                    <th>Durchf&uuml;rungszeit:</th>
+                    <th>Durchf&uuml;rungszeit: </th>
                     <td><?php echo $data['start']; ?> bis <?php echo $data['end']; ?></td>
                 </tr>
                 <tr>
-                    <th>Kosten:</th>
+                    <th>Kosten: </th>
                     <td><?php echo $data['cost']; ?></td>
                 </tr>
                 <tr>
-                    <th>Kontakt E-Mail:</th>
+                    <th>Kontakt E-Mail: </th>
                     <td><?php echo $data['contact_email']; ?></td>
                 </tr>
                 <tr>
-                    <th>Beschreibung:</th>
+                    <th>Beschreibung: </th>
                     <td><?php echo $data['text']; ?></td>
                 </tr>
                 <tr>
-                    <th>Resultat:</th>
+                    <th>Resultat: </th>
                     <td><?php echo $data['result']; ?></td>
                 </tr>
-                <tr>
-                    <th>
-            <div class="form-actions">
-                <a class="btn btn-default" href="../myCourse.php">Back</a>
-            </div>
-            </th>
-            <td></td>
-            </tr>
             </tbody>
         </table>
+        </br>
+        <div class="form-actions">
+                <a class="btn btn-default" href="../myCourse.php">Zurück</a>
+            </div>
     </div>
 </div>
 <?php
