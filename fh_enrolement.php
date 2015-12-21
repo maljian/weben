@@ -85,7 +85,7 @@
         <div class="form-group">
             <label class="col-sm-2"></label>
             <div class="col-sm-6">
-                <button type="submit" class="btn btn-default">Anmeldung absenden</button>
+                <button type="submit" class="btn btn-success">Anmeldung absenden</button>
             </div>      
         </div>
         
