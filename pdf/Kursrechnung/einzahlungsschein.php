@@ -8,7 +8,7 @@ $id = null;
 if (!empty($_GET['id'])) {
 $id = $_REQUEST['id'];
 }
-echo $id;
+
 if (null == $id) {
 header("Location: myCourse.php");
 } else {
@@ -53,7 +53,7 @@ $ezs->setPayerData($data['institution'], $data['street'], $data['postalcode'] . 
 $ezs->setPaymentData($amount, $ref);
 $ezs->createEinzahlungsschein(false, true);
 
-$pdf->Output("pdf/Kursrechnung/Kursrechnung_".$ref.".pdf", 'F');
+$pdf->Output("pdf/Kursrechnung/Kursrechnung_".$ref.".pdf", 'I');
 
 $_SESSION['refn']=$ref;
 $_SESSION['partner']=$data['partner'];

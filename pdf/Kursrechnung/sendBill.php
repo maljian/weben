@@ -1,6 +1,6 @@
 <?php
 session_start();
-echo 'hallo '. $_SESSION['email'].' geht nicht';
+
 if (!empty($_SESSION['refn'])) {
    
     include('credentials.php');
@@ -99,7 +99,7 @@ Ihr FH Portal");
 
         if ($result == 0) {
             die($_SESSION['contactMessage']='failed');
-            echo $e;
+            
         }
   
         header("Location: $urlDankeSeite");
