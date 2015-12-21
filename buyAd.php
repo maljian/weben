@@ -397,14 +397,15 @@ include ("Layout/footer.html");
                                 }
                             }
                         },
-                        fileName: {
+                        image: {
                             validators: {
                                 notEmpty: {
                                     message: 'Bitte laden Sie ein Bild für die Werbeanzeige hoch.'
                                 },
                                 file: {
-                                    maxSize: 52 * 1024,
-                                    message: 'Das Bild darf maximal eine Grösse von 52KB haben!'
+                                    type: 'image/jpeg,image/png',
+                                    maxSize: 53248, // 52 * 1024
+                                    message: 'Das Bild darf maximal eine Grösse von 52KB haben und muss ein .jpeg oder .png File sein!'
                                 }
                             }
                         }
