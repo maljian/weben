@@ -30,8 +30,10 @@
         <?php include("success_reset.php"); ?>
         <p>
             <a href="fhInfo_update.php?email=" class="btn btn-success" role="button">Infos bearbeiten</a>
+            <a href="reset.php" class="btn btn-success" role="button">Passwort ändern</a>
         </p>
-        <div class="col-sm-5 table-responsive">
+        </br>
+        <div class="col-sm-12 table-responsive">
             <table>
                 <tbody>
                     <tr>
@@ -65,7 +67,6 @@
                 </tbody>
             </table>
         </div>
-        <p><a href="reset.php">Passwort ändern</a></p>
     </div>
 <?php
     include ("login/login_alert.php");
