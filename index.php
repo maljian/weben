@@ -4,7 +4,7 @@
 ?>
     <!-- Main content -->
     <script>
-        function showChoice(col,deg,reg) {
+        function showChoice(reg,col,deg) {
             if (col == "") {
                 document.getElementById("txtHint").innerHTML = "";
                 return;
@@ -21,7 +21,7 @@
                         document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
                     }
                 }
-                xmlhttp.open("GET","ajax_db_course.php?q="+col+"&q2="+deg+"&q3="+reg,true);
+                xmlhttp.open("GET","ajax_db_course.php?reg="+reg+"&col="+col+"&deg="+deg,true);
                 xmlhttp.send();
             }
         }
@@ -33,7 +33,7 @@
                 var col=$('#college').val();
                 var deg=$('#degree').val();
                 var reg=$('#region').val();
-                showChoice(col,deg,reg);
+                showChoice(reg,col,deg);
 
             })
 
@@ -46,7 +46,7 @@
                 <div class="col-md-4">
                     <label for="ort">Region:</label>
                     <select class=" course form-control text-center" id="region">
-                        <option value=""> --------- Auswahl --------- </option>
+                        <option value="0"> --------- Auswahl --------- </option>
                         <option value="Nordwestschweiz">Nordwestschweiz</option>
                         <option value="Zenralschweiz">Zentralschweiz</option>
                         <option value="Ostschweiz">Ostschweiz</option>
@@ -59,7 +59,7 @@
                 <div class="col-md-4">
                     <label for="fachbereich">Fachbereich:</label>
                     <select class="course form-control text-center" id="college">
-                        <option value=""> --------- Auswahl --------- </option>
+                        <option value="0"> --------- Auswahl --------- </option>
                         <option value="Wirtschaft">Wirtschaft</option>
                         <option value="Technik">Technik</option>
                         <option value="Angewandte Psychologie">Angewandte Psychologie</option>
@@ -74,7 +74,7 @@
                 <div class="col-md-4">
                     <label for="studiengang">Studium und Weiterbildung:</label>
                     <select class=" course form-control text-center" id="degree">
-                        <option value=""> --------- Auswahl --------- </option>
+                        <option value="0"> --------- Auswahl --------- </option>
                         <option value="Bachelor">Bachelor</option>
                         <option value="Master">Master</option>
                         <option value="Weiterbildung">Weiterbildung</option>

@@ -1,7 +1,7 @@
 <?php
-$q = $_GET['q'];
-$q2 = $_GET['q2'];
-$q3 = $_GET['q3'];
+$reg = $_GET['reg'];
+$col = $_GET['col'];
+$deg = $_GET['deg'];
 include 'db.inc.php';
 $con = mysqli_connect('localhost', $benutzer, $passwort, $dbname);
 if (!$con) {
@@ -10,16 +10,25 @@ if (!$con) {
 mysqli_set_charset($con, 'utf8');
 //mysqli_select_db($con, "ajax_demo");
 
-$sql1 = "SELECT institution FROM `fh` WHERE `region` = '" . $q3 . "'";
+$sql1 = "SELECT institution FROM `fh` WHERE `region` = '" . $reg . "'";
 $res = mysqli_query($con, $sql1);
 $i = 0;
-while($reg = mysqli_fetch_array($res)){
-    $region[$i] = "'". $reg['institution']."'";
+while($regi = mysqli_fetch_array($res)){
+    $region[$i] = "'". $regi['institution']."'";
     $i++;
 }
+$result = null;
 //$sql = "SELECT * FROM `studiengang` WHERE `category` = '" . $q . "' and `degreeprogram` = '".$q2."' `region` IN (" . implode(',', $reg) . ")";
-$sql = "SELECT * FROM `studiengang` WHERE `category` = '" . $q . "' and `degreeprogram` = '".$q2."'";
-$result = mysqli_query($con, $sql);
+if(($col != '0') && ($deg !='0')){
+    $sql = "SELECT * FROM `studiengang` WHERE `category` = '" . $col . "' and `degreeprogram` = '".$deg."'";
+    $result = mysqli_query($con, $sql);
+}else if(($col == '0') && ($deg !='0')){
+    $sql = "SELECT * FROM `studiengang` WHERE `degreeprogram` = '".$deg."'";
+    $result = mysqli_query($con, $sql);
+}else if (($col != '0') && ($deg =='0')){
+    $sql = "SELECT * FROM `studiengang` WHERE `category` = '" . $col . "'";
+    $result = mysqli_query($con, $sql);
+}
 
 echo "<table class='table table-striped table-bordered'>
                 <thead>
