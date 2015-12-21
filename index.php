@@ -4,7 +4,7 @@
 ?>
     <!-- Main content -->
     <script>
-        function showChoice(col,deg) {
+        function showChoice(col,deg,reg) {
             if (col == "") {
                 document.getElementById("txtHint").innerHTML = "";
                 return;
@@ -21,7 +21,7 @@
                         document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
                     }
                 }
-                xmlhttp.open("GET","ajax_db_course.php?q="+col+"&q2="+deg,true);
+                xmlhttp.open("GET","ajax_db_course.php?q="+col+"&q2="+deg+"&q3="+reg,true);
                 xmlhttp.send();
             }
         }
@@ -32,7 +32,8 @@
             {
                 var col=$('#college').val();
                 var deg=$('#degree').val();
-                showChoice(col,deg);
+                var reg=$('#region').val();
+                showChoice(col,deg,reg);
 
             })
 
@@ -44,7 +45,7 @@
             <div class="form-group">
                 <div class="col-md-4">
                     <label for="ort">Region:</label>
-                    <select class="form-control text-center" name="region">
+                    <select class=" course form-control text-center" id="region">
                         <option value=""> --------- Auswahl --------- </option>
                         <option value="Nordwestschweiz">Nordwestschweiz</option>
                         <option value="Zenralschweiz">Zentralschweiz</option>
@@ -69,6 +70,8 @@
                         <option value="P&auml;dagogik">P&auml;dagogik</option>
                         <option value="Soziale Arbeit">Soziale Arbeit</option>
                     </select>
+                </div>
+                <div class="col-md-4">
                     <label for="studiengang">Studium und Weiterbildung:</label>
                     <select class=" course form-control text-center" id="degree">
                         <option value=""> --------- Auswahl --------- </option>
@@ -76,6 +79,7 @@
                         <option value="Master">Master</option>
                         <option value="Weiterbildung">Weiterbildung</option>
                     </select>
+                    <br/>
                 </div>
             </div>
         </form>
