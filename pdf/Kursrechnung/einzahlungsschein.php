@@ -3,7 +3,7 @@ session_start();
 require_once('class.einzahlungsschein.php');
 require_once('../../fpdf/fpdf.php');
 
-$number=$_SESSION['number'];
+$number=$_POST['number'];
 $email = $_SESSION['email'];
 require '../../database.php';
 
