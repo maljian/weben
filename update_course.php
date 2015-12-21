@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require '../database.php';
+require 'database.php';
 
 $id = null;
 if (!empty($_GET['id'])) {
@@ -36,7 +36,7 @@ if (!empty($_POST)) {
     
     //forward to myCourse Page
     $_SESSION['changeMessage']='updated';
-    header("Location: ../myCourse.php");
+    header("Location: myCourse.php");
 } else {
     $pdo = Database::connect();
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -61,8 +61,8 @@ if (!empty($_POST)) {
     $fachbereich = $data['category'];
     Database::disconnect();
 }
-include("../login/header1.php");
-include("../login/login_pruefen_fh1.inc.php");
+include("login/header.php");
+include("login/login_pruefen_fh.inc.php");
 ?>
 <!-- Main content -->
 <div class = "col-md-7" id="mainBody">
@@ -156,16 +156,15 @@ include("../login/login_pruefen_fh1.inc.php");
             <label class="col-sm-2"></label>
             <div class="col-sm-9">
                 <button type="submit" class="btn btn-success" value="send">Ändern</button>
-                <a class="btn btn-default" href="../myCourse.php">Abbrechen</a>
+                <a class="btn btn-default" href="myCourse.php">Abbrechen</a>
             </div>
         </div>
     </form>
 </div>
 <?php
-include ("../login/login_alert.php");
-include ("../Layout/login.html");
-include ("../Layout/ads.html");
-include ("../Layout/footer.html");
+include ("login/login_alert.php");
+include ("Layout/login.html");
+include ("Layout/footer.html");
 ?>
 </html>
 <!--Codeteile von Rainer Telesko aus dem Web-Engineering Modul.-->

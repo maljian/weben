@@ -1,9 +1,9 @@
 <?php
 session_start();
-include("../login/header1.php");
-include("../login/login_pruefen_fh1.inc.php");
+include("login/header.php");
+include("login/login_pruefen_fh.inc.php");
 
-require '../database.php';
+require 'database.php';
 $id = null;
 if (!empty($_GET['id'])) {
     $id = $_REQUEST['id'];
@@ -78,14 +78,13 @@ if (null != $id) {
         </table>
         </br>
         <div class="form-actions">
-                <a class="btn btn-default" href="../myCourse.php">Zurück</a>
+                <a class="btn btn-default" href="myCourse.php">Zurück</a>
             </div>
     </div>
 </div>
 <?php
-include ("../login/login_alert.php");
-include ("../Layout/login.html");
-include ("../Layout/ads.html");
-include ("../Layout/footer.html");
+include ("login/login_alert.php");
+include ("Layout/login.html");
+include ("Layout/footer.html");
 ?>
 </html>

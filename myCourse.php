@@ -45,11 +45,11 @@ include("login/header.php");
                 echo '<td>' . $row['degreeprogram'] . '</td>';
                 echo '<td>' . $row['category'] . '</td>';
                 echo '<td width=250>';
-                echo '<a class="btn btn-default" href="course/read.php?id=' . $row['id'] . '">Anzeigen</a>';
+                echo '<a class="btn btn-default" href="read_course.php?id=' . $row['id'] . '">Anzeigen</a>';
                 echo '&nbsp;';
-                echo '<a class="btn btn-success" href="course/update.php?id=' . $row['id'] . '">Aktualisieren</a>';
+                echo '<a class="btn btn-success" href="update_course.php?id=' . $row['id'] . '">Aktualisieren</a>';
                 echo '&nbsp;';
-                echo '<a class="btn btn-danger" href="course/delete.php?id=' . $row['id'] . '">Löschen</a>';
+                echo '<a class="btn btn-danger" href="delete_course.php?id=' . $row['id'] . '">Löschen</a>';
                 echo '</td>';
                 echo '</tr>';
             }
