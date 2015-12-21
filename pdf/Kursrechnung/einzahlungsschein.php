@@ -12,6 +12,11 @@ require '../../database.php';
 
 $pdo = Database::connect();
     $pdo->exec('set names utf8');
+    //add bought Courses to boughtCourses in user DB
+    $sql= "UPDATE user SET boughtCourses = boughtCourses + $number WHERE Email = ?";
+    $q = $pdo->prepare($sql);
+    $q->execute(array($email));
+    
     $sql = "SELECT * FROM fh where Email = '$email'";
     $q = $pdo->prepare($sql);
     $q->execute();
