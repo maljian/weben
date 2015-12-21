@@ -8,6 +8,7 @@
     <?php include("success_enrolement.php"); ?>
     
     <h1>FH-Anmeldung</h1>
+    </br>
     <form id="enrolementForm" class="form-horizontal" role="form" action="admin/fh_enrolement_save.php" method="POST">
         <div class="form-group">
             <label class="control-label col-sm-2" for="institution">Institution:</label>

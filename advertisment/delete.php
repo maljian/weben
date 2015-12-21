@@ -21,21 +21,12 @@
         $q = $pdo->prepare($sql);
         $q->execute(array($id));
         Database::disconnect();
-        header("Location: ../addAd.php");
     }
-   
-    if (isset($_SESSION['eingeloggt'])){
-     if($_SESSION['eingeloggt']==true){
-            include ("../Layout/nav-loggedin.html");
-        }
-    }
-    else{
-        include ("../Layout/nav.html");
-    }
+
 ?>
     <!-- Main content -->
     <div class = "col-md-7" id="mainBody">
-        <h3>Kurslöschen</h3>
+        <h3>Werbeanfrage löschen</h3>
         <form class="form-horizontal" action="delete.php" method="post">
             <input type="hidden" name="id" value="<?php echo $id; ?>"/>
             <p class="alert alert-error">Möchten Sie die Werbeanfrage löschen?</p>

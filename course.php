@@ -1,17 +1,51 @@
 <?php
-    session_start();
-    include("login/header.php");
+session_start();
+include("login/header.php");
 ?>
-        <!-- Main content -->
-        <div class = "col-md-7">
-            <h1>Kurs</h1>
-            <p>Tabelle mit allen Kursen einfügen. Diese soll gefiltert werden können und sich somit automatisch updaten.
-                <br/> zusätzlich soll per klick auf den Kurstitel eine Detailansicht geöffnet werden.</p>
-        </div>
-    <?php
-        include("login/login_alert.php");
-        include ("Layout/login.html");
-        include ("Layout/ads.html");
-        include ("Layout/footer.html");
-    ?>
+<!-- Main content -->
+<div class="col-md-10" id="mainBody">
+    <h1>Angebotene Kurse</h1>
+    </br>
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Kurstitel</th>
+                <th>Studienform</th>
+                <th>Startdatum</th>
+                <th>Enddatum</th>
+                <th>Fachhochschule</th>
+                <th>Ort</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            include 'database.php';
+                    $pdo = Database::connect();
+                    $sql = 'SELECT * FROM studiengang ORDER BY id DESC';
+                    
+            // damit ä,ö,ü und é richtig dargestellt werden! --> auf utf8 stellen
+            $pdo->exec('set names utf8');
+            
+           // PDO-Query (kein Prepared Statement)
+                    foreach ($pdo->query($sql) as $row) {
+                echo '<tr>';
+                echo '<td>' . $row['name'] . '</td>';
+                echo '<td>' . $row['type'] . '</td>';
+                echo '<td>' . $row['start'] . '</td>';
+                echo '<td>' . $row['end'] . '</td>';
+                echo '<td>' . $row['fh'] . '</td>';
+                echo '<td>' . $row['location'] . '</td>';
+                echo '</td>';
+                echo '</tr>';
+            }
+            Database::disconnect();
+            ?> 
+        </tbody>
+    </table>
+</div>
+<?php
+include("login/login_alert.php");
+include ("Layout/login.html");
+include ("Layout/footer.html");
+?>
 </html>

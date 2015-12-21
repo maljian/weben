@@ -20,8 +20,7 @@
         $sql = "DELETE FROM studiengang  WHERE id = ?";
         $q = $pdo->prepare($sql);
         $q->execute(array($id));
-        Database::disconnect();
-        
+        Database::disconnect(); 
     }
     
 ?>
@@ -32,15 +31,11 @@
             <input type="hidden" name="id" value="<?php echo $id; ?>"/>
             <p class="alert alert-error">Möchten Sie wirklich den Kurs löschen ?</p>
             <div class="form-actions">
-                <button type="submit" class="btn btn-danger">Yes</button>
-                <a class="btn btn-default" href="../myCourse.php">No</a>
+                <button type="submit" class="btn btn-danger">Ja</button>
+                <a class="btn btn-default" href="../myCourse.php">Nein</a>
             </div>
         </form>
     </div>
     <?php
-        include ("../login/login_alert.php");
-        include ("../Layout/login.html");
-        include ("../Layout/ads.html");
+        include ("../login/login_error.php");
         include ("../Layout/footer.html");
-    ?>
-</html>

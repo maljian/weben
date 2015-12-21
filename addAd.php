@@ -4,9 +4,9 @@ include("login/login_pruefen_fh.inc.php");
 include("login/header.php");
 ?>
 <!-- Main content -->
-<div class = "col-md-7" id="mainBody">
+<div class = "col-md-10" id="mainBody">
     <h1>Werbeanfragen</h1>
-    
+    </br>
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
@@ -38,7 +38,7 @@ include("login/header.php");
                 echo '<td>' . $row['start'] . '</td>';
                 echo '<td>' . $row['duration'] . '</td>';
                 echo '<td width=250>';
-                echo '<a class="btn btn-default btn-success" href="pdf/einzahlungsschein.php?id=' . $row['id'] . '">Bestätigen</a> ';
+                echo '<a class="btn btn-default btn-success" href="pdf/Werbung_Rechnung/einzahlungsschein.php?id=' . $row['id'] . '">Bestätigen</a> ';
                 echo '<a class="btn btn-default btn-danger" href="advertisment/delete.php?id=' . $row['id'] . '">Löschen</a>';
                 echo '</td>';
                 echo '</tr>';
@@ -50,7 +50,7 @@ include("login/header.php");
 </div>
 <?php
 include ("login/login_alert.php");
-include ("Layout/login.html");
+//include ("Layout/login.html");
 include ("Layout/footer.html");
 ?>
 </html>

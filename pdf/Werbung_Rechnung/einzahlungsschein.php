@@ -1,16 +1,16 @@
 <?php
 session_start();
 require_once('class.einzahlungsschein.php');
-require_once('../fpdf/fpdf.php');
+require_once('../../fpdf/fpdf.php');
 
-require '../database.php';
+require '../../database.php';
 $id = null;
 if (!empty($_GET['id'])) {
 $id = $_REQUEST['id'];
 }
 
 if (null == $id) {
-header("Location: ../addAd.php");
+header("Location: ../../addAd.php");
 } else {
 $pdo = Database::connect();
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

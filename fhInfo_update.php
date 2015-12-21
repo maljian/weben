@@ -21,13 +21,7 @@
         $tel = $_POST['tel'];
         $person = $_POST['person'];
         $col = $_POST['college'];
-        $fache = null;
-        foreach($col as $fach) {
-            $fache = $fache." ";
-            echo $fach;
-        }
-        $college = null;
-        $college = $fache;
+        $college = implode(', ',$col);
 
         // validate input
         $valid = true;
@@ -43,11 +37,11 @@
             $collegeError = 'Bitte mindestens einen Fachbereich auswählen.';
             $valid = false;
         }
-        echo $valid;
 
         // update data
         if ($valid) {    
             $pdo = Database::connect();
+            $pdo->exec('set names utf8');
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $sql = "UPDATE fh set `site` = ?, `website` = ?, `partner` = ?, `phonenumber` = ?, `college` = ? WHERE `email` = ?";
             $q = $pdo->prepare($sql);
@@ -56,6 +50,7 @@
         }
     } else {
         $pdo = Database::connect();
+        $pdo->exec('set names utf8');
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $sql = "SELECT * FROM fh where email = ?";
         $q = $pdo->prepare($sql);
@@ -176,72 +171,3 @@
     include ("Layout/footer.html");
 ?>
 </html>
-<!--Codeteile von Rainer Telesko aus dem Web-Engineering Modul.-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>  
-        <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
-       <!-- <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>  -->
-        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/css/bootstrapValidator.min.css"/>
-        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
-        <script id="source" language="javascript" type="text/javascript">
-            $(document).ready(function () {
-                $('#fhForm').bootstrapValidator({
-                    // Source: http://formvalidation.io/examples/showing-message-custom-area/
-                    err: {
-                        container: function($field, validator) {
-                        // Look at the markup
-                        //  <div class="col-xs-4">
-                        //      <field>
-                        //  </div>
-                        //  <div class="col-xs-5 messageContainer"></div>
-                        return $field.parent().next('.messageContainer');
-                        }
-                    },
-                    feedbackIcons: {
-                        valid: 'glyphicon glyphicon-ok',
-                        invalid: 'glyphicon glyphicon-remove',
-                        validating: 'glyphicon glyphicon-refresh'
-                    },
-                    fields: {
-                        location: {
-                            validators: {
-                                notEmpty: {
-                                    message: 'Bitte geben Sie mindestens einen Standort an.'
-                                },
-                                regexp: {
-                                    message: 'Bitte trennen Sie die Standorte mit Komma und Leerschlag.'
-                                    regexp: '[\[a-zA-Z]\s]+'
-                                }
-                            }
-                        },
-                        link: {
-                            validators: {
-                                notEmpty: {
-                                    message: 'Eine Webseite muss zwingend angegeben werden.'
-                                },
-                                uri: {
-                                    message: 'Sie haben keine gültige URL eingegeben. Bitte stellen Sie zwingend http:// oder https:// vor das www!'
-                                },
-                            }
-                        },
-                        person: {
-                            validators: {
-                                notEmpty: {
-                                    message: 'Ein Ansprechpartner muss zwingend angegeben werden.'
-                                }
-                            }
-                        },
-                        tel: {
-                            validators: {
-                                notEmpty: {
-                                    message: 'Eine Telefonnummer muss zwingend angegeben werden.'
-                                },
-                                regexp: {
-                                    message: 'Die Telefonnummer darf nur Ziffern, Leerschläge, -, (, ), + und . enthalten.',
-                                    regexp: /^[0-9\s\-()+\.]+$/
-                                }
-                            }
-                        } 
-                    }
-                });
-            }); 
-</script>

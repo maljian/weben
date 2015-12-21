@@ -25,7 +25,8 @@
         }
     </script>
     <div class = "col-md-7" id="mainBody">
-        <h1>FHNW</h1>      
+        <h1>FHNW</h1> 
+        </br>
         <form role="form">
             <div class="form-group">
                 <div class="col-md-4">

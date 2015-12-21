@@ -55,7 +55,7 @@ if (!empty($_POST)) {
     $betreff = 'Werbefläche FH Portal mieten';
 
 //Weiterleitung nach Absenden
-    $urlDankeSeite = '';
+    $urlDankeSeite = 'buyAd.php';
 
 // Welches Zeichen soll zwischen dem Feldnamen und dem angegebenen Wert stehen
     $trenner = ":\t"; // Doppelpunkt und Tabulator
@@ -149,7 +149,6 @@ include("login/header.php");
 <!-- Main content -->
 <div class = "col-md-7" id="mainBody">
     <h1>Werbefläche mieten</h1>
-    <br/>
     <h2>Preisliste</h2>
     <br/>
     <table class="table table-striped table-bordered" style="width: 50%">
@@ -266,7 +265,7 @@ include("login/header.php");
             <label class="col-sm-2"></label>
             <div class="col-sm-9">
                 <button type="submit" class="btn btn-default" value="send">Senden</button>
-                <button type="reset" class="btn btn-default" value="reset">Abbrechen</button>
+                <a class="btn btn-default" href="../myCourse.php">Abbrechen</a>
             </div>      
         </div>
     </form>
