@@ -85,7 +85,7 @@
         </form>
         <div id="txtHint" class="form-group">
             <br/>
-            <p>Die gefilterten Kurse werden hier angezeigt werden.</p>
+            <p>Die gefilterten Kurse werden Ihnen hier angezeigt.</p>
         </div>
     </div>
     

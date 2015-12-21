@@ -50,7 +50,7 @@
         </form>
         <div id="txtHint" class="form-group">
             <br/>
-            <p>Die gefilterten Fachhochschulen werden hier angezeigt werden.</p>
+            <p>Die gefilterten Fachhochschulen werden Ihnen hier angezeigt.</p>
         </div>
     </div>
     <?php
