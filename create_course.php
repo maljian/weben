@@ -45,10 +45,12 @@ if (!empty($_POST)) {
         die('Could not connect: ' . mysql_error());
     }
     mysqli_close($link);
+    $_SESSION['createCourseMessage'] = 'successful';
 }
 ?>
 <!-- Main content -->
 <div class = "col-md-7" id="mainBody">
+    <?php include("alerts/create_course_alert.php"); ?>
     <h2>Neuen Kurs erfassen</h2>
     <form class="form-horizontal" id="createForm" role="form" action="" method="post" enctype="multipart/form-data">
         <div class="form-group">
