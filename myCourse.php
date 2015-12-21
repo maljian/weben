@@ -28,12 +28,18 @@ include("login/header.php");
         <tbody>
             <?php
             include 'database.php';
+            $email = $_SESSION['email'];
             $pdo = Database::connect();
-            $sql = 'SELECT * FROM studiengang ORDER BY id DESC';
-            
             // damit ä,ö,ü und é richtig dargestellt werden! --> auf utf8 stellen
-            $pdo->exec('set names utf8');
+            $pdo->exec('set names utf8');  
             
+            $sql = 'SELECT * FROM fh where email = ?';
+            $q = $pdo->prepare($sql);
+            $q->execute(array($email));
+            $data = $q->fetch(PDO::FETCH_ASSOC);
+            $fh = $data['institution'];
+            
+            $sql ='SELECT * FROM studiengang WHERE `fh`="'.$fh.'"';
             // PDO-Query (kein Prepared Statement)
             foreach ($pdo->query($sql) as $row) {
                 echo '<tr>';
