@@ -18,7 +18,6 @@ if (!empty($_POST)) {
     $studigang = $_POST['studigang'];
     $fachbereich = $_POST['fachbereich'];
 
-
     include "db.inc.php";
     $link = mysqli_connect("localhost", $benutzer, $passwort) or die("Keine Verbindung zur Datenbank!");
     mysqli_select_db($link, $dbname) or die("Datenbank nicht gefunden!" . mysql_error());
@@ -27,7 +26,7 @@ if (!empty($_POST)) {
     mysqli_set_charset($link, 'utf8');
 
     $abfrage = "INSERT INTO `studiengang`(`id`, `name`, `fh`, `location`, `start`, `end`, `cost`, `text`, `result`, `contact_email`, `type`, `degreeprogram`, `category`) VALUES 
-                ('','$title','$name','$location','$start','$end','$cost','$text','$result','$contactemail','$type','$studigang','$fachbereich')";
+                ('','$title','$fh','$location','$start','$end','$cost','$text','$result','$contactemail','$type','$studigang','$fachbereich')";
     $ergebnis = mysqli_query($link, $abfrage);
     if (!$ergebnis) {
         die('Could not connect: ' . mysql_error());
@@ -48,30 +47,29 @@ if (!empty($_POST)) {
         <div class="form-group" >  
             <label class="control-label col-sm-2" for="fachbereich">Fachbereich:</label>
             <div class="col-sm-4">
-                <label for="fachbereich">Fachbereich:</label>
-                    <select class="form-control text-center" id="fachbereich">
-                        <option value=""> --------- Auswahl --------- </option>
-                        <option value="Wirtschaft">Wirtschaft</option>
-                        <option value="Technik">Technik</option>
-                        <option value="Angewandte Psychologie">Angewandte Psychologie</option>
-                        <option value="Architektur, Bau und Geomatik">Architektur, Bau und Geomatik</option>
-                        <option value="Gestaltung und Kunst">Gestaltung und Kunst</option>
-                        <option value="Life Science">Life Science</option>
-                        <option value="Musik">Musik</option>
-                        <option value="P&auml;dagogik">P&auml;dagogik</option>
-                        <option value="Soziale Arbeit">Soziale Arbeit</option>
-                    </select>  
+                <select class="form-control text-center" name="fachbereich">
+                    <option value=""> --------- Auswahl --------- </option>
+                    <option value="Wirtschaft">Wirtschaft</option>
+                    <option value="Technik">Technik</option>
+                    <option value="Angewandte Psychologie">Angewandte Psychologie</option>
+                    <option value="Architektur, Bau und Geomatik">Architektur, Bau und Geomatik</option>
+                    <option value="Gestaltung und Kunst">Gestaltung und Kunst</option>
+                    <option value="Life Science">Life Science</option>
+                    <option value="Musik">Musik</option>
+                    <option value="P&auml;dagogik">P&auml;dagogik</option>
+                    <option value="Soziale Arbeit">Soziale Arbeit</option>
+                </select>  
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-sm-2" for="studigang">Studium:</label>
             <div class="col-sm-4">
-                <select class="form-control text-center" id="studiengang">
-                        <option value=""> --------- Auswahl --------- </option>
-                        <option value="Bachelor">Bachelor</option>
-                        <option value="Master">Master</option>
-                        <option value="Weiterbildung">Weiterbildung</option>
-                    </select>
+                <select class="form-control text-center" name="studigang">
+                    <option value=""> --------- Auswahl --------- </option>
+                    <option value="Bachelor">Bachelor</option>
+                    <option value="Master">Master</option>
+                    <option value="Weiterbildung">Weiterbildung</option>
+                </select>
             </div>
         </div>               
         <div class="form-group">
