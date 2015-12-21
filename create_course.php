@@ -239,7 +239,7 @@ include ("Layout/footer.html");
                         },
                         regexp: {
                                     message: 'Bitte nur Ziffern verwenden.',
-                                    regexp: /^[0-9]{20}$/
+                                    regexp: /^[0-9]{1,20}$/
                                 }
                     }
                 },
