@@ -266,7 +266,7 @@ include("login/header.php");
             <label class="col-sm-2"></label>
             <div class="col-sm-9">
                 <button type="submit" class="btn btn-default" value="send">Senden</button>
-                <button type="reset" class="btn btn-default" value="reset">Abbrechen</button>
+                <a class="btn btn-default" href="../myCourse.php">Abbrechen</a>
             </div>      
         </div>
     </form>

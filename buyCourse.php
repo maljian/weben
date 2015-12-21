@@ -1,28 +1,7 @@
 <?php
     session_start();
     include("login/login_pruefen_fh.inc.php");
-    include("login/header.php");
-    
-    if (!empty($_POST)) {
-        $number = $_POST['number'];
-
-        include "db.inc.php";
-        $link = mysqli_connect("localhost", $benutzer, $passwort) or die("Keine Verbindung zur Datenbank!");
-        mysqli_select_db($link, $dbname) or die("Datenbank nicht gefunden!" . mysql_error());
-
-        // damit ä,ö,ü und é richtig dargestellt werden! --> auf utf8 stellen
-        mysqli_set_charset($link, 'utf8');
-
-        $abfrage = "INSERT INTO `buyCourse`(`number`) VALUES 
-                    ('$number')";
-
-        $ergebnis = mysqli_query($link, $abfrage);
-        if (!$ergebnis) {
-            die('Could not connect: ' . mysql_error());
-        }
-        mysqli_close($link);
-    }
-    
+    include("login/header.php");    
 ?>
 <!-- Main content -->
 <div class = "col-md-7" id="mainBody">
@@ -77,7 +56,7 @@
             <label class="col-sm-2"></label>
             <div class="col-sm-4">
                 <button type="submit" class="btn btn-success" value="send">Senden</button>
-                <button type="reset" class="btn btn-default" value="reset">Abbrechen</button>
+                <a class="btn btn-default" href="myCourse.php">Abbrechen</a>
             </div>      
         </div>
     </form>
@@ -88,6 +67,9 @@ include ("login/login_alert.php");
 include ("Layout/login.html");
 include ("Layout/ads.html");
 include ("Layout/footer.html");
+
+$_SESSION['number']=$_POST['number'];
+include("pdf/Kursrechnung/einzahlungsschein.php");
 ?>
 </html>
 <!--Codeteile von Rainer Telesko aus dem Web-Engineering Modul.-->
@@ -98,6 +80,7 @@ include ("Layout/footer.html");
 <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
 <script id="source" language="javascript" type="text/javascript">
     $(document).ready(function () {
+        redirect "pdf/Kursrechnung/einzahlungsschein.pdf";
         $('#buyCourse').bootstrapValidator({
             // Source: http://formvalidation.io/examples/showing-message-custom-area/
             err: {
