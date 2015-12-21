@@ -3,10 +3,10 @@ session_start();
 include("login/header.php");
 ?>
 <!-- Main content -->
-<div class="col-md-10" id="mainBody">
+<div class="col-md-7" id="mainBody">
     <h1>Angebotene Kurse</h1>
     </br>
-    <table class="table table-striped table-bordered">
+    <table class="table table-striped table- sortable">
         <thead>
             <tr>
                 <th>Kurstitel</th>
@@ -46,6 +46,7 @@ include("login/header.php");
 <?php
 include("login/login_alert.php");
 include ("Layout/login.html");
+include ("Layout/ads.html");
 include ("Layout/footer.html");
 ?>
 </html>
