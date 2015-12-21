@@ -27,17 +27,16 @@
     <div class = "col-md-7" id="mainBody">
         <?php include("alerts/reset_fhinfo_alert.php"); ?>
         <h1>Mein FH Profil</h1>
-        </br>
-        <p>
+     <div class="col-sm-12 table-responsive">
+            <table class="table table-bordered table-striped" style="width:80%">
+                <p>
             <a href="fhInfo_update.php?email=" class="btn btn-success" role="button">Infos bearbeiten</a>
             <a href="reset.php" class="btn btn-success" role="button">Passwort ändern</a>
         </p>
-        </br>
-        <div class="col-sm-12 table-responsive">
-            <table style="width:80%">
+        <br/>
                 <tbody>
                     <tr>
-                        <th style="width:20%">Name:</th>
+                        <th style="width:20%" valign=top>Name:</th>
                         <td><?php echo $data['institution']; ?></td>
                     </tr>
                     <tr>

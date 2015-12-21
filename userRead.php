@@ -31,7 +31,7 @@ if (null != $id) {
 <div class = "col-md-7" id="mainBody">
     <h2>Kurs ansehen</h2>
     <div class="table-responsive">
-        <table style="width: 80%"> 
+        <table class="table table-bordered table-striped" style="width: 80%"> 
             <tbody>
                 <tr>
                     <th style="width: 20%">Kurstitel: </th>
@@ -75,7 +75,6 @@ if (null != $id) {
                 </tr>
             </tbody>
         </table>
-        </br>
         <div class="form-actions">
                 <a class="btn btn-default" href="course.php">Zurück</a>
             </div>
