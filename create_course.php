@@ -48,7 +48,7 @@ if (!empty($_POST)) {
             <label class="control-label col-sm-2" for="fachbereich">Fachbereich:</label>
             <div class="col-sm-4">
                 <select class="form-control text-center" name="fachbereich">
-                    <option value=""> --------- Auswahl --------- </option>
+                    <option selected disabled> --------- Auswahl --------- </option>
                     <option value="Wirtschaft">Wirtschaft</option>
                     <option value="Technik">Technik</option>
                     <option value="Angewandte Psychologie">Angewandte Psychologie</option>
@@ -65,7 +65,7 @@ if (!empty($_POST)) {
             <label class="control-label col-sm-2" for="studigang">Studium:</label>
             <div class="col-sm-4">
                 <select class="form-control text-center" name="studigang">
-                    <option value=""> --------- Auswahl --------- </option>
+                    <option selected disabled> --------- Auswahl --------- </option>
                     <option value="Bachelor">Bachelor</option>
                     <option value="Master">Master</option>
                     <option value="Weiterbildung">Weiterbildung</option>
