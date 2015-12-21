@@ -48,13 +48,30 @@ if (!empty($_POST)) {
         <div class="form-group" >  
             <label class="control-label col-sm-2" for="fachbereich">Fachbereich:</label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" id="fachbereich" name="fachbereich">        
+                <label for="fachbereich">Fachbereich:</label>
+                    <select class="form-control text-center" id="fachbereich">
+                        <option value=""> --------- Auswahl --------- </option>
+                        <option value="Wirtschaft">Wirtschaft</option>
+                        <option value="Technik">Technik</option>
+                        <option value="Angewandte Psychologie">Angewandte Psychologie</option>
+                        <option value="Architektur, Bau und Geomatik">Architektur, Bau und Geomatik</option>
+                        <option value="Gestaltung und Kunst">Gestaltung und Kunst</option>
+                        <option value="Life Science">Life Science</option>
+                        <option value="Musik">Musik</option>
+                        <option value="P&auml;dagogik">P&auml;dagogik</option>
+                        <option value="Soziale Arbeit">Soziale Arbeit</option>
+                    </select>  
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-sm-2" for="studigang">Studiengang:</label>
+            <label class="control-label col-sm-2" for="studigang">Studium:</label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" id="studigang" name="studigang">
+                <select class="form-control text-center" id="studiengang">
+                        <option value=""> --------- Auswahl --------- </option>
+                        <option value="Bachelor">Bachelor</option>
+                        <option value="Master">Master</option>
+                        <option value="Weiterbildung">Weiterbildung</option>
+                    </select>
             </div>
         </div>               
         <div class="form-group">
