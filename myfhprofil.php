@@ -26,6 +26,7 @@
     <!-- Main content -->
     <div class = "col-md-7" id="mainBody">
         <h1>Mein FH Profil</h1>
+        </br>
         <?php include("success_reset.php"); ?>
         <p>
             <a href="fhInfo_update.php?email=" class="btn btn-success" role="button">Infos bearbeiten</a>

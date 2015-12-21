@@ -5,7 +5,7 @@ include("login/header.php");
 <!-- Main content -->
 <div class="col-md-10" id="mainBody">
     <h1>Angebotene Kurse</h1>
-    
+    </br>
     <table class="table table-striped table-bordered">
         <thead>
             <tr>

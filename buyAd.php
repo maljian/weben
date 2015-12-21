@@ -149,7 +149,6 @@ include("login/header.php");
 <!-- Main content -->
 <div class = "col-md-7" id="mainBody">
     <h1>Werbefläche mieten</h1>
-    <br/>
     <h2>Preisliste</h2>
     <br/>
     <table class="table table-striped table-bordered" style="width: 50%">
