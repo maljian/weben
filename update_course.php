@@ -89,16 +89,16 @@ include("login/login_pruefen_fh.inc.php");
         <div class="form-group">
             <label class="control-label col-sm-2">Studienform: </label>
             <div class="col-sm-2">
-                <label class="radio-inline"><input type="radio" name="studiform" value="Pr&auml;senzstudium Vollzeit"> Präsenzstudium Vollzeit</label>
+                <label class="radio-inline"><input type="radio" name="studiform" value="Pr&auml;senzstudium Vollzeit"<?php if (stripos($type,'Präsenzstudium Vollzeit') !== false) echo "checked='checked'"; ?>> Präsenzstudium Vollzeit</label>
             </div>
             <div class="col-sm-2">
-                <label class="radio-inline"><input type="radio" name="studiform" value="Pr&auml;senzstudium Teilzeit"> Präsenzstudium Teilzeit</label>
+                <label class="radio-inline"><input type="radio" name="studiform" value="Pr&auml;senzstudium Teilzeit"<?php if (stripos($type,'Präsenzstudium Teilzeit') !== false) echo "checked='checked'"; ?>> Präsenzstudium Teilzeit</label>
             </div>
             <div class="col-sm-2">
-                <label class="radio-inline"><input type="radio" name="studiform" value="Fernstudium Vollzeit"> Fernstudium Vollzeit</label>
+                <label class="radio-inline"><input type="radio" name="studiform" value="Fernstudium Vollzeit"<?php if (stripos($type,'Fernstudium Vollzeit') !== false) echo "checked='checked'"; ?>> Fernstudium Vollzeit</label>
             </div>
             <div class="col-sm-2">
-                <label class="radio-inline"><input type="radio" name="studiform" value="Fernstudium Teilzeit"> Fernstudium Teilzeit</label>
+                <label class="radio-inline"><input type="radio" name="studiform" value="Fernstudium Teilzeit" <?php if (stripos($type,'Fernstudium Teilzeit') !== false) echo "checked='checked'"; ?>> Fernstudium Teilzeit</label>
             </div>
 
         </div>
