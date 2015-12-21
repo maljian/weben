@@ -3,7 +3,7 @@ session_start();
 
 if (!empty($_SESSION['refn'])) {
    
-    include('credentials.php');
+    include('../../credentials.php');
     
     
 //Quelle: http://wiki.selfhtml.org/wiki/PHP/Anwendung_und_Praxis/Formmailer-Advanced
@@ -28,7 +28,7 @@ if (!empty($_SESSION['refn'])) {
     /**
      * Ende Konfigurator
      */
-    require_once "swiftmailer/lib/swift_required.php"; // Swift initialisieren
+    require_once "../../swiftmailer/lib/swift_required.php"; // Swift initialisieren
     
     //$attachment = Swift_Attachment::fromPath("pdf/Kursrechnung/Kursrechnung_".$_SESSION['refn'].".pdf", "application/pdf");
 

@@ -1,27 +1,17 @@
 <?php
 session_start();
-require_once('pdf/Kursrechnung/class.einzahlungsschein.php');
-require_once('fpdf/fpdf.php');
+require_once('class.einzahlungsschein.php');
+require_once('../../fpdf/fpdf.php');
 
-require 'database.php';
-$id = null;
-if (!empty($_GET['id'])) {
-$id = $_REQUEST['id'];
-}
+require '../../database.php';
 
-if (null == $id) {
-header("Location: myCourse.php");
-} else {
 $pdo = Database::connect();
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-// damit ä,ö,ü und é richtig dargestellt werden! --> auf utf8 stellen
-$pdo->exec('set names utf8');
-$sql = "SELECT * FROM fh where id = ?";
-$q = $pdo->prepare($sql);
-$q->execute(array($id));
-$data = $q->fetch(PDO::FETCH_ASSOC);
-Database::disconnect();
-}
+    $pdo->exec('set names utf8');
+    $sql = "SELECT * FROM fh where Email = '$email'";
+    $q = $pdo->prepare($sql);
+    $q->execute();
+    $data = $q->fetch(PDO::FETCH_ASSOC);
+    $id = $data['id'];
 
 if($number == 10){
     $return = floatval(500.00);
@@ -53,7 +43,7 @@ $ezs->setPayerData($data['institution'], $data['street'], $data['postalcode'] . 
 $ezs->setPaymentData($amount, $ref);
 $ezs->createEinzahlungsschein(false, true);
 
-$pdf->Output("pdf/Kursrechnung/Kursrechnung_".$ref.".pdf", 'I');
+$pdf->Output("Kursrechnung_".$ref.".pdf", 'I');
 
 $_SESSION['refn']=$ref;
 $_SESSION['partner']=$data['partner'];

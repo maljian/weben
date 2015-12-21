@@ -10,6 +10,7 @@ include("login/header.php");
     <h1>Meine Kursliste</h1>
     <p>
         <a href="create_course.php" class="btn btn-success" role="button">Neuen Kurs erfassen</a>
+        <a href="buyCourse.php?id=$id" class="btn btn-success" role="button">Kurse kaufen</a>
     </p>
     <table class="table table-striped table-bordered">
         <thead>
@@ -56,10 +57,6 @@ include("login/header.php");
             ?>
         </tbody>
     </table>
-    
-    <p>
-        <a href="buyCourse.php?id=$id" class="btn btn-success" role="button">Kurse kaufen</a>
-    </p>
 </div>
 <?php
 include ("login/login_alert.php");

@@ -39,7 +39,7 @@
     </p>
 
     <!-- Kontaktformular für die Webseite -->
-    <form class="form-horizontal" id="buyCourse" role="form" action="" method="post" enctype="multipart/form-data">
+    <form class="form-horizontal" id="buyCourse" role="form" action="pdf/Kursrechnung/einzahlungsschein.php" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label class="control-label col-sm-2" for="number">Anzahl: *</label>
             <div class="col-sm-2"> 
@@ -72,9 +72,8 @@ include ("Layout/ads.html");
 include ("Layout/footer.html");
 
 $_SESSION['number']=$number;
-$_SESSION['id']=$id;
 
-include("pdf/Kursrechnung/einzahlungsschein.php");
+//include("pdf/Kursrechnung/einzahlungsschein.php");
 }
 ?>
 </html>

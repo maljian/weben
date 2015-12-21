@@ -16,7 +16,7 @@
  *
  * Adjust path if necessary.
  **************************************/
-require_once('fpdf/fpdf.php');
+require_once('../../fpdf/fpdf.php');
 
 
 /**
@@ -53,7 +53,7 @@ class Einzahlungsschein {
 	private $landscapeOrPortrait = "P";
 	private $format = "A4";
 	
-	private $pathToImage = 'pdf/Kursrechnung/';
+	private $pathToImage = '';
 	private $type =  'orange';
 
 	
