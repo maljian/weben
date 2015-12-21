@@ -1,10 +1,8 @@
 <?php
 session_start();
-
 if (!empty($_SESSION['refn'])) {
    
     include('../../credentials.php');
-    
     
 //Quelle: http://wiki.selfhtml.org/wiki/PHP/Anwendung_und_Praxis/Formmailer-Advanced
 // eigene Mailadresse
@@ -20,19 +18,19 @@ if (!empty($_SESSION['refn'])) {
     $betreff = 'Rechnung FH Portal';
 
 //Weiterleitung nach Absenden
-    $urlDankeSeite = 'myCourse.php';
+    $urlDankeSeite = '../../myCourse.php';
 
 // Welches Zeichen soll zwischen dem Feldnamen und dem angegebenen Wert stehen
     $trenner = ":\t"; // Doppelpunkt und Tabulator
-
+    
     /**
      * Ende Konfigurator
      */
     require_once "../../swiftmailer/lib/swift_required.php"; // Swift initialisieren
     
-    //$attachment = Swift_Attachment::fromPath("pdf/Kursrechnung/Kursrechnung_".$_SESSION['refn'].".pdf", "application/pdf");
+    $attachment = Swift_Attachment::fromPath("Kursrechnung_".$_SESSION['refn'].".pdf", "application/pdf");
 
-    if ($_SERVER['REQUEST_METHOD'] === "GET") {
+    if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
         $message = Swift_Message::newInstance(); // Ein Objekt für die Mailnachricht
 
@@ -40,7 +38,7 @@ if (!empty($_SESSION['refn'])) {
                 ->setFrom(array($absenderadresse => $absendername))
                 ->setTo(array($zieladresse))
                 ->setSubject($betreff)
-                //->attach ($attachment)
+                ->attach ($attachment)
                 ->setBody(
 "Sehr geehrte/r Frau/Herr ".$_SESSION['partner']."
 
@@ -99,7 +97,7 @@ Ihr FH Portal");
 
         if ($result == 0) {
             die($_SESSION['contactMessage']='failed');
-            
+            echo $e;
         }
   
         header("Location: $urlDankeSeite");
@@ -107,5 +105,5 @@ Ihr FH Portal");
     }
 //echo $message->toString();
 
-  //  header("Content-type: text/html; charset=utf-8");
+    header("Content-type: text/html; charset=utf-8");
 }
