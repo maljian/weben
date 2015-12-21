@@ -8,7 +8,7 @@ if (isset($_SESSION['resetFhinfoMessage']) AND $_SESSION['resetFhinfoMessage']==
                     <strong>Ihre Informationen wurden erfolgreich aktualisiert!</strong>
                 </div>
             </div>";
-        unset($_SESSION['enrolementMessage']);
+        unset($_SESSION['resetFhinfoMessage']);
         }
 ?>
 

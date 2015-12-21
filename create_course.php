@@ -11,11 +11,12 @@ $email = $_SESSION['email'];
     
     $pdo = Database::connect();
     $pdo->exec('set names utf8');
-    $sql = 'SELECT * FROM fh where email = ?';
+    $sql = "SELECT * FROM user where Email = '$email'";
     $q = $pdo->prepare($sql);
-    $q->execute(array($email));
+    $q->execute();
+    $data = $q->fetch(PDO::FETCH_ASSOC);
     $fh = $data['Name'];
-
+    
 // Codeteile von Rainer Telesko aus dem Web-Engineering Modul.
 if (!empty($_POST)) {
     $title = $_POST['title'];
