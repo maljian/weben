@@ -276,7 +276,7 @@ include ("Layout/footer.html");
                             message: 'Die Kursbeschreibung darf maximal 2000 Zeichen lang sein!'
                         }
                     }
-                }
+                },
                 result: {
                     validators: {
                         notEmpty: {
