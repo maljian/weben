@@ -63,20 +63,11 @@
 </div>
 
 <?php
-if (!empty($_POST)) {
-    $number = $_POST['number'];
-
 include ("login/login_alert.php");
 include ("Layout/login.html");
 include ("Layout/ads.html");
 include ("Layout/footer.html");
 
-$_SESSION['number']=$number;
-
-include ('pdf/Kursrechnung/einzahlungsschein.php');
-
-//include("pdf/Kursrechnung/einzahlungsschein.php");
-}
 ?>
 </html>
 <!--Codeteile von Rainer Telesko aus dem Web-Engineering Modul.-->
