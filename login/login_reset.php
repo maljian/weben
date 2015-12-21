@@ -30,9 +30,6 @@ if (isset($_POST['resetEmail']) AND ($_POST['resetEmail']!=''))
         } 
         $passwort = $newpwd;
         $betreff = "Neues Passwort vom FH-Portal!";
-        $inhalt = "Sehr geehrte Kundin\nSehr geehrter Kunde\n\nMit dieser Mail erhalten Sie Ihr neues Passwort: '$passwort'\n
-        Freundliche Grüsse\nIhr FH-Portal-Team\nwww.dine.bronxx.org";
-        $header = "From: dine.bronxx@gmail.com";
         
         include('../credentials.php');
   
@@ -67,7 +64,7 @@ if (isset($_POST['resetEmail']) AND ($_POST['resetEmail']!=''))
                             ->setFrom(array($absenderadresse => $absendername))
                             ->setTo(array($zieladresse))
                             ->setSubject($betreff)
-                            ->setBody("Sehr geehrte Kundin\nSehr geehrter Kunde\n\nHier Ihr neues Passwort: '$passwort'\n
+                            ->setBody("Sehr geehrte Kundin\nSehr geehrter Kunde\n\nHier Ihr neues Passwort: $passwort\n
                                       Freundliche Grüsse\nIhr FH-Portal-Team\nwww.dine.bronxx.org");
 
                     $mailtext = "";
