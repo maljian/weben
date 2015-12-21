@@ -6,7 +6,7 @@ include("login/header.php");
 <!-- Main content -->
 <div class = "col-md-10" id="mainBody">
     <!-- alert window for course edit messages-->
-    <?php include("course/course_alert.php"); ?>
+    <?php include("alerts/course_alert.php"); ?>
     <h1>Meine Kursliste</h1>
     <p>
         <a href="create_course.php" class="btn btn-success" role="button">Neuen Kurs erfassen</a>

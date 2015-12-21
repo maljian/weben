@@ -5,7 +5,7 @@
 <!-- Main content -->
 <div class = "col-md-7" id="mainBody">
     <!-- alert window for a successful enrolement-->
-    <?php include("success_enrolement.php"); ?>
+    <?php include("alerts/enrolement_alert.php"); ?>
     
     <h1>FH-Anmeldung</h1>
     </br>

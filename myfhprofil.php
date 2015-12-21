@@ -25,9 +25,9 @@
 ?>
     <!-- Main content -->
     <div class = "col-md-7" id="mainBody">
+        <?php include("alerts/reset_fhinfo_alert.php"); ?>
         <h1>Mein FH Profil</h1>
         </br>
-        <?php include("success_reset_fhinfo.php"); ?>
         <p>
             <a href="fhInfo_update.php?email=" class="btn btn-success" role="button">Infos bearbeiten</a>
             <a href="reset.php" class="btn btn-success" role="button">Passwort ändern</a>

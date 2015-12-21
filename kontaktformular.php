@@ -117,9 +117,9 @@ include("login/header.php");
 
 <!-- Main content -->
 <div class = "col-md-7" id="mainBody">
+    <?php include("alerts/contact_alert.php")?>
     <h1>Kontaktformular</h1>
     <br/>
-    <?php include("success_contact.php")?>
     <!-- Kontaktformular für die Webseite -->
     <form class="form-horizontal" id="contactForm" role="form" action="" method="post" enctype="multipart/form-data">
         <div class="form-group">

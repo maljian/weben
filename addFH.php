@@ -6,6 +6,7 @@
 
 <!-- Main content -->
 <div class = "col-md-10" id="mainBody">
+    <?php include("alerts/addFH_alert.php"); ?>
     <h1>FH Anmeldungen</h1>
     <p><a href="denied_fh_enrolement.php">Abgelehnte FHs</a></p>
         <table class="table table-striped table-bordered">
