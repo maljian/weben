@@ -1,6 +1,7 @@
 <?php
 $q = $_GET['q'];
 $q2 = $_GET['q2'];
+$q3 = $_GET['q3'];
 include 'db.inc.php';
 $con = mysqli_connect('localhost', $benutzer, $passwort, $dbname);
 if (!$con) {
@@ -8,6 +9,15 @@ if (!$con) {
 }
 mysqli_set_charset($con, 'utf8');
 //mysqli_select_db($con, "ajax_demo");
+
+$sql1 = "SELECT institution FROM `fh` WHERE `region` = '" . $q3 . "'";
+$res = mysqli_query($con, $sql1);
+$i = 0;
+while($reg = mysqli_fetch_array($res)){
+    $region[$i] = $reg['institution'];
+    $i = $i + 1;
+}
+
 $sql = "SELECT * FROM `studiengang` WHERE `category` = '" . $q . "' and `degreeprogram` = '".$q2."'";
 $result = mysqli_query($con, $sql);
 
