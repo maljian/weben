@@ -31,7 +31,7 @@
         <div class="form-group">
             <label class="col-sm-2"></label>
             <div class="col-sm-6">
-                <button type="submit" class="btn btn-default">Passwort ändern</button>
+                <button type="submit" class="btn btn-success">Passwort ändern</button>
                 <a class="btn btn-default" href="myfhprofil.php">Abbrechen</a>
             </div>      
         </div>

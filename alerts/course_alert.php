@@ -11,7 +11,7 @@ if (isset($_SESSION['changeMessage']) AND $_SESSION['changeMessage']=="deleted")
         unset($_SESSION['changeMessage']);
         }
 //Alert that course update was successful
-if (isset($_SESSION['changeMessage']) AND $_SESSION['changeMessage']=="deleted")
+if (isset($_SESSION['changeMessage']) AND $_SESSION['changeMessage']=="updated")
         {
         echo "<div class=\"panel-group\">
                 <div id=\"updateSuccess\" class=\"alert alert-success\">

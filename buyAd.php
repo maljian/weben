@@ -196,37 +196,37 @@ include("login/header.php");
             </div>      
         </div>
         <div class="form-group">
-            <label class="control-label col-sm-2" for="firstname">Vorname: *</label>
+            <label class="control-label col-sm-2" for="firstname">Vorname:</label>
             <div class="col-sm-4">
                 <input type="text" class="form-control" id="firstname" name="firstname" required>
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-sm-2" for="lastname">Nachname: *</label>
+            <label class="control-label col-sm-2" for="lastname">Nachname:</label>
             <div class="col-sm-4">
                 <input type="text" class="form-control" id="lastname" name="lastname" required>
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-sm-2" for="street">Strasse: *</label>
+            <label class="control-label col-sm-2" for="street">Strasse:</label>
             <div class="col-sm-4">
                 <input type="text" class="form-control" id="street" name="street" required>
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-sm-2" for="plz">PLZ: *</label>
+            <label class="control-label col-sm-2" for="plz">PLZ:</label>
             <div class="col-sm-4">
                 <input type="text" class="form-control" id="plz" name="plz" required>
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-sm-2" for="city">Ort: *</label>
+            <label class="control-label col-sm-2" for="city">Ort:</label>
             <div class="col-sm-4">
                 <input type="text" class="form-control" id="city" name="city" required>
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-sm-2" for="email">Emailadresse: *</label>
+            <label class="control-label col-sm-2" for="email">Emailadresse:</label>
             <div class="col-sm-4">
                 <input type="email" class="form-control" id="email" name="email" required>
             </div>
@@ -238,13 +238,13 @@ include("login/header.php");
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-sm-2" for="start">Startdatum: *</label>
+            <label class="control-label col-sm-2" for="start">Startdatum:</label>
             <div class="col-sm-4">
                 <input type="text" class="form-control" id="start" name="start" placeholder="JJJJ-MM-TT" required>
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-sm-2" for="duration">Dauer: *</label>
+            <label class="control-label col-sm-2" for="duration">Dauer:</label>
             <div class="col-sm-2"> 
                 <select class="form-control text-center" id="duration" name="duration">
                     <option selected disabled>Bitte wählen</option>
@@ -256,7 +256,7 @@ include("login/header.php");
             </div>      
         </div>
         <div class="form-group">
-            <label class="control-label col-sm-2" for="image">Bilddatei: *</label>
+            <label class="control-label col-sm-2" for="image">Bilddatei:</label>
             <div class="col-sm-4">
                 <input type="file" class="form-control" id="image" name="image" required>
             </div>
@@ -264,7 +264,7 @@ include("login/header.php");
         <div class="form-group">
             <label class="col-sm-2"></label>
             <div class="col-sm-9">
-                <button type="submit" class="btn btn-default" value="send">Senden</button>
+                <button type="submit" class="btn btn-success" value="send">Senden</button>
                 <a class="btn btn-default" href="../myCourse.php">Abbrechen</a>
             </div>      
         </div>

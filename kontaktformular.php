@@ -133,19 +133,19 @@ include("login/header.php");
             </div>      
         </div>
         <div class="form-group">
-            <label class="control-label col-sm-2" for="firstname">Vorname: *</label>
+            <label class="control-label col-sm-2" for="firstname">Vorname:</label>
             <div class="col-sm-4">
                 <input type="text" class="form-control" id="firstname" name="firstname" required>
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-sm-2" for="lastname">Nachname: *</label>
+            <label class="control-label col-sm-2" for="lastname">Nachname:</label>
             <div class="col-sm-4">
                 <input type="text" class="form-control" id="lastname" name="lastname" required>
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-sm-2" for="email">Emailadresse: *</label>
+            <label class="control-label col-sm-2" for="email">Emailadresse:</label>
             <div class="col-sm-4">
                 <input type="email" class="form-control" id="email" name="email" required>
             </div>
@@ -157,7 +157,7 @@ include("login/header.php");
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-sm-2" for="question">Anfrage: *</label>
+            <label class="control-label col-sm-2" for="question">Anfrage:</label>
             <div class="col-sm-6">
                 <textarea class="form-control" rows="10" id="question" name="question" required></textarea>
             </div>
@@ -165,7 +165,7 @@ include("login/header.php");
         <div class="form-group">
             <label class="col-sm-2"></label>
             <div class="col-sm-9">
-                <button type="submit" class="btn btn-default" value="send">Senden</button>
+                <button type="submit" class="btn btn-success" value="send">Senden</button>
                 <a class="btn btn-default" href="index.php">Abbrechen</a>
             </div>      
         </div>

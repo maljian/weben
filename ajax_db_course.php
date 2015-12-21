@@ -39,7 +39,7 @@ echo "<table class='table table-striped table-bordered'>
                 <th>Start-Datum</th>
                 <th>End-Datum</th>
                 <th>Studiumsform</th>
-                <th>Kosten</th>
+                <th>Kosten in CHF</th>
                 </tr>
                 </thread><tbody>";
 while ($row = mysqli_fetch_array($result)) {

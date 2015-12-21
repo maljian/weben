@@ -461,10 +461,10 @@ class Einzahlungsschein {
 		$completeReferenceNumber = str_pad($this->ezs_referenceNumber, (26 - strlen($this->ezs_bankingCustomerIdentification)) ,'0', STR_PAD_LEFT);
 	
 		//add customer identification code
-		$completeReferenceNumber = $this->ezs_bankingCustomerIdentification.$completeReferenceNumber;
+		//$completeReferenceNumber = $this->ezs_bankingCustomerIdentification.$completeReferenceNumber;
 		
 		//add check digit
-		$completeReferenceNumber .= $this->modulo10($completeReferenceNumber);
+		//$completeReferenceNumber .= $this->modulo10($completeReferenceNumber);
 		
 		//return
 		return $completeReferenceNumber;
