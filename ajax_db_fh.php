@@ -24,7 +24,7 @@ while ($row = mysqli_fetch_array($result)) {
     echo "<tr>";
     echo "<td>" . $row['institution'] . "</td>";
     echo "<td>" . $row['city'] . "</td>";
-    echo "<td>" . $row['website'] . "</td>";
+    echo "<td><a href='". $row['website']."'target='_blank'>" . $row['website'] . "</a></td>";
     echo "<td>" . $row['partner'] . "</td>";
     echo "<td>" . $row['email'] . "</td>";
     echo "</tr>";
