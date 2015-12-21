@@ -240,7 +240,7 @@ include("login/header.php");
         <div class="form-group">
             <label class="control-label col-sm-2" for="start">Startdatum: *</label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" id="start" name="start" placeholder="TT-MM-JJJJ" required>
+                <input type="text" class="form-control" id="start" name="start" placeholder="JJJJ-MM-TT" required>
             </div>
         </div>
         <div class="form-group">
@@ -380,7 +380,7 @@ include ("Layout/footer.html");
                                     message: 'Bitte geben Sie ein Startdatum an.'
                                 },
                                 date: {
-                                    format: 'DD-MM-YYYY',
+                                    format: 'YYYY-MM-DD',
                                     message: 'Bitte geben Sie ein gültiges Datum ein.'
                                 }
                             }

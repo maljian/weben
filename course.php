@@ -29,7 +29,7 @@ include("login/header.php");
            // PDO-Query (kein Prepared Statement)
                     foreach ($pdo->query($sql) as $row) {
                 echo '<tr>';
-                echo '<td>' . $row['name'] . '</td>';
+                echo '<td>' .'<a href=userRead.php>'. $row['name'].'</a>' . '</td>';
                 echo '<td>' . $row['type'] . '</td>';
                 echo '<td>' . $row['start'] . '</td>';
                 echo '<td>' . $row['end'] . '</td>';
