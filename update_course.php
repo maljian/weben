@@ -77,15 +77,29 @@ include("login/login_pruefen_fh.inc.php");
         <div class="form-group" >  
             <label class="control-label col-sm-2" for="fachbereich">Fachbereich:</label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" id="fachbereich" name="fachbereich" value="<?php echo!empty($fachbereich) ? $fachbereich : ''; ?>">        
+                <select class="form-control text-center" id="fachbereich" name="fachbereich">
+                    <option value="Wirtschaft" <?php if (stripos($fachbereich,'Wirtschaft') !== false) echo 'selected'; ?>>Wirtschaft</option>
+                    <option value="Technik" <?php if (stripos($fachbereich,'Technik') !== false) echo 'selected'; ?>>Technik</option>
+                    <option value="Angewandte Psychologie"<?php if (stripos($fachbereich,'Angewandte Psychologie') !== false) echo 'selected'; ?>>Angewandte Psychologie</option>
+                    <option value="Architektur, Bau und Geomatik" <?php if (stripos($fachbereich,'Architektur, Bau und Geomatik') !== false) echo 'selected'; ?>>Architektur, Bau und Geomatik</option>
+                    <option value="Gestaltung und Kunst" <?php if (stripos($fachbereich,'Gestaltung und Kunst') !== false) echo 'selected'; ?>>Gestaltung und Kunst</option>
+                    <option value="Life Science" <?php if (stripos($fachbereich,'Life Science') !== false) echo 'selected'; ?>>Life Science</option>
+                    <option value="Musik" <?php if (stripos($fachbereich,'Musik') !== false) echo 'selected'; ?>>Musik</option>
+                    <option value="P&auml;dagogik" <?php if (stripos($fachbereich,'Pädagogik') !== false) echo 'selected'; ?>>P&auml;dagogik</option>
+                    <option value="Soziale Arbeit" <?php if (stripos($fachbereich,'Soziale Arbeit') !== false) echo 'selected'; ?>>Soziale Arbeit</option>
+                </select>  
             </div>
-        </div>
+        </div> 
         <div class="form-group">
-            <label class="control-label col-sm-2" for="studigang">Studiengang:</label>
+            <label class="control-label col-sm-2" for="studigang">Studium:</label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" id="studigang" name="studigang" value="<?php echo!empty($studigang) ? $studigang : ''; ?>">
+                <select class="form-control text-center" id="studigang" name="studigang">
+                    <option value="Bachelor" <?php if (stripos($studigang,'Bachelor') !== false) echo 'selected'; ?>>Bachelor</option>
+                    <option value="Master" <?php if (stripos($studigang,'Master') !== false) echo 'selected'; ?>>Master</option>
+                    <option value="Weiterbildung" <?php if (stripos($studigang,'Weiterbildung') !== false) echo 'selected'; ?>>Weiterbildung</option>
+                </select>
             </div>
-        </div>                      
+        </div> 
         <div class="form-group">
             <label class="control-label col-sm-2">Studienform: </label>
             <div class="col-sm-2">
