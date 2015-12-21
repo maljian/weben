@@ -73,6 +73,8 @@ include ("Layout/footer.html");
 
 $_SESSION['number']=$number;
 
+include ('pdf/Kursrechnung/einzahlungsschein.php');
+
 //include("pdf/Kursrechnung/einzahlungsschein.php");
 }
 ?>
