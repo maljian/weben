@@ -34,10 +34,10 @@
         </p>
         </br>
         <div class="col-sm-12 table-responsive">
-            <table>
+            <table style="width:80%">
                 <tbody>
                     <tr>
-                        <th valign=top>Name:</th>
+                        <th style="width:20%">Name:</th>
                         <td><?php echo $data['institution']; ?></td>
                     </tr>
                     <tr>

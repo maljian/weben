@@ -32,10 +32,10 @@ if (null != $id) {
 <div class = "col-md-7" id="mainBody">
     <h2>Kurs ansehen</h2>
     <div class="table-responsive">
-        <table>
+        <table style="width: 80%">
             <tbody>
                 <tr>
-                    <th>Kurstitel: </th>
+                    <th style="width: 20%">Kurstitel: </th>
                     <td><?php echo $data['name']; ?></td>
                 </tr>
                 <tr>
@@ -51,15 +51,15 @@ if (null != $id) {
                     <td><?php echo $data['type']; ?></td>
                 </tr>
                 <tr>
-                    <th>Durchf&uuml;rungsort: </th>
+                    <th>Durchführungsort: </th>
                     <td><?php echo $data['location']; ?></td>
                 </tr>
                 <tr>
-                    <th>Durchf&uuml;rungszeit: </th>
+                    <th>Durchführungszeit: </th>
                     <td><?php echo $data['start']; ?> bis <?php echo $data['end']; ?></td>
                 </tr>
                 <tr>
-                    <th>Kosten: </th>
+                    <th>Kosten in CHF: </th>
                     <td><?php echo $data['cost']; ?></td>
                 </tr>
                 <tr>
