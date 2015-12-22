@@ -87,7 +87,7 @@
                     <label for="location">Standort(e):</label>
                     <input type="text" class="form-control" name="location" id="location" value="<?php echo!empty($location) ? $location : ''; ?>">
                     <?php if (!empty($locationError)): ?>
-                        <span class="help-inline"><?php echo $locationError; ?></span>
+                        <span class="help-inline" style="color:red"><?php echo $locationError; ?></span>
                     <?php endif; ?>
                 </div>
             </div>
@@ -97,7 +97,7 @@
                     <label for="link">Link:</label>
                     <input type="text" class="form-control" name="link" id="link" value="<?php echo!empty($link) ? $link : ''; ?>">
                     <?php if (!empty($linkError)): ?>
-                        <span class="help-inline"><?php echo $linkError; ?></span>
+                        <span class="help-inline" style="color:red"><?php echo $linkError; ?></span>
                     <?php endif; ?>
                         <br/><p><b>Kontaktdaten</b></p>
                 </div>
