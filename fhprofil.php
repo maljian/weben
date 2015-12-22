@@ -32,7 +32,7 @@
                 <div class="col-md-4">
                     <label for="region">Region:</label>
                     <select class="form-control text-center" name="region" onchange="showFh(this.value)">
-                        <option value=""> --------- Auswahl --------- </option>
+                        <option selected disabled>Auswahl</option>
                         <option value="Nordwestschweiz">Nordwestschweiz</option>
                         <option value="Zentralschweiz">Zentralschweiz</option>
                         <option value="Ostschweiz">Ostschweiz</option>
