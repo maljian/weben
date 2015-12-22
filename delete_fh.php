@@ -30,7 +30,7 @@
     <div class = "col-md-7" id="mainBody">
         <h3>Fachhochschule löschen</h3>
         <form class="form-horizontal" action="delete_fh.php" method="post">
-            <input type="hidden" name="id" value="<?php echo $id; ?>"/>
+            <input type="hidden" name="email" value="<?php echo $email; ?>"/>
             <p class="alert alert-error">Möchten Sie die FH wirklich löschen?</p>
             <div class="form-actions">
                 <button type="submit" class="btn btn-danger">Ja</button>
