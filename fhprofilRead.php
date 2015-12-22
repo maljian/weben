@@ -3,12 +3,12 @@ session_start();
 include("login/header.php");
 
 require 'database.php';
-$id = 0;
+$email = 0;
 if (!empty($_GET['email'])) {
     $email = $_REQUEST['email'];
 }
 
-if (null != $id) {
+if (null != $email) {
     $pdo = Database::connect();
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $pdo->exec('set names utf8');
@@ -16,11 +16,6 @@ if (null != $id) {
     $sql = 'SELECT * FROM fh where email = ?';
     $q = $pdo->prepare($sql);
     $q->execute(array($email));
-    // PDO Fetch-Modi
-    // PDO::FETCH_BOTH : holt ein assoziatives und ein numerisches Array (ist default)
-    // PDO::FETCH_ASSOC : holt nur ein assoziatives Array, Indizes sind Spaltennamen
-    // PDO::FETCH_OBJ : holt ein Objekt, Properties sind gleich Spaltennamen
-    // PDO::FETCH_INTO : zieht das Result in eine Objektinstanz der Klasse Customer
     $data = $q->fetch(PDO::FETCH_ASSOC);
 
     Database::disconnect();

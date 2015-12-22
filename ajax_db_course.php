@@ -47,8 +47,8 @@ echo "<table class='table table-striped table-bordered'>
                 </thread><tbody>";
 while ($row = mysqli_fetch_array($result)) {
     echo "<tr>";
-    echo "<td>" .'<a href=userRead.php?id='.$row['id'].'>'. $row['name'].'</a>' . "</td>";
-    echo "<td>" .'<a href=fhprofilRead.php?id='.$row['id'].'>'. $row['fh'] .'</a>' . "</td>";
+    echo "<td>" .'<a href=userRead.php?email='.$row['email'].'>'. $row['name'].'</a>' . "</td>";
+    echo "<td>" .'<a href=fhprofilRead.php?email='.$row['email'].'>'. $row['fh'] .'</a>' . "</td>";
     echo "<td>".$row['location']."</td>";
     echo "<td>" . $row['start'] . "</td>";
     echo "<td>" . $row['end'] . "</td>";
