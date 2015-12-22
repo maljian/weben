@@ -29,11 +29,11 @@ include("login/header.php");
            // PDO-Query (kein Prepared Statement)
                     foreach ($pdo->query($sql) as $row) {
                 echo '<tr>';
-                echo '<td>' .'<a href=userRead.php?email='.$row['email'].'>'. $row['name'].'</a>' . '</td>';
+                echo '<td>' .'<a href=userRead.php?id='.$row['id'].'>'. $row['name'].'</a>' . '</td>';
                 echo '<td>' . $row['type'] . '</td>';
                 echo '<td>' . $row['start'] . '</td>';
                 echo '<td>' . $row['end'] . '</td>';
-                echo '<td>' .'<a href=fhprofilRead.php?id='.$row['id'].'>'. $row['fh'] .'</a>' . '</td>';
+                echo '<td>' .'<a href=fhprofilRead_studiengang.php?fh='.$row['fh'].'>'. $row['fh'] .'</a>' . '</td>';
                 echo '<td>' . $row['location'] . '</td>';
                 echo '</td>';
                 echo '</tr>';
