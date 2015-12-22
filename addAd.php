@@ -6,6 +6,7 @@ include("credentials.php");
 ?>
 <!-- Main content -->
 <div class = "col-md-10" id="mainBody">
+    <?php include("alerts/addAd_alert.php"); ?>
     <h1>Werbeanfragen</h1>
     <a target="_blank" href="<?php echo $URL ?>" >Datenbank</a>
     <table class="table table-striped table-bordered">

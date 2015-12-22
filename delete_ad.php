@@ -1,7 +1,5 @@
 <?php
     session_start();
-    include ("login/header.php");
-    include("login/login_pruefen_fh.inc.php");
     
     require 'database.php';
     $id = 0;
@@ -21,8 +19,12 @@
         $q = $pdo->prepare($sql);
         $q->execute(array($id));
         Database::disconnect();
+        $_SESSION['deleteAdMessage']='successful';
+        header("Location: addAd.php");
     }
 
+    include ("login/header.php");
+    include("login/login_pruefen_admin.inc.php");
 ?>
     <!-- Main content -->
     <div class = "col-md-7" id="mainBody">
