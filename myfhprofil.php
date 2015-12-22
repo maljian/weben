@@ -11,6 +11,13 @@
     
     $pdo = Database::connect();
     $pdo->exec('set names utf8');
+    
+    $sql= "SELECT * FROM user WHERE Email = ?";
+    $q = $pdo->prepare($sql);
+    $q->execute(array($email));
+    $data = $q->fetch(PDO::FETCH_ASSOC);
+    $boughtCourses = $data['boughtCourses'];
+    
     $sql = 'SELECT * FROM fh where email = ?';
     $q = $pdo->prepare($sql);
     $q->execute(array($email));
@@ -20,7 +27,7 @@
     // PDO::FETCH_OBJ : holt ein Objekt, Properties sind gleich Spaltennamen
     // PDO::FETCH_INTO : zieht das Result in eine Objektinstanz der Klasse Customer
     $data = $q->fetch(PDO::FETCH_ASSOC);
-
+    
     Database::disconnect();
 ?>
     <!-- Main content -->
@@ -36,32 +43,36 @@
         <br/>
                 <tbody>
                     <tr>
-                        <th style="width:20%" valign=top>Name:</th>
+                        <th style="width:20%">Name:</th>
                         <td><?php echo $data['institution']; ?></td>
                     </tr>
                     <tr>
-                        <th valign=top>Standort(e):</th>
+                        <th>Standort(e):</th>
                         <td><?php echo $data['site']; ?></td>
                     </tr>
                     <tr>
-                        <th valign=top>Link:</th>
+                        <th>Link:</th>
                         <td><?php echo $data['website']; ?></td>
                     </tr>
                     <tr>
-                        <th valign=top>Kontaktdaten:</th>
+                        <th>Kontaktdaten:</th>
                         <td><?php echo $data['partner']; ?> </td>
                     </tr>
                     <tr>
-                        <th valign=top></th>
+                        <th></th>
                         <td><?php echo $data['phonenumber']; ?> </td>
                     </tr>
                     <tr>
-                        <th valign=top></th>
+                        <th></th>
                         <td><?php echo $data['email']; ?></td>
                     </tr>
                     <tr>
-                        <th valign=top>Fachbereiche:</th>
+                        <th>Fachbereiche:</th>
                         <td><?php echo $data['college']; ?></td>
+                    </tr>
+                    <tr>
+                        <th>Anzahl gekaufte Kurse:</th>
+                        <td><?php echo $boughtCourses; ?></td>
                     </tr>
                 </tbody>
             </table>
