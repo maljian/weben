@@ -5,7 +5,7 @@
 ?>
 
 <!-- Main content -->
-<div class = "col-md-7" id="mainBody">
+<div class = "col-md-10" id="mainBody">
     <?php include("alerts/addFH_alert.php")?>
     <h1>Abgelehnte FHs</h1>
     <p><a href="addFH.php">Anmeldungsanfragen</a></p>
