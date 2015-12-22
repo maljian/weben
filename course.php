@@ -33,7 +33,7 @@ include("login/header.php");
                 echo '<td>' . $row['type'] . '</td>';
                 echo '<td>' . $row['start'] . '</td>';
                 echo '<td>' . $row['end'] . '</td>';
-                echo '<td>' . $row['fh'] . '</td>';
+                echo '<td>' .'<a href=fhprofilRead.php?id='.$row['id'].'>'. $row['fh'] .'</a>' . '</td>';
                 echo '<td>' . $row['location'] . '</td>';
                 echo '</td>';
                 echo '</tr>';

@@ -22,7 +22,7 @@ echo "<table class='table table-striped table-bordered'>
                 </thread><tbody>";
 while ($row = mysqli_fetch_array($result)) {
     echo "<tr>";
-    echo "<td>" . $row['institution'] . "</td>";
+    echo "<td>" . '<a href=fhprofilRead.php?id='.$row['id'].'>'.$row['institution'] .'</a>'. "</td>";
     echo "<td>" . $row['city'] . "</td>";
     echo "<td><a href='". $row['website']."'target='_blank'>" . $row['website'] . "</a></td>";
     echo "<td>" . $row['partner'] . "</td>";
