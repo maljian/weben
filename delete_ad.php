@@ -21,7 +21,7 @@ if (!empty($_POST)) {
     $q->execute(array($id));
     $data = $q->fetch(PDO::FETCH_ASSOC);
     $email = $data['email'];
-    $gender = $date['gender'];
+    $gender = $data['gender'];
     $lastname = $data['lastname'];
     
     $sql = "DELETE FROM ads  WHERE id = ?";
@@ -68,16 +68,16 @@ if (!empty($_POST)) {
     ->setSubject($betreff)
     ->setBody(
     "Sehr geehrte/r ".$gender." ".$lastname.
+    "
+Leider können wir Ihre Werbung nicht auf unserer Seite schalten.
 
-    "\n\nLeider können wir Ihre Werbung nicht auf unserer Seite schalten.
+Für weitere Informationen können Sie sich gerne bei uns melden.
 
-    \n\nFür weitere Informationen können Sie sich gerne bei uns melden.
+Freundliche Grüsse
 
-    \n\nFreundliche Grüsse
-
-    \nFreundliche Grüsse
-    \nIhr FH-Portal-Team
-    \nwww.dine.bronxx.org
+Freundliche Grüsse
+Ihr FH-Portal-Team
+www.dine.bronxx.org
     ");
 
     $mailtext = "";
@@ -121,7 +121,6 @@ if (!empty($_POST)) {
     $mailer->registerPlugin(new Swift_Plugins_LoggerPlugin($logger));
 
     $result = $mailer->send($message);
-    $result2 = $mailer->send($message2);
     } catch (Exception $e) {
     $error_log = $logger->dump();
     }
