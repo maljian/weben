@@ -85,7 +85,12 @@ Ort: $city
 E-Mailadresse: $email
 Telefonnummer: $phonenumber
     
-Das Bild wurde in der Datenbank gespeichert.");
+Das Bild wurde in der Datenbank gespeichert.
+
+Freundliche Grüsse
+Ihr FH-Portal-Team
+www.dine.bronxx.org
+");
 
         $mailtext = "";
 

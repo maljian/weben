@@ -48,7 +48,10 @@ Im Anhang finden Sie Ihre Rechnung mit der Rechnungsnummer ".$_SESSION['refn']."
 
 Freundliche Grüsse
 
-Ihr FH Portal");
+Freundliche Grüsse
+Ihr FH-Portal-Team
+www.dine.bronxx.org
+");
 
         $mailtext = "";
 
