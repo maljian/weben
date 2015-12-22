@@ -140,6 +140,7 @@ www.dine.bronxx.org
         if ($result == 0) {
             die("Mail konnte nicht versandt werden.");
         }
+        $_SESSION['buyAdMessage']='successful';
         header("Location: $urlDankeSeite");
         exit;
     }
@@ -153,6 +154,7 @@ include("login/header.php");
 
 <!-- Main content -->
 <div class = "col-md-7" id="mainBody">
+    <?php include("alerts/buyAd_alert.php"); ?>
     <h1>Werbefläche mieten</h1>
     <h2>Preisliste</h2>
     <br/>
