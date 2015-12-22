@@ -9,125 +9,134 @@ $id = $_REQUEST['id'];
 }
 
 if (!empty($_POST)) {
-// keep track post values
-$id = $_POST['id'];
+    // keep track post values
+    $id = $_POST['id'];
 
-// delete data
-$pdo = Database::connect();
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-$sql = "DELETE FROM ads  WHERE id = ?";
-$q = $pdo->prepare($sql);
-$q->execute(array($id));
-Database::disconnect();
-$_SESSION['deleteAdMessage'] = 'successful';
-
-include('credentials.php');
-
-//Quelle: http://wiki.selfhtml.org/wiki/PHP/Anwendung_und_Praxis/Formmailer-Advanced
-// eigene Mailadresse
-$zieladresse = $data['email'];
-echo $zieladresse;
-
-//Absenderadresse
-$absenderadresse = $USER;
-
-//Absendername
-$absendername = 'FH Portal';
-
-//Betreff Empfänger und Absender
-$betreff = 'Werbefläche mieten FH Portal';
-
-//Weiterleitung nach Absenden
-$urlDankeSeite = 'addAd.php';
-
-// Welches Zeichen soll zwischen dem Feldnamen und dem angegebenen Wert stehen
-$trenner = ":\t"; // Doppelpunkt und Tabulator
-
-/**
- * Ende Konfigurator
- */
-require_once "swiftmailer/lib/swift_required.php"; // Swift initialisieren
-
-if ($_SERVER['REQUEST_METHOD'] === "POST") {
-
-
-$message = Swift_Message::newInstance(); // Ein Objekt für die Mailnachricht
-
-$message
-->setFrom(array($absenderadresse => $absendername))
-->setTo(array($zieladresse))
-->setSubject($betreff)
-->setBody(
-"Sehr geehrte/r ".$data['gender']." ".$data['lastname'].
-
-"Leider können wir Ihre Werbung nicht auf unserer Seite schalten.
+    // delete data
+    $pdo = Database::connect();
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
-Für weitere Informationen können Sie sich gerne bei uns melden.
+    $sql = "SELECT * FROM ads  WHERE id = ?";
+    $q = $pdo->prepare($sql);
+    $q->execute(array($id));
+    $data = $q->fetch(PDO::FETCH_ASSOC);
+    $email = $data['email'];
+    $gender = $date['gender'];
+    $lastname = $data['lastname'];
+    
+    $sql = "DELETE FROM ads  WHERE id = ?";
+    $q = $pdo->prepare($sql);
+    $q->execute(array($id));
 
-Freundliche Grüsse
+    Database::disconnect();
 
-Freundliche Grüsse
-Ihr FH-Portal-Team
-www.dine.bronxx.org
-");
 
-$mailtext = "";
+    include('credentials.php');
 
-foreach ($_POST as $name => $wert) {
-if (is_array($wert)) {
-foreach ($wert as $einzelwert) {
-$mailtext .= $name . $trenner . $einzelwert . "\n";
-}
-} else {
-$mailtext .= $name . $trenner . $wert . "\n";
-}
-}
+    //Quelle: http://wiki.selfhtml.org/wiki/PHP/Anwendung_und_Praxis/Formmailer-Advanced
+    // eigene Mailadresse
+    $zieladresse = $email;
 
-// Code Ergänzungen: try und catch, logger
-// gemäss: [http://swiftmailer.org/pdf/Swiftmailer.pdf Swiftmailer.pdf]
+    //Absenderadresse
+    $absenderadresse = $USER;
 
-try {
-/* Mit try und catch können die Fehlerevents differenzierter getestet werden
- *
- * diverse Möglichkeiten für $Transport 
- * smtp mit den gewohnten Optionen, siehe Dokumentation Swiftmailer  
- *  für TLS und SSL  allenfalls phpinfo ob extentiens installiert
- */
+    //Absendername
+    $absendername = 'FH Portal';
 
-$Transport0 = Swift_MailTransport::newInstance();        /* Beispiel geht über PHP-Mail, geht i.a. 
-  aber keine Information von logger */
+    //Betreff Empfänger und Absender
+    $betreff = 'Werbefläche mieten FH Portal';
 
-$Transport = Swift_SmtpTransport::newInstance('smtp.gmail.com', 587, 'tls') /* 'tls', Ports je nach Server */
-->setUsername($USER)
-->setPassword($PWD);
+    //Weiterleitung nach Absenden
+    $urlDankeSeite = 'addAd.php';
 
-$Transport2 = Swift_SmtpTransport::newInstance('mail.gmail.com', 995, 'tls') /* 'tls' */
-->setUsername("...")
-->setPassword("...");
+    // Welches Zeichen soll zwischen dem Feldnamen und dem angegebenen Wert stehen
+    $trenner = ":\t"; // Doppelpunkt und Tabulator
 
-$mailer = Swift_Mailer::newInstance($Transport);
+    /**
+     * Ende Konfigurator
+     */
+    require_once "swiftmailer/lib/swift_required.php"; // Swift initialisieren
 
-// Echo Logger aktivieren (es gibt noch einen logger der auf File schreibt)
-$logger = new Swift_Plugins_Loggers_EchoLogger();
-$mailer->registerPlugin(new Swift_Plugins_LoggerPlugin($logger));
+    if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
-$result = $mailer->send($message);
-$result2 = $mailer->send($message2);
-} catch (Exception $e) {
-$error_log = $logger->dump();
-}
 
-if ($result == 0) {
-die($_SESSION['contactMessage'] = 'failed');
-echo $e;
-}
+    $message = Swift_Message::newInstance(); // Ein Objekt für die Mailnachricht
 
-header("Location: $urlDankeSeite");
-exit;
-}
-//echo $message->toString();
+    $message
+    ->setFrom(array($absenderadresse => $absendername))
+    ->setTo(array($zieladresse))
+    ->setSubject($betreff)
+    ->setBody(
+    "Sehr geehrte/r ".$gender." ".$lastname.
 
-header("Content-type: text/html; charset=utf-8");
+    "\n\nLeider können wir Ihre Werbung nicht auf unserer Seite schalten.
+
+    \n\nFür weitere Informationen können Sie sich gerne bei uns melden.
+
+    \n\nFreundliche Grüsse
+
+    \nFreundliche Grüsse
+    \nIhr FH-Portal-Team
+    \nwww.dine.bronxx.org
+    ");
+
+    $mailtext = "";
+
+    foreach ($_POST as $name => $wert) {
+    if (is_array($wert)) {
+    foreach ($wert as $einzelwert) {
+    $mailtext .= $name . $trenner . $einzelwert . "\n";
+    }
+    } else {
+    $mailtext .= $name . $trenner . $wert . "\n";
+    }
+    }
+
+    // Code Ergänzungen: try und catch, logger
+    // gemäss: [http://swiftmailer.org/pdf/Swiftmailer.pdf Swiftmailer.pdf]
+
+    try {
+    /* Mit try und catch können die Fehlerevents differenzierter getestet werden
+     *
+     * diverse Möglichkeiten für $Transport 
+     * smtp mit den gewohnten Optionen, siehe Dokumentation Swiftmailer  
+     *  für TLS und SSL  allenfalls phpinfo ob extentiens installiert
+     */
+
+    $Transport0 = Swift_MailTransport::newInstance();        /* Beispiel geht über PHP-Mail, geht i.a. 
+      aber keine Information von logger */
+
+    $Transport = Swift_SmtpTransport::newInstance('smtp.gmail.com', 587, 'tls') /* 'tls', Ports je nach Server */
+    ->setUsername($USER)
+    ->setPassword($PWD);
+
+    $Transport2 = Swift_SmtpTransport::newInstance('mail.gmail.com', 995, 'tls') /* 'tls' */
+    ->setUsername("...")
+    ->setPassword("...");
+
+    $mailer = Swift_Mailer::newInstance($Transport);
+
+    // Echo Logger aktivieren (es gibt noch einen logger der auf File schreibt)
+    $logger = new Swift_Plugins_Loggers_EchoLogger();
+    $mailer->registerPlugin(new Swift_Plugins_LoggerPlugin($logger));
+
+    $result = $mailer->send($message);
+    $result2 = $mailer->send($message2);
+    } catch (Exception $e) {
+    $error_log = $logger->dump();
+    }
+
+    if ($result == 0) {
+    die($_SESSION['contactMessage'] = 'failed');
+
+    }
+    $_SESSION['deleteAdMessage'] = 'successful';
+    header("Location: $urlDankeSeite");
+    exit;
+    }
+    //echo $message->toString();
+
+    header("Content-type: text/html; charset=utf-8");
 }
 
 
