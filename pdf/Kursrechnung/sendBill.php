@@ -1,12 +1,17 @@
 <?php
 session_start();
-if (!empty($_SESSION['refn'])) {
+$refn=$_SESSION['refn'];
+$email=$_SESSION['email'];
+$partner=$_SESSION['partner'];
+$amount=$_SESSION['amount'];
+$institution=$_SESSION['institution'];
+if (!empty($refn)) {
    
     include('../../credentials.php');
     
 //Quelle: http://wiki.selfhtml.org/wiki/PHP/Anwendung_und_Praxis/Formmailer-Advanced
 // eigene Mailadresse
-    $zieladresse = $_SESSION['email'];
+    $zieladresse = $email;
 
 //Absenderadresse
     $absenderadresse = 'dine.bronxx@gmail.com';
@@ -16,6 +21,7 @@ if (!empty($_SESSION['refn'])) {
 
 //Betreff Empfänger und Absender
     $betreff = 'Rechnung FH Portal';
+    $betreff2 = 'Information: Kurs wurde gebucht';
 
 //Weiterleitung nach Absenden
     $urlDankeSeite = '../../myCourse.php';
@@ -28,10 +34,11 @@ if (!empty($_SESSION['refn'])) {
      */
     require_once "../../swiftmailer/lib/swift_required.php"; // Swift initialisieren
     
-    $attachment = Swift_Attachment::fromPath("Kursrechnung_".$_SESSION['refn'].".pdf", "application/pdf");
+    $attachment = Swift_Attachment::fromPath("Kursrechnung_".$refn.".pdf", "application/pdf");
 
     if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
+        //Mail an FH
         $message = Swift_Message::newInstance(); // Ein Objekt für die Mailnachricht
 
         $message
@@ -40,11 +47,11 @@ if (!empty($_SESSION['refn'])) {
                 ->setSubject($betreff)
                 ->attach ($attachment)
                 ->setBody(
-"Sehr geehrte/r Frau/Herr ".$_SESSION['partner']."
+"Sehr geehrte/r Frau/Herr ".$partner."
 
-Um auf dem FH Portal ihre Kurse freizuschalten, begleichen Sie bitte den Rechnungsbetrag von CHF ".$_SESSION['amount']." .".
+Um auf dem FH Portal ihre Kurse freizuschalten, begleichen Sie bitte den Rechnungsbetrag von CHF ".$amount." .".
 "
-Im Anhang finden Sie Ihre Rechnung mit der Rechnungsnummer ".$_SESSION['refn']." und dem Einzahlungsschein.
+Im Anhang finden Sie Ihre Rechnung mit der Rechnungsnummer ".$refn." und dem Einzahlungsschein.
 
 Freundliche Grüsse
 
@@ -54,7 +61,7 @@ www.dine.bronxx.org
 ");
 
         $mailtext = "";
-
+        
         foreach ($_POST as $name => $wert) {
             if (is_array($wert)) {
                 foreach ($wert as $einzelwert) {
@@ -62,6 +69,30 @@ www.dine.bronxx.org
                 }
             } else {
                 $mailtext .= $name . $trenner . $wert . "\n";
+            }
+        }
+        
+        //Mail an Admin
+        $message2 = Swift_Message::newInstance(); // Ein Objekt für die Mailnachricht
+
+        $message2
+                ->setFrom(array($zieladresse))
+                ->setTo(array($absenderadresse))
+                ->setSubject($betreff2)
+                ->setBody(
+"Die FH ".$_SESSION['institution']." hat ".$_SESSION['number']." Kurse gebucht.
+
+In den nächsten vier Wochen muss ein Rechnungsbetrag von CHF ".$_SESSION['amount']." mit der Rechnungsnummer ".$_SESSION['refn']." überwiesen werden.");
+
+        $mailtext2 = "";
+
+        foreach ($_POST as $name => $wert) {
+            if (is_array($wert)) {
+                foreach ($wert as $einzelwert) {
+                    $mailtext2 .= $name . $trenner . $einzelwert . "\n";
+                }
+            } else {
+                $mailtext2 .= $name . $trenner . $wert . "\n";
             }
         }
 
@@ -94,6 +125,7 @@ www.dine.bronxx.org
             $mailer->registerPlugin(new Swift_Plugins_LoggerPlugin($logger));
 
             $result = $mailer->send($message);
+            $result2 = $mailer->send($message2);
         } catch (Exception $e) {
             $error_log = $logger->dump();
         }

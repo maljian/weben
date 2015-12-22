@@ -90,5 +90,6 @@ $_SESSION['partner']=$data['partner'];
 $_SESSION['institution']=$data['institution'];
 $_SESSION['email']=$data['email'];
 $_SESSION['amount']=$amount;
+$_SESSION['number']=$number;
 
 include("sendBill.php");

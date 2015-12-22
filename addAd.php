@@ -2,11 +2,12 @@
 session_start();
 include("login/login_pruefen_fh.inc.php");
 include("login/header.php");
+include("credentials.php");
 ?>
 <!-- Main content -->
 <div class = "col-md-10" id="mainBody">
     <h1>Werbeanfragen</h1>
-    </br>
+    <a target="_blank" href="<?php echo $URL ?>" >Datenbank</a>
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
