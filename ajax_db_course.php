@@ -28,6 +28,9 @@ if(($col != '0') && ($deg !='0')){
 }else if (($col != '0') && ($deg =='0')){
     $sql = "SELECT * FROM `studiengang` WHERE `category` = '" . $col . "'";
     $result = mysqli_query($con, $sql);
+}else{
+    $sql = "SELECT * FROM `studiengang`";
+    $result = mysqli_query($con, $sql);
 }
 
 echo "<table class='table table-striped table-bordered'>
