@@ -40,15 +40,15 @@ if (null != $fh) {
                     <td><?php echo $data['website']; ?></td>
                 </tr>
                 <tr>
-                    <th>Kontaktdaten:</th>
+                    <th>Kontaktperson:</th>
                     <td><?php echo $data['partner']; ?> </td>
                 </tr>
                 <tr>
-                    <th></th>
+                    <th>Telefonnummer:</th>
                     <td><?php echo $data['phonenumber']; ?> </td>
                 </tr>
                 <tr>
-                    <th></th>
+                    <th>Emailadresse:</th>
                     <td><?php echo $data['email']; ?></td>
                 </tr>
                 <tr>
