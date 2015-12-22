@@ -1,21 +1,26 @@
 <?php
 session_start();
-include("login/login_pruefen_admin.inc.php");
-include("login/header.php");
 $email = $_SESSION['email'];
             
-    include 'database.php';
+    require 'database.php';
     if ( !empty($_GET['email'])) {
             $email = $_REQUEST['email'];
     }
-    
     $pdo = Database::connect();
     $pdo->exec('set names utf8');
+    
     $sql = "SELECT * FROM user where Email = '$email'";
     $q = $pdo->prepare($sql);
     $q->execute();
     $data = $q->fetch(PDO::FETCH_ASSOC);
     $fh = $data['Name'];
+    $boughtCourses = $data['boughtCourses'];
+    
+    if($boughtCourses==0){
+        $_SESSION['createCourseMessage'] = 'no bought courses';
+        header("Location: myCourse.php");
+        exit();
+    }
     
 // Codeteile von Rainer Telesko aus dem Web-Engineering Modul.
 if (!empty($_POST)) {
@@ -31,22 +36,20 @@ if (!empty($_POST)) {
     $studigang = $_POST['studigang'];
     $fachbereich = $_POST['fachbereich'];
 
-    include "db.inc.php";
-    $link = mysqli_connect("localhost", $benutzer, $passwort) or die("Keine Verbindung zur Datenbank!");
-    mysqli_select_db($link, $dbname) or die("Datenbank nicht gefunden!" . mysql_error());
-
-    // damit ä,ö,ü und é richtig dargestellt werden! --> auf utf8 stellen
-    mysqli_set_charset($link, 'utf8');
-
-    $abfrage = "INSERT INTO `studiengang`(`id`, `name`, `fh`, `location`, `start`, `end`, `cost`, `text`, `result`, `contact_email`, `type`, `degreeprogram`, `category`) VALUES 
+    $sql = "INSERT INTO `studiengang`(`id`, `name`, `fh`, `location`, `start`, `end`, `cost`, `text`, `result`, `contact_email`, `type`, `degreeprogram`, `category`) VALUES 
                 ('','$title','$fh','$location','$start','$end','$cost','$text','$result','$contactemail','$type','$studigang','$fachbereich')";
-    $ergebnis = mysqli_query($link, $abfrage);
-    if (!$ergebnis) {
-        die('Could not connect: ' . mysql_error());
-    }
-    mysqli_close($link);
+    $q = $pdo->prepare($sql);
+    $q->execute();
+    
+    $sql= "UPDATE user SET boughtCourses = boughtCourses -1 WHERE Email = ?";
+    $q = $pdo->prepare($sql);
+    $q->execute(array($email));
+    Database::disconnect();
     $_SESSION['createCourseMessage'] = 'successful';
 }
+
+include("login/login_pruefen_admin.inc.php");
+include("login/header.php");
 ?>
 <!-- Main content -->
 <div class = "col-md-7" id="mainBody">
@@ -157,7 +160,7 @@ if (!empty($_POST)) {
             <label class="col-sm-2"></label>
             <div class="col-sm-9">
                 <button type="submit" class="btn btn-success" value="send">Erfassen</button>
-                <a class="btn btn-default" href="../myCourse.php">Abbrechen</a>
+                <a class="btn btn-default" href="myCourse.php">Abbrechen</a>
             </div>
         </div>
     </form>

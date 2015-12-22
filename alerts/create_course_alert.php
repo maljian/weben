@@ -1,5 +1,5 @@
 <?PHP
-//Alert that adding failed      
+//Alert that course was successfully created     
 if (isset($_SESSION['createCourseMessage']) AND $_SESSION['createCourseMessage']=="successful")
         {
         echo "<div class=\"panel-group\">
@@ -9,6 +9,6 @@ if (isset($_SESSION['createCourseMessage']) AND $_SESSION['createCourseMessage']
                 </div>
             </div>";
         unset($_SESSION['createCourseMessage']);
-        }  
+        } 
 ?>
 
