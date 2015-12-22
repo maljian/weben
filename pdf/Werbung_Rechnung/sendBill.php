@@ -1,6 +1,13 @@
 <?php
 session_start();
 if (!empty($_SESSION['refn'])) {
+    $_gender=$_SESSION['gender']; 
+    if (strcmp($gender, 'Frau') == 0) {
+        $return = 'geehrte';
+    }if (strcmp($gender, 'Herr') == 0) {
+        $return = 'geehrter';
+    }
+    $anrede = $return;
    
     include('../../credentials.php');
     
@@ -40,7 +47,7 @@ if (!empty($_SESSION['refn'])) {
                 ->setSubject($betreff)
                 ->attach ($attachment)
                 ->setBody(
-"Sehr geehrte/r ".$_SESSION['gender']." ".$_SESSION['lastname']."
+"Sehr ".$anrede." ".$gender." ".$_SESSION['lastname']."
 
 Vielen Dank dass Sie Ihre Werbung bei uns schalten möchten.
     

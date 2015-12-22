@@ -5,7 +5,7 @@ require 'database.php';
 $id = 0;
 
 if (!empty($_GET['id'])) {
-$id = $_REQUEST['id'];
+    $id = $_REQUEST['id'];
 }
 
 if (!empty($_POST)) {
@@ -15,15 +15,22 @@ if (!empty($_POST)) {
     // delete data
     $pdo = Database::connect();
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    
+
     $sql = "SELECT * FROM ads  WHERE id = ?";
     $q = $pdo->prepare($sql);
     $q->execute(array($id));
     $data = $q->fetch(PDO::FETCH_ASSOC);
     $email = $data['email'];
-    $gender = $data['gender'];
     $lastname = $data['lastname'];
-    
+    $gender = $data['gender'];
+
+    if (strcmp($gender, 'Frau') == 0) {
+        $return = 'geehrte';
+    }if (strcmp($gender, 'Herr') == 0) {
+        $return = 'geehrter';
+    }
+    $anrede = $return;
+
     $sql = "DELETE FROM ads  WHERE id = ?";
     $q = $pdo->prepare($sql);
     $q->execute(array($id));
@@ -60,78 +67,75 @@ if (!empty($_POST)) {
     if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
 
-    $message = Swift_Message::newInstance(); // Ein Objekt für die Mailnachricht
+        $message = Swift_Message::newInstance(); // Ein Objekt für die Mailnachricht
 
-    $message
-    ->setFrom(array($absenderadresse => $absendername))
-    ->setTo(array($zieladresse))
-    ->setSubject($betreff)
-    ->setBody(
-    "Sehr geehrte/r ".$gender." ".$lastname.
-    "
+        $message
+                ->setFrom(array($absenderadresse => $absendername))
+                ->setTo(array($zieladresse))
+                ->setSubject($betreff)
+                ->setBody(
+                        "Sehr " . $anrede . " " . $gender . " " . $lastname .
+                        "
 Leider können wir Ihre Werbung nicht auf unserer Seite schalten.
 
 Für weitere Informationen können Sie sich gerne bei uns melden.
-
-Freundliche Grüsse
 
 Freundliche Grüsse
 Ihr FH-Portal-Team
 www.dine.bronxx.org
     ");
 
-    $mailtext = "";
+        $mailtext = "";
 
-    foreach ($_POST as $name => $wert) {
-    if (is_array($wert)) {
-    foreach ($wert as $einzelwert) {
-    $mailtext .= $name . $trenner . $einzelwert . "\n";
-    }
-    } else {
-    $mailtext .= $name . $trenner . $wert . "\n";
-    }
-    }
+        foreach ($_POST as $name => $wert) {
+            if (is_array($wert)) {
+                foreach ($wert as $einzelwert) {
+                    $mailtext .= $name . $trenner . $einzelwert . "\n";
+                }
+            } else {
+                $mailtext .= $name . $trenner . $wert . "\n";
+            }
+        }
 
-    // Code Ergänzungen: try und catch, logger
-    // gemäss: [http://swiftmailer.org/pdf/Swiftmailer.pdf Swiftmailer.pdf]
+        // Code Ergänzungen: try und catch, logger
+        // gemäss: [http://swiftmailer.org/pdf/Swiftmailer.pdf Swiftmailer.pdf]
 
-    try {
-    /* Mit try und catch können die Fehlerevents differenzierter getestet werden
-     *
-     * diverse Möglichkeiten für $Transport 
-     * smtp mit den gewohnten Optionen, siehe Dokumentation Swiftmailer  
-     *  für TLS und SSL  allenfalls phpinfo ob extentiens installiert
-     */
+        try {
+            /* Mit try und catch können die Fehlerevents differenzierter getestet werden
+             *
+             * diverse Möglichkeiten für $Transport 
+             * smtp mit den gewohnten Optionen, siehe Dokumentation Swiftmailer  
+             *  für TLS und SSL  allenfalls phpinfo ob extentiens installiert
+             */
 
-    $Transport0 = Swift_MailTransport::newInstance();        /* Beispiel geht über PHP-Mail, geht i.a. 
-      aber keine Information von logger */
+            $Transport0 = Swift_MailTransport::newInstance();        /* Beispiel geht über PHP-Mail, geht i.a. 
+              aber keine Information von logger */
 
-    $Transport = Swift_SmtpTransport::newInstance('smtp.gmail.com', 587, 'tls') /* 'tls', Ports je nach Server */
-    ->setUsername($USER)
-    ->setPassword($PWD);
+            $Transport = Swift_SmtpTransport::newInstance('smtp.gmail.com', 587, 'tls') /* 'tls', Ports je nach Server */
+                    ->setUsername($USER)
+                    ->setPassword($PWD);
 
-    $Transport2 = Swift_SmtpTransport::newInstance('mail.gmail.com', 995, 'tls') /* 'tls' */
-    ->setUsername("...")
-    ->setPassword("...");
+            $Transport2 = Swift_SmtpTransport::newInstance('mail.gmail.com', 995, 'tls') /* 'tls' */
+                    ->setUsername("...")
+                    ->setPassword("...");
 
-    $mailer = Swift_Mailer::newInstance($Transport);
+            $mailer = Swift_Mailer::newInstance($Transport);
 
-    // Echo Logger aktivieren (es gibt noch einen logger der auf File schreibt)
-    $logger = new Swift_Plugins_Loggers_EchoLogger();
-    $mailer->registerPlugin(new Swift_Plugins_LoggerPlugin($logger));
+            // Echo Logger aktivieren (es gibt noch einen logger der auf File schreibt)
+            $logger = new Swift_Plugins_Loggers_EchoLogger();
+            $mailer->registerPlugin(new Swift_Plugins_LoggerPlugin($logger));
 
-    $result = $mailer->send($message);
-    } catch (Exception $e) {
-    $error_log = $logger->dump();
-    }
+            $result = $mailer->send($message);
+        } catch (Exception $e) {
+            $error_log = $logger->dump();
+        }
 
-    if ($result == 0) {
-    die($_SESSION['contactMessage'] = 'failed');
-
-    }
-    $_SESSION['deleteAdMessage'] = 'successful';
-    header("Location: $urlDankeSeite");
-    exit;
+        if ($result == 0) {
+            die($_SESSION['contactMessage'] = 'failed');
+        }
+        $_SESSION['deleteAdMessage'] = 'successful';
+        header("Location: $urlDankeSeite");
+        exit;
     }
     //echo $message->toString();
 

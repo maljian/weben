@@ -12,6 +12,12 @@ if (!empty($_POST)) {
     $start = $_POST['start'];
     $duration = $_POST['duration'];
     
+    if (strcmp($gender, 'Frau') == 0) {
+        $return = 'geehrte';
+    }if (strcmp($gender, 'Herr') == 0) {
+        $return = 'geehrter';
+    }
+    $anrede = $return;
 
     include "db.inc.php";
     $link = mysqli_connect("localhost", $benutzer, $passwort) or die("Keine Verbindung zur Datenbank!");
@@ -73,16 +79,19 @@ if (!empty($_POST)) {
         $message
                 ->setFrom(array($absenderadresse => $absendername))
                 ->setTo(array($zieladresse))
-                ->setBcc(array($absenderadresse))
                 ->setSubject($betreff)
                 ->setBody(
-"Anfrage FH Portal Werbung schalten:
+"Sehr ".$anrede." ".$gender." ".$lastname."
     
+Wir haben Ihre Anfrage für eine Werbefläche mit folgenden Daten erhalten:
+
 Vorname : $firstname
 Nachname: $lastname
 Strasse: $street
 PLZ: $plz
 Ort: $city
+Startdatum: $start
+Dauer: $duration
 E-Mailadresse: $email
 Telefonnummer: $phonenumber
     

@@ -8,6 +8,13 @@ if (!empty($_POST)) {
     $phonenumber = $_POST['phonenumber'];
     $question = $_POST['question'];
     
+    if (strcmp($gender, 'Frau') == 0) {
+        $return = 'geehrte';
+    }if (strcmp($gender, 'Herr') == 0) {
+        $return = 'geehrter';
+    }
+    $anrede = $return;
+    
 
    
     include('credentials.php');
@@ -43,7 +50,44 @@ if (!empty($_POST)) {
         $message
                 ->setFrom(array($absenderadresse => $absendername))
                 ->setTo(array($zieladresse))
-                ->setBcc(array($absenderadresse))
+                ->setSubject($betreff)
+                ->setBody(
+"Sehr ".$anrede." ".$gender." ".$lastname."
+    
+Wir haben Ihre Anfrage mit folgenden Daten erhalten:
+
+Vorname : $firstname
+Nachname: $lastname
+E-Mailadresse: $email
+Telefonnummer: $phonenumber
+    
+Anfrage: 
+$question
+
+Wir werden Ihre Anfrage schnellstmöglich bearbeiten.
+                        
+Freundliche Grüsse
+Ihr FH-Portal-Team
+www.dine.bronxx.org
+    ");
+
+        $mailtext = "";
+
+        foreach ($_POST as $name => $wert) {
+            if (is_array($wert)) {
+                foreach ($wert as $einzelwert) {
+                    $mailtext .= $name . $trenner . $einzelwert . "\n";
+                }
+            } else {
+                $mailtext .= $name . $trenner . $wert . "\n";
+            }
+        }
+        
+        $message2 = Swift_Message::newInstance(); // Ein Objekt für die Mailnachricht
+
+        $message2
+                ->setFrom(array($zieladresse))
+                ->setTo(array($absenderadresse))
                 ->setSubject($betreff)
                 ->setBody(
 "Anfrage FH Portal erhalten:
@@ -56,15 +100,15 @@ Telefonnummer: $phonenumber
 Anfrage: 
 $question");
 
-        $mailtext = "";
+        $mailtext2 = "";
 
         foreach ($_POST as $name => $wert) {
             if (is_array($wert)) {
                 foreach ($wert as $einzelwert) {
-                    $mailtext .= $name . $trenner . $einzelwert . "\n";
+                    $mailtext2 .= $name . $trenner . $einzelwert . "\n";
                 }
             } else {
-                $mailtext .= $name . $trenner . $wert . "\n";
+                $mailtext2 .= $name . $trenner . $wert . "\n";
             }
         }
 
@@ -97,6 +141,7 @@ $question");
             $mailer->registerPlugin(new Swift_Plugins_LoggerPlugin($logger));
 
             $result = $mailer->send($message);
+            $result2 = $mailer->send($message2);
         } catch (Exception $e) {
             $error_log = $logger->dump();
         }
