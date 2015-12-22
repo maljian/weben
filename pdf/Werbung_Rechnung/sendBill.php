@@ -1,22 +1,29 @@
 <?php
 session_start();
-if (!empty($_SESSION['refn'])) {
-    $_gender=$_SESSION['gender']; 
-    if (strcmp($gender, 'Frau') == 0) {
+
+$refn=$_SESSION['refn'];
+$email=$_SESSION['email'];
+$gender=$_SESSION['gender'];
+$lastname=$_SESSION['lastname'];
+$amount=$_SESSION['amount'];
+
+if (strcmp($gender, 'Frau') == 0) {
         $return = 'geehrte';
     }if (strcmp($gender, 'Herr') == 0) {
         $return = 'geehrter';
     }
     $anrede = $return;
+
+if (!empty($refn)) {
    
     include('../../credentials.php');
     
 //Quelle: http://wiki.selfhtml.org/wiki/PHP/Anwendung_und_Praxis/Formmailer-Advanced
 // eigene Mailadresse
-    $zieladresse = $_SESSION['email'];
+    $zieladresse = $email;
 
 //Absenderadresse
-    $absenderadresse = 'dine.bronxx@gmail.com';
+    $absenderadresse = $USER;
 
 //Absendername
     $absendername = 'FH Portal';
@@ -35,7 +42,7 @@ if (!empty($_SESSION['refn'])) {
      */
     require_once "../../swiftmailer/lib/swift_required.php"; // Swift initialisieren
     
-    $attachment = Swift_Attachment::fromPath("Rechnung_".$_SESSION['refn'].".pdf", "application/pdf");
+    $attachment = Swift_Attachment::fromPath("Rechnung_".$refn.".pdf", "application/pdf");
 
     if ($_SERVER['REQUEST_METHOD'] === "GET") {
 
@@ -47,12 +54,12 @@ if (!empty($_SESSION['refn'])) {
                 ->setSubject($betreff)
                 ->attach ($attachment)
                 ->setBody(
-"Sehr ".$anrede." ".$gender." ".$_SESSION['lastname']."
+"Sehr ".$anrede." ".$gender." ".$lastname."
 
 Vielen Dank dass Sie Ihre Werbung bei uns schalten möchten.
     
-Nachdem Sie den Rechnungsbetrag von CHF ".$_SESSION['amount']." bei uns beglichen haben, werden wir Ihre Werbung ab Ihrem Wunschtermin aufschalten.
-Im Anhang finden Sie Ihre Rechnung mit der Rechnungsnummer ".$_SESSION['refn']." und dem Einzahlungsschein.
+Nachdem Sie den Rechnungsbetrag von CHF ".$amount." bei uns beglichen haben, werden wir Ihre Werbung ab Ihrem Wunschtermin aufschalten.
+Im Anhang finden Sie Ihre Rechnung mit der Rechnungsnummer ".$refn." und dem Einzahlungsschein.
 
 Freundliche Grüsse
 

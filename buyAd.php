@@ -50,10 +50,10 @@ if (!empty($_POST)) {
     
 //Quelle: http://wiki.selfhtml.org/wiki/PHP/Anwendung_und_Praxis/Formmailer-Advanced
 // eigene Mailadresse
-    $zieladresse = 'dine.bronxx@gmail.com';
+    $zieladresse = $_POST['email'];
 
 //Absenderadresse
-    $absenderadresse = $_POST['email'];
+    $absenderadresse = $USER;;
 
 //Absendername
     $absendername = $firstname . " " . $lastname;

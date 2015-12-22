@@ -23,6 +23,15 @@ $data = $q->fetch(PDO::FETCH_ASSOC);
 Database::disconnect();
 }
 
+$gender=$data['gender'];
+
+if (strcmp($gender, 'Frau') == 0) {
+        $return = 'geehrte';
+    }if (strcmp($gender, 'Herr') == 0) {
+        $return = 'geehrter';
+    }
+    $anrede = $return;
+
 if(strcmp($data['duration'],"1 Woche")== 0){
     $return = floatval(50.00);
 }if(strcmp($data['duration'],"2 Wochen")== 0){
@@ -59,7 +68,7 @@ $pdf->SetFont('Arial', '', 11);
 $pdf->Cell(91, 4, $date,0,1,'R');
 $pdf->Cell(50, 10, "",0, 1);
 $pdf->SetFont('Arial', '', 11);
-$pdf->Cell(100, 4, "Sehr geehrte/r ".$data['gender']." ".utf8_decode($data['lastname']),0,1);
+$pdf->Cell(100, 4, "Sehr ".$anrede." ".$gender." ".utf8_decode($data['lastname']),0,1);
 $pdf->Cell(50, 4, "",0, 1);
 $pdf->MultiCell(190, 4, "Sie haben auf dem FH Portal Werbefl".chr(228)."che f".chr(252)."r ".$data['duration']." gemietet. Bitte begleichen Sie den Betrag von CHF ".$amount." innerhalb der n".chr(228)."chsten vier Wochen.",0, 1);
 $pdf->Cell(50, 4, "",0, 1);
