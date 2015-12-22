@@ -34,7 +34,7 @@
     <div class = "col-md-7" id="mainBody">
         <?php include("alerts/reset_fhinfo_alert.php"); ?>
         <h1>Mein FH Profil</h1>
-     <div class="col-sm-12 table-responsive">
+     <div class="table-responsive">
             <table class="table table-bordered table-striped" style="width:80%">
                 <p>
             <a href="fhInfo_update.php?email=" class="btn btn-success" role="button">Infos bearbeiten</a>

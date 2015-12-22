@@ -46,7 +46,7 @@
                 <div class="col-md-4">
                     <label for="ort">Region:</label>
                     <select class=" course form-control text-center" id="region">
-                        <option value="0"> --------- Auswahl --------- </option>
+                        <option value="0">Auswahl</option>
                         <option value="Nordwestschweiz">Nordwestschweiz</option>
                         <option value="Zenralschweiz">Zentralschweiz</option>
                         <option value="Ostschweiz">Ostschweiz</option>
@@ -59,7 +59,7 @@
                 <div class="col-md-4">
                     <label for="fachbereich">Fachbereich:</label>
                     <select class="course form-control text-center" id="college">
-                        <option value="0"> --------- Auswahl --------- </option>
+                        <option value="0">Auswahl</option>
                         <option value="Wirtschaft">Wirtschaft</option>
                         <option value="Technik">Technik</option>
                         <option value="Angewandte Psychologie">Angewandte Psychologie</option>
@@ -74,7 +74,7 @@
                 <div class="col-md-4">
                     <label for="studiengang">Studium und Weiterbildung:</label>
                     <select class=" course form-control text-center" id="degree">
-                        <option value="0"> --------- Auswahl --------- </option>
+                        <option value="0">Auswahl</option>
                         <option value="Bachelor">Bachelor</option>
                         <option value="Master">Master</option>
                         <option value="Weiterbildung">Weiterbildung</option>
